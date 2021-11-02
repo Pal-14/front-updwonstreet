@@ -6,7 +6,8 @@ const base = axios.create({
   baseURL,
 });
 const Service = {
-  
+  addUsers(body) {
+    return base.post ('/users/add', body) }
 };
 
 export default Service;

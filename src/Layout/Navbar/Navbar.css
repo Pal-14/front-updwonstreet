@@ -1,0 +1,16 @@
+.navbarContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(231, 231, 231);
+    border-bottom: 2px solid rgb(231, 231, 231);
+    height: 40 px;
+    width: 25 vw;
+}
+
+.companyName {
+    flex: 1;
+}
+
+.navbarLinks {
+    flex: 2;
+}

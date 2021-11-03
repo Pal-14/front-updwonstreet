@@ -6,6 +6,7 @@ import Log from './View/Log/Log';
 import checkToken from './services';
 import Profile from './View/Profile/Profile';
 import Catalog from './View/Catalog/Catalog';
+import AdminLog from './View/Admin/AdminLog';
 
 function App() {
 
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path="/catalog">
             <Catalog />
+          </Route>
+          <Route path="/admin">
+            <AdminLog />
           </Route>
           <Route path="/">
 

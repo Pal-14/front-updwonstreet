@@ -1,7 +1,9 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar(props) {
+
+    let isLoggedIn = props.isLoggedIn;
 
     return (
         <div className="navbarContainer">

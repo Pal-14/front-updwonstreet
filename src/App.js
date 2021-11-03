@@ -6,13 +6,35 @@ import SignUp from './View/Log/SignUp';
 
 function App() {
 
+  /* Déclaration variable d'état */
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  /* Vérification du statut de connexion */
+  const checkIsLoggedIn = () => {
+      let jwt = localStorage.getItem("jwt"); // Récupération du token de connexion
+      if(jwt !== null) {
+          setIsLoggedIn(true);
+      } else {
+          setIsLoggedIn(false);
+      }
+  };
+
+  /* Actualisation de l'affichage */
+  useEffect(() => {
+      checkIsLoggedIn();
+  }, []);
+
+  useEffect(() => {
+      console.log("Connecté:", isLoggedIn)
+  }, [isLoggedIn]);
+
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} />
         <Switch>
-          <Route path="/">
-
+          <Route path="/log">
+            <Log isLoggedIn={isLoggedIn} />
           </Route>
           <Route path="/">
 

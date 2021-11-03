@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = /* "https://fast-scratch.osc-fr1.scalingo.io/" || */ "http://192.168.1.10:5000";
+const baseURL = "https://fast-scratch.osc-fr1.scalingo.io/" || "http://192.168.1.10:5000";
 
 const base = axios.create({
   baseURL,
@@ -12,7 +12,14 @@ const Service = {
 
   logUsers(body) {
     return base.post ('/users/login', body)
-  }
+  },
+
+  checkToken() {
+    let jwt = localStorage.getItem("jwt"); // Récupération du token de connexion
+    return base.get ('/users/checkToken', { headers:{
+      Authorization: `Bearer ${jwt}`}
+    })
+  },
 };
 
 export default Service;

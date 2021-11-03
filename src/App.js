@@ -1,6 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './Layout/Navbar/Navbar';
+import LogIn from './View/Log/Log';
+import SignUp from './View/Log/SignUp';
 
 function App() {
 
@@ -22,6 +24,9 @@ function App() {
 
           </Route>
         </Switch>
+        <LogIn/>
+
+        {/* <SignUp/> */}
       </Router>
     </div>
   );

@@ -7,7 +7,12 @@ const base = axios.create({
 });
 const Service = {
   addUsers(body) {
-    return base.post ('/users/add', body) }
+    return base.post ('/users/signUp', body) 
+  },
+
+  logUsers(body) {
+    return base.post ('/users/login', body)
+  }
 };
 
 export default Service;

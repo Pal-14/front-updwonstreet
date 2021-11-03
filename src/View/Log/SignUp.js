@@ -12,7 +12,7 @@ function SignUp() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (lastName != "" || firstName != "" || email != "" || password != "") {
+    if (lastName !== "" || firstName !== "" || email !== "" || password !== "") {
       let body = {
         lastName: lastName,
         firstName: firstName,
@@ -38,7 +38,7 @@ function SignUp() {
 
   return (
     <div>
-      <h1>Inscription</h1>
+      
       <h3>{erreur}</h3>
       <input
         onChange={(e) => onChange(e, setlLastName)}
@@ -64,7 +64,7 @@ function SignUp() {
         name="password"
         type="password"
       ></input>
-      <button handleSubmit={(e) => handleSubmit(e)} type="submit">
+      <button onClick={(e) => handleSubmit(e)} type="submit">
         Send
       </button>
     </div>

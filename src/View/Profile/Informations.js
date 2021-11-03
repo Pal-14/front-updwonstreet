@@ -20,9 +20,14 @@ function Informations(props) {
 
         <div>
           <h2>Informations Personelles : </h2>
-          <div><p>Nom: mettre le nom</p></div>
-          <div><p>Prénom: mettre le prénom props</p></div>
-          <div><p>Email: mettre Email props</p></div>
+
+          <div><p>firstName: recup le firstname</p></div>
+          <div><p>lastName :recup le lastName</p></div>
+          <div><p>Date de Naissance : recup date</p></div>
+          <div><p>adresse postale: recup adresse</p></div>
+
+          <div><p>Email: recup de l'Email</p></div>
+          <div><p>Téléphone: recup le Téléphone</p></div>
         </div>
 
         <div>

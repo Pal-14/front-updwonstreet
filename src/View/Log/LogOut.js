@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-function LogOut(props) {
-  const [button, setButton] = useState("Déconnexion");
 
+function LogOut(props) {
+ 
   function logOut() {
     localStorage.removeItem("jwt");
     props.setIsLoggedIn(false);

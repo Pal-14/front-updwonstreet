@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 
-function Portefeuille() {
+function Biens() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
@@ -14,22 +14,19 @@ function Portefeuille() {
 
   return (
     <div>
-      <button onClick={openModal}>Consulter mon Portefeuille</button>
+      <button onClick={openModal}>Consulter mes Biens</button>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <button onClick={closeModal}>close</button>
 
-        <div>
-          <h2>Informations du Portefeuille: </h2>
+       
+          <h2>Liste de mes Biens: </h2>
           <div>
-            <p>Stable coins Possédés:</p>
+            <p>Voir les biens à mettre </p>
           </div>
-          <div>
-            <p>Valeurs total des Stable Coins</p>
-          </div>
-        </div>
+          
       </Modal>
     </div>
   );
 }
 
-export default Portefeuille;
+export default Biens;

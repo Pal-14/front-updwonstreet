@@ -11,7 +11,7 @@ function Finalisation() {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [message, setMessage] = useState("");
 
-  async function handleSubmit(event) {
+  async function handleSubmit() {
     let body = {
       telephone: telephone,
       adresse: adresse,
@@ -20,11 +20,7 @@ function Finalisation() {
       dateOfBirth: dateOfBirth,
     };
     let accountPut = await Service.feedUsers(body);
-    if (accountPut.data.success) {
-      setMessage(accountPut.data.message);
-    } else {
-      setMessage(accountPut.data.message);
-    }
+    setMessage(accountPut.data.message);
   }
 
   return (
@@ -115,7 +111,7 @@ function Finalisation() {
         </p>
 
         <br />
-        <input onClick={(e) => handleSubmit(e)} type="submit"></input>
+        <input onClick={handleSubmit} type="submit"></input>
       </div>
     </div>
   );

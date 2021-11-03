@@ -12,8 +12,9 @@ function App() {
 
   /* Vérification du statut de connexion */
   const checkIsLoggedIn = async () => {
-    let jwt = await checkToken();
-      if(jwt !== null) {
+    let jwt = localStorage.getItem("jwt");
+    /* let jwt = await checkToken(); */
+      if(jwt === "oui") {
           setIsLoggedIn(true);
       } else {
           setIsLoggedIn(false);

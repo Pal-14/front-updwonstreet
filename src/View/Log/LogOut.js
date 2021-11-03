@@ -10,6 +10,7 @@ function LogOut(props) {
 
   return (
     <div>
+        <h3>Êtes-vous sûr de vouloir vous déconnectez ?</h3>
       <button onClick={logOut}>Déconnexion</button>
     </div>
   );

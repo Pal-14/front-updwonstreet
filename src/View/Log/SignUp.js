@@ -23,9 +23,9 @@ function SignUp(props) {
         stableCoins: 1
       };
       let signUp = await services.addUsers(body);
-      if (signUp.data.firstName) {
+      if (signUp.data.token) {
         let logIn = await services.logUsers(body);
-        if (logIn.data.firstName) {
+        if (logIn.data.token) {
             setlLastName("")
             setFirstName("")
             setEmail("")

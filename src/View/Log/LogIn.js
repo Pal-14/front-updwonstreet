@@ -19,7 +19,7 @@ function LogIn(props) {
         password: password,
       };     
         let logIn = await services.logUsers(body);
-        if (logIn.data.firstName) {
+        if (logIn.data.token) {
           setEmail("");
           setPassword("");
           localStorage.setItem("jwt", /* logIn.data.token */"oui");

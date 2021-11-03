@@ -4,6 +4,8 @@ import Navbar from './Layout/Navbar/Navbar';
 import { useState, useEffect } from 'react';
 import Log from './View/Log/Log';
 import checkToken from './services';
+import Profile from './View/Profile/Profile';
+import Catalog from './View/Catalog/Catalog';
 
 function App() {
 
@@ -38,11 +40,11 @@ function App() {
           <Route path="/log">
             <Log isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           </Route>
-          <Route path="/">
-
+          <Route path="/profile">
+            <Profile />
           </Route>
-          <Route path="/">
-
+          <Route path="/catalog">
+            <Catalog />
           </Route>
           <Route path="/">
 

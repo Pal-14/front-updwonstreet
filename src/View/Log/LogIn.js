@@ -12,16 +12,17 @@ function LogIn() {
   const [erreur, setErreur] = useState("");
 
   async function handleSubmit(event) {
-    event.preventDefault();
+    
     if (email !== "" || password !== "") {
       let body = {
         email: email,
         password: password,
       };     
         let logIn = await services.logUsers(body);
-        if (logIn.data.success) {
+        if (logIn.data.firstName) {
           setEmail("");
           setPassword("");
+          localStorage.setItem("jwt", /* logIn.data.token */"oui");
         } else {
           setErreur(logIn.data.message);
         }

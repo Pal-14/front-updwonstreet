@@ -12,7 +12,7 @@ function SignUp() {
   const [erreur, setErreur] = useState ("")
 
   async function handleSubmit(event) {
-    event.preventDefault();
+    
     if (lastName !== "" || firstName !== "" || email !== "" || password !== "" || confirmPassword !=="" ) {
       let body = {
         lastName: lastName,
@@ -20,18 +20,18 @@ function SignUp() {
         email: email,
         password: password,
         confirmPassword:password, 
-        stableCoin: 1
+        stableCoins: 1
       };
       let signUp = await services.addUsers(body);
-      if (signUp.data.success) {
+      if (signUp.data.firstName) {
         let logIn = await services.logUsers(body);
-        if (logIn.data.success) {
+        if (logIn.data.firstName) {
             setlLastName("")
             setFirstName("")
             setEmail("")
             setPassword("")
             setConfirmPassword("")
-          localStorage.setItem("jwt", signUp.data.token);
+            localStorage.setItem("jwt", /* signUp.data.token */"oui");
         }
         else {
             setErreur(logIn.data.message)

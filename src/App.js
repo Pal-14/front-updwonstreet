@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './Layout/Navbar/Navbar';
 import LogIn from './View/Log/Log';
 import SignUp from './View/Log/SignUp';
+import { useState } from 'react';
+import { useEffect } from 'react/cjs/react.development';
+import Log from './View/Log/Log';
 
 function App() {
 
@@ -48,7 +51,7 @@ function App() {
         </Switch>
         <LogIn/>
 
-        {/* <SignUp/> */}
+        
       </Router>
     </div>
   );

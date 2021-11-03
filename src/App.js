@@ -14,7 +14,6 @@ function App() {
 
   /* Vérification du statut de connexion */
   const checkIsLoggedIn = () => {
-      let jwt = localStorage.getItem("jwt"); // Récupération du token de connexion
       if(jwt !== null) {
           setIsLoggedIn(true);
       } else {

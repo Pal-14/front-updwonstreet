@@ -3,7 +3,7 @@ import services from "../../services";
 import "./Log.css";
 import { onChange } from "../../Fonctions/Formulaire";
 
-function SignUp() {
+function SignUp(props) {
   const [lastName, setlLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,6 +32,7 @@ function SignUp() {
             setPassword("")
             setConfirmPassword("")
             localStorage.setItem("jwt", /* signUp.data.token */"oui");
+            props.setIsLoggedIn(true)
         }
         else {
             setErreur(logIn.data.message)

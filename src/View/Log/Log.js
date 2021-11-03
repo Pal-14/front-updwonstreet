@@ -1,10 +1,11 @@
 import { useState } from "react"
 import SignUp from "./SignUp"
 import LogIn from "./LogIn"
+import LogOut from "./LogOut"
 
 
 
-function Log() {
+function Log(props) {
 
   const [title, setTitle] = useState("Connexion")
   const [text, setText] = useState("Je n'ai pas encore de compte et je souhaite m'inscrire")
@@ -22,18 +23,22 @@ function change () {
     setButton("Aller à l'inscription")
   }
 }
-
-  return (
+if (props.isLoggedIn === false){return (
 
     <div>
       <h1>{title}</h1>
-     {title === "Connexion" ? <LogIn /> : <SignUp />}
+     {title === "Connexion" ? <LogIn {...props} /> : <SignUp {...props} />}
       <div>
           <p>{text}</p>
         <button onClick={change} >{button}</button>
       </div>
     </div>
-  );
+  );}
+  else {
+    return(<LogOut {...props} />)
+    
+  }
+  
 }
 
 export default Log;

@@ -6,7 +6,7 @@ import services from '../../services'
 
 
 
-function LogIn() {
+function LogIn(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [erreur, setErreur] = useState("");
@@ -23,6 +23,7 @@ function LogIn() {
           setEmail("");
           setPassword("");
           localStorage.setItem("jwt", /* logIn.data.token */"oui");
+          props.setIsLoggedIn (true)
         } else {
           setErreur(logIn.data.message);
         }

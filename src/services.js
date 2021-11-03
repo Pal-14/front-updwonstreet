@@ -20,6 +20,13 @@ const Service = {
       Authorization: `Bearer ${jwt}`}
     })
   },
+
+  adminUserList() {
+    let jwt = localStorage.getItem("jwt");
+    return base.get ('/users', { headers:{
+      Authorization: `Bearer ${jwt}`}
+    })
+  },
 };
 
 export default Service;

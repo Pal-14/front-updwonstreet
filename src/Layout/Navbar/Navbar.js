@@ -1,16 +1,12 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 function Navbar(props) {
-
-    /* Déclaration des variables d'état */
-    const [logButton, setLogButton] = useState("");
 
     /* Récupération du statut de connexion */
     let isLoggedIn = props.isLoggedIn;
 
-    /* Affichage conditionnel des boutons de navigation */
+    /* Fonction d'affichage conditionnel des boutons de navigation */
     const displayButtons = () => {
         if(isLoggedIn === true) {
             return (
@@ -23,12 +19,14 @@ function Navbar(props) {
         } else {
             return (
                 <div>
-                  <Link to="/log">Connexion</Link>  
+                  <Link to="/log">Connexion</Link>
+                  <Link to="/admin">Admin</Link>
                 </div>
             );
         }
     }
 
+    /* Affichage front */
     return (
         <div className="navbarContainer">
             <div className="companyName">

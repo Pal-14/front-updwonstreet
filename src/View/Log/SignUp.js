@@ -8,16 +8,19 @@ function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState ("")
   const [erreur, setErreur] = useState ("")
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (lastName !== "" || firstName !== "" || email !== "" || password !== "") {
+    if (lastName !== "" || firstName !== "" || email !== "" || password !== "" || confirmPassword !=="" ) {
       let body = {
         lastName: lastName,
         firstName: firstName,
         email: email,
         password: password,
+        confirmPassword:password, 
+        stableCoin: 1
       };
       let signUp = await services.addUsers(body);
       if (signUp.data.success) {
@@ -27,6 +30,7 @@ function SignUp() {
             setFirstName("")
             setEmail("")
             setPassword("")
+            setConfirmPassword("")
           localStorage.setItem("jwt", signUp.data.token);
         }
         else {
@@ -64,6 +68,13 @@ function SignUp() {
         name="password"
         type="password"
       ></input>
+       <input
+        onChange={(e) => onChange(e, setConfirmPassword)}
+        placeholder="confirm password"
+        name="confirmPassword"
+        type="password"
+      ></input>
+      
       <button onClick={(e) => handleSubmit(e)} type="submit">
         Send
       </button>

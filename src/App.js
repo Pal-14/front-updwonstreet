@@ -36,7 +36,7 @@ function App() {
         <Navbar isLoggedIn={isLoggedIn} />
         <Switch>
           <Route path="/log">
-            <Log isLoggedIn={isLoggedIn} />
+            <Log isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           </Route>
           <Route path="/">
 

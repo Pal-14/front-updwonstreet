@@ -5,10 +5,17 @@ import Modal from "react-modal";
 function Informations(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
+  //variable pour éviter de retaper à chaque fois props?.user?.data?.data dans la recup d'info dans le return
+  let data = props?.user?.data?.data
+
+  //variable pour recup l'objet json des infos
+  let info = props?.user?.data?.data?.info
+  
+  // ouverture de la Modal
   function openModal() {
     setIsOpen(true);
   }
-
+  //fermeture de la Modal
   function closeModal() {
     setIsOpen(false);
   }
@@ -22,13 +29,15 @@ console.log(props?.user);
         <div>
           <h2>Informations Personelles : </h2>
 
-          <div><p>firstName: {props?.user?.data?.data?.firstName}</p></div>
-          <div><p>lastName :recup le lastName</p></div>
-          <div><p>Date de Naissance : recup date</p></div>
-          <div><p>adresse postale: recup adresse</p></div>
+          <div><p>Prénom: {data?.firstName}</p></div>
+          <div><p>Nom de Famille:{data?.lastName}</p></div>
+          <div><p>Date de Naissance :{info?.dateOfBirth}</p></div>
+          <div><p>adresse : {info?.adresse}</p></div>
+          <div><p>Ville : {info?.ville}</p></div>
+          <div><p>Code Postal : {info?.codePostal}</p></div>
 
-          <div><p>Email: recup de l'Email</p></div>
-          <div><p>Téléphone: recup le Téléphone</p></div>
+          <div><p>Email: {data?.email} </p></div>
+          <div><p>Téléphone:{info?.telephone}</p></div>
         </div>
 
         <div>

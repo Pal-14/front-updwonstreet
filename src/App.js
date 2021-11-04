@@ -30,6 +30,8 @@ function App() {
   
 
   useEffect(() => {
+    console.log(user);
+    console.log("test");
       if (user?.data?.success){
         setIsLoggedIn(true) 
       }

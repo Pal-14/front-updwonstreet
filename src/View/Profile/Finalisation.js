@@ -12,6 +12,19 @@ function Finalisation(props) {
   const [message, setMessage] = useState("");
   const [erreur, setErreur] = useState ("")
 
+
+  
+
+  /* let formData = new FormData();
+  
+
+  formData.append('cni', myFileInput.files[0], '.jpg')
+  formData.append('rib', myFileInput.files[1], '.jpg')
+  formData.append('justificatif', myFileInput.files[2], '.jpg')
+ */
+
+
+
   async function handleSubmit() {
     let body = {
       telephone: telephone,
@@ -78,44 +91,12 @@ function Finalisation(props) {
           type="date"
           placeholder="Date de naissance"
           name="dob"
-        ></input>{" "}
+        ></input>
         <br />
       </label>
 
-      <div>
-        <p>
-          Pièce d'identité
-          <input
-            type="file"
-            accept="application/pdf,image/png, image/jpeg"
-          ></input>
-        </p>
+      <input onClick={handleSubmit} type="submit"></input>
 
-        <br />
-      </div>
-      <div>
-        <p>
-          R.I.B
-          <input
-            type="file"
-            accept="application/pdf,image/png, image/jpeg"
-          ></input>
-        </p>
-
-        <br />
-      </div>
-      <div>
-        <p>
-          Justificatif de domicile
-          <input
-            type="file"
-            accept="application/pdf,image/png, image/jpeg"
-          ></input>
-        </p>
-
-        <br />
-        <input onClick={handleSubmit} type="submit"></input>
-      </div>
     </div>
   );
 }

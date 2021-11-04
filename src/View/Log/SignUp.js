@@ -44,31 +44,31 @@ function SignUp(props) {
       <h3>{erreur}</h3>
       <input
         onChange={(e) => onChange(e, setlLastName)}
-        placeholder="lastName"
+        placeholder="Nom de Famille"
         name="lastName"
         type="text"
       ></input>
       <input
         onChange={(e) => onChange(e, setFirstName)}
-        placeholder="firstName"
+        placeholder="Prénom"
         name="firstName"
         type="text"
       ></input>
       <input
         onChange={(e) => onChange(e, setEmail)}
-        placeholder="email"
+        placeholder="Email"
         name="email"
         type="email"
       ></input>
       <input
         onChange={(e) => onChange(e, setPassword)}
-        placeholder="password"
+        placeholder="Mot de Passe"
         name="password"
         type="password"
       ></input>
       <input
         onChange={(e) => onChange(e, setConfirmPassword)}
-        placeholder="confirm password"
+        placeholder="Confirmez le mot de Passe"
         name="confirmPassword"
         type="password"
       ></input>

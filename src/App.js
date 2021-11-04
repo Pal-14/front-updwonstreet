@@ -24,6 +24,8 @@ function App() {
 
   /* Actualisation de l'affichage */
   useEffect(() => {
+    console.log(user);
+    console.log("test");
       if (user?.data?.success){
         setIsLoggedIn(true) 
       }

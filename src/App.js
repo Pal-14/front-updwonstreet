@@ -16,19 +16,13 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState ("")
 
-  
-
+  /* Check & récupération des infos de connexion */
   useEffect ( async () => {
     let info = await Service.checkToken();
     setUser(info)
   },[]);
 
-  /* Vérification du statut de connexion */
-  
-
   /* Actualisation de l'affichage */
-  
-
   useEffect(() => {
     console.log(user);
     console.log("test");
@@ -45,7 +39,6 @@ function App() {
   }, [isLoggedIn]);
 
  
-
   return (
     <div className="App">
       <Router>

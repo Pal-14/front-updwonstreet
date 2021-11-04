@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import "./Admin.css";
 import Service from "../../services";
@@ -30,11 +31,16 @@ function Admin() {
     console.log("User list:", userList);
     console.log("Filtered list:", filteredList);
 
+    /* CLIC */
+    const handleUser = (userData) => {
+        console.log(userData);
+    };
+
     /* Fonction d'affichage d'un utilisateur */
     const renderUsers = () => {
         return filteredList.map((user, id) => {
             return (
-                <div key={id} className="userIdentity">
+                <div key={id} className="userIdentity" onClick={() => handleUser(user)}>
                     <p>{user.firstName} {user.lastName}</p>
                 </div>
             );

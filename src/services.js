@@ -30,7 +30,8 @@ const Service = {
 
   feedUsers (body) {
     let jwt = localStorage.getItem("jwt");
-    return base.post ('/users/feedUsers', body, {headers :{
+    console.log(jwt);
+    return base.put ('/users/feedUsers', body, {headers :{
       Authorization: `Bearer ${jwt}`}
     })
   },

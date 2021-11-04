@@ -22,7 +22,7 @@ function LogIn(props) {
         if (logIn.data.token) {
           setEmail("");
           setPassword("");
-          localStorage.setItem("jwt", /* logIn.data.token */"oui");
+          localStorage.setItem("jwt",logIn.data.token);
           props.setIsLoggedIn (true)
         } else {
           setErreur(logIn.data.message);

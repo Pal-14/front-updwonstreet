@@ -7,31 +7,42 @@ import checkToken from './services';
 import Profile from './View/Profile/Profile';
 import Catalog from './View/Catalog/Catalog';
 import Admin from './View/Admin/Admin';
+import Service from './services';
+
 
 function App() {
 
   /* Déclaration variable d'état */
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState ("")
+
+  
+
+  useEffect ( async () => {
+    let info = await Service.checkToken();
+    setUser(info)
+  },[]);
 
   /* Vérification du statut de connexion */
-  const checkIsLoggedIn = async () => {
-    let jwt = localStorage.getItem("jwt");
-    /* let jwt = await checkToken(); */
-      if(jwt === "oui") {
-          setIsLoggedIn(true);
-      } else {
-          setIsLoggedIn(false);
-      }
-  };
+  
 
   /* Actualisation de l'affichage */
+  
+
   useEffect(() => {
-      checkIsLoggedIn();
-  }, []);
+      if (user?.data?.success){
+        setIsLoggedIn(true) 
+      }
+      else {
+        setIsLoggedIn(false)
+      }
+  }, [user]);
 
   useEffect(() => {
       console.log("Connecté:", isLoggedIn)
   }, [isLoggedIn]);
+
+ 
 
   return (
     <div className="App">
@@ -42,7 +53,7 @@ function App() {
             <Log isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile user={user} isLoggedIn={isLoggedIn} />
           </Route>
           <Route path="/catalog">
             <Catalog />

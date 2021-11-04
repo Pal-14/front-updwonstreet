@@ -30,14 +30,14 @@ console.log(props?.user);
           <h2>Informations Personelles : </h2>
 
           <div><p>Prénom: {data?.firstName}</p></div>
-          <div><p>Nom de Famille:{data?.lastName}</p></div>
-          <div><p>Date de Naissance :{info?.dateOfBirth}</p></div>
-          <div><p>adresse : {info?.adresse}</p></div>
-          <div><p>Ville : {info?.ville}</p></div>
-          <div><p>Code Postal : {info?.codePostal}</p></div>
+          <div><p>Nom de Famille: {data?.lastName}</p></div>
+          <div><p>Date de Naissance: {info?.dateOfBirth}</p></div>
+          <div><p>adresse: {info?.adresse}</p></div>
+          <div><p>Ville: {info?.ville}</p></div>
+          <div><p>Code Postal: {info?.codePostal}</p></div>
 
           <div><p>Email: {data?.email} </p></div>
-          <div><p>Téléphone:{info?.telephone}</p></div>
+          <div><p>Téléphone: {info?.telephone}</p></div>
         </div>
 
         <div>

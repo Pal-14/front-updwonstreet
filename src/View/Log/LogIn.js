@@ -39,13 +39,13 @@ function LogIn(props) {
      
       <input
         onChange={(e) => onChange(e, setEmail)}
-        placeholder="email"
+        placeholder="Email"
         name="email"
         type="email"
       ></input>
       <input
         onChange={(e) => onChange(e, setPassword)}
-        placeholder="password"
+        placeholder="Mot de Passe"
         name="password"
         type="password"
       ></input>

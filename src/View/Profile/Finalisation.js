@@ -34,7 +34,7 @@ function Finalisation(props) {
         <input
           onChange={(e) => onChange(e, setTelephone)}
           type="tel"
-          placeholder="0123456789"
+          placeholder="N° de Téléphone"
           name="telephone"
           id="telephone"
         ></input>

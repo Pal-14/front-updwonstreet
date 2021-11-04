@@ -27,6 +27,13 @@ const Service = {
       Authorization: `Bearer ${jwt}`}
     })
   },
+
+  feedUsers (body) {
+    let jwt = localStorage.getItem("jwt");
+    return base.post ('/users/feedUsers', body, {headers :{
+      Authorization: `Bearer ${jwt}`}
+    })
+  },
 };
 
 export default Service;

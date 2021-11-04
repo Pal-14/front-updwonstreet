@@ -21,7 +21,7 @@ function Portefeuille() {
         <div>
           <h2>Informations du Portefeuille: </h2>
           <div>
-            <p>Stable coins Possédés:</p>
+            <p>Stable coins Possédés: Numbers a recup</p>
           </div>
           <div>
             <p>Valeurs total des Stable Coins</p>

@@ -3,13 +3,14 @@ import { useState } from "react";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
 
-function Finalisation() {
+function Finalisation(props) {
   const [telephone, setTelephone] = useState("");
   const [adresse, setAdress] = useState("");
   const [ville, setVille] = useState("");
   const [codePostal, setCodePostal] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [message, setMessage] = useState("");
+  const [erreur, setErreur] = useState ("")
 
   async function handleSubmit() {
     let body = {
@@ -20,12 +21,14 @@ function Finalisation() {
       dateOfBirth: dateOfBirth,
     };
     let accountPut = await Service.feedUsers(body);
+    console.log(accountPut);
     setMessage(accountPut.data.message);
   }
 
   return (
     <div>
       <h3>{message}</h3>
+      <h3>{erreur}</h3>
       <label for="telephone">
         Numéro de Téléphone :
         <input
@@ -84,7 +87,7 @@ function Finalisation() {
           Pièce d'identité
           <input
             type="file"
-            accept="application/pdf,application/vnd.ms-excel"
+            accept="application/pdf,image/png, image/jpeg"
           ></input>
         </p>
 
@@ -95,7 +98,7 @@ function Finalisation() {
           R.I.B
           <input
             type="file"
-            accept="application/pdf,application/vnd.ms-excel"
+            accept="application/pdf,image/png, image/jpeg"
           ></input>
         </p>
 
@@ -106,7 +109,7 @@ function Finalisation() {
           Justificatif de domicile
           <input
             type="file"
-            accept="application/pdf,application/vnd.ms-excel"
+            accept="application/pdf,image/png, image/jpeg"
           ></input>
         </p>
 

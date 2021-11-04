@@ -1,3 +1,4 @@
+import userEvent from "@testing-library/user-event";
 import React from "react";
 import Modal from "react-modal";
 
@@ -11,7 +12,7 @@ function Informations(props) {
   function closeModal() {
     setIsOpen(false);
   }
-
+console.log(props?.user);
   return (
     <div>
       <button onClick={openModal}>Consulter mes informations</button>
@@ -21,7 +22,7 @@ function Informations(props) {
         <div>
           <h2>Informations Personelles : </h2>
 
-          <div><p>firstName: recup le firstname</p></div>
+          <div><p>firstName: {props?.user?.data?.data?.firstName}</p></div>
           <div><p>lastName :recup le lastName</p></div>
           <div><p>Date de Naissance : recup date</p></div>
           <div><p>adresse postale: recup adresse</p></div>

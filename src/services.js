@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/" || "http://192.168.1.10:5000";
+const baseURL = "https://projet-back.osc-fr1.scalingo.io/" || "http://192.168.1.10:5000";
 
 const base = axios.create({
   baseURL,
@@ -30,7 +30,8 @@ const Service = {
 
   feedUsers (body) {
     let jwt = localStorage.getItem("jwt");
-    return base.post ('/users/feedUsers', body, {headers :{
+    console.log(jwt);
+    return base.put ('/users/feedUsers', body, {headers :{
       Authorization: `Bearer ${jwt}`}
     })
   },

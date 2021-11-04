@@ -16,13 +16,12 @@ function Admin() {
     }, []);
     console.log(userList);
 
-    /* Fonction d'affichage d'un profil utilisateur */
+    /* Fonction d'affichage d'un utilisateur */
     const renderUsers = () => {
         return userList.map((user, id) => {
             return (
-                <div key={id} className="userCard">
+                <div key={id} className="userIdentity">
                     <p>{user.firstName} {user.lastName}</p>
-                    <p>{user.email}</p>
                 </div>
             );
         });
@@ -32,7 +31,7 @@ function Admin() {
     return (
         <div className="generalContainer">
             <h2>Liste des utilisateurs</h2>
-            <div className="cardContainer">{renderUsers()}</div>
+            <div className="userList">{renderUsers()}</div>
         </div>
     );
 }

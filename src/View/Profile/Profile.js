@@ -4,7 +4,8 @@ import Portefeuille from "./Portefeuille";
 import "./Profile.css";
 import Finalisation from "./Finalisation";
 import { useState } from "react";
-import Service from "../../services";
+import Edition from "./Edition";
+
 
 function Profile(props) {
     
@@ -12,35 +13,26 @@ function Profile(props) {
   const [erreur, setErreur] = useState ("")
   
 
- /*  function change() {
-    if (title === "Validé") {
-          return ( setTitle( <div>
-          <Informations />
-          <Portefeuille />
-          <Biens />
-        </div>)
-       
-      );
-    }
-    else {
-        if(title !== "Validé") {
-            return ( setTitle( <div><Finalisation/></div>)
-               
-            )
-        }
-        }
-  } */
-
+ function Isaccepted () {
+   if(title === "Validé" ) {
+     setTitle("Validé")
+   }
+   else {
+     if(title !== "Validé"){
+       setTitle("En attente d'admin")
+     }
+   }
+ }
+let test = "Validé"
   return (
     <div>
       <h1>Page de profil</h1>
-       <h3>{erreur}</h3>
-      {/* {title === "Validé " ? {change} :<Finalisation /> } */}
+      <h3>{erreur}</h3>
+      <h3>{title} </h3> 
+     {test ==="Validé" ? <div><Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition /> </div>: <Finalisation  /> }
 
-      <Finalisation  />
-      <Informations {...props}/>
-      <Portefeuille />
-      <Biens />
+     
+      
     </div>
   );
 }

@@ -15,7 +15,7 @@ function Admin() {
         let result = [];
         console.log("Value:", value);
         result = userList.filter((data) => {
-            return (data.lastName.search(value) != -1) || (data.firstName.search(value) != -1);
+            return (data.lastName.toLowerCase().search(value) != -1 || data.firstName.toLowerCase().search(value) != -1);
         });
         setFilteredList(result);
     };

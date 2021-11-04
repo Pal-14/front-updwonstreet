@@ -28,8 +28,8 @@ let test = "Valid"
   return (
     <div>
       <h1>Page de profil</h1>
-      <h3>{erreur}</h3>
-      <h3>{title} </h3> 
+      <h3>{erreur} </h3>
+      <h3>{title} (plus tard mettre Compe confirmé ou certifié)</h3> 
      {test ==="Validé" ? <div><Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition /> </div>: <div><Finalisation  /> <Docs /></div> }
 
      

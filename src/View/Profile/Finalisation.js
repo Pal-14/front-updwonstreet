@@ -27,13 +27,13 @@ function Finalisation(props) {
 
   async function handleSubmit() {
     let body = {
-      telephone: telephone,
-      adresse: adresse,
-      ville: ville,
-      codePostal: codePostal,
+      phoneNumber: telephone,
+      adress: adresse,
+      city: ville,
+      postalCode: codePostal,
       dateOfBirth: dateOfBirth,
     };
-    let accountPut = await Service.feedUsers(body);
+    let accountPut = await Service.editUser(body);
     console.log(accountPut);
     setMessage(accountPut.data.message);
   }

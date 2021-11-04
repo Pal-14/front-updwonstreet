@@ -28,18 +28,27 @@ const Service = {
     })
   },
 
-  feedUsers (body) {
+  editUser (body) {
     let jwt = localStorage.getItem("jwt");
-    return base.put ('/users/feedUsers', body, {headers :{
+    return base.put ('/users/editUser', body, {headers :{
       Authorization: `Bearer ${jwt}`}
     })
   },
-  userPortfolio (body) {
+  editUserCoin (body) {
     let jwt = localStorage.getItem("jwt"); 
-    return base.put ('/users/??????', body, {headers : {
+    return base.put ('/users/editUserCoin', body, {headers : {
       Authorization: `Bearer ${jwt}`}
     })
   },
+  filesProof (formData) {
+    let jwt = localStorage.getItem("jwt"); 
+    return base.post ('/users/filesProof', formData, {headers : {
+      Authorization: `Bearer ${jwt}`,
+      "Content-type" : "multipart/form-data"
+    }
+    })
+  },
+  
 };
 
 export default Service;

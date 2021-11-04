@@ -8,7 +8,7 @@ function Informations(props) {
   let data = props?.user?.data?.data
 
   //variable pour recup l'objet json des infos
-  let info = props?.user?.data?.data?.info
+  let info = props?.user?.data?.data?.infos
   
   // ouverture de la Modal
   function openModal() {
@@ -31,12 +31,12 @@ console.log(props?.user);
           <div><p>Prénom: {data?.firstName}</p></div>
           <div><p>Nom de Famille: {data?.lastName}</p></div>
           <div><p>Date de Naissance: {info?.dateOfBirth}</p></div>
-          <div><p>adresse: {info?.adresse}</p></div>
-          <div><p>Ville: {info?.ville}</p></div>
-          <div><p>Code Postal: {info?.codePostal}</p></div>
+          <div><p>adresse: {info?.adress}</p></div>
+          <div><p>Ville: {info?.city}</p></div>
+          <div><p>Code Postal: {info?.postalCode}</p></div>
 
           <div><p>Email: {data?.email} </p></div>
-          <div><p>Téléphone: {info?.telephone}</p></div>
+          <div><p>Téléphone: {info?.phoneNumber}</p></div>
         </div>
 
         <div>

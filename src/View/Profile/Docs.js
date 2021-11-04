@@ -1,87 +1,83 @@
-import React from 'react'
+import React from "react";
 import Modal from "react-modal";
+import Service from "../../services";
 
+function Docs() {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
-
- function Docs() {
-
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-
+  async function handleSubmit(e) {
+    let formData = new FormData();
+    formData.append(e.target.form.elements[0]);
+    formData.append(e.target.form.elements[1]);
+    formData.append(e.target.form.elements[2]);
     
+    let sendFiles = await Service.filesProof(formData);
+  {
+    console.log(sendFiles.data.success);
+  }
+  }
 
+  
 
-    let sendFiles = (e) => {
-        e.preventDefault()
-        console.log(e.target.form.elements);
-    }
+  function openModal() {
+    setIsOpen(true);
+  }
 
-    function openModal() {
-        setIsOpen(true);
-    }
-    
-      function closeModal() {
-        setIsOpen(false);
-    }
+  function closeModal() {
+    setIsOpen(false);
+  }
 
-
-    return (
-
-
-        <div>
-            <button onClick={openModal}>Documents Justificatifs à fournir</button>
-             <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+  return (
+    <div>
+      <button onClick={openModal}>Documents Justificatifs à fournir</button>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <button onClick={closeModal}>close</button>
 
-       <form>
+        <form>
+          <div>
+            <p>
+              Pièce d'identité
+              <input
+                id="fileInput"
+                name="cni"
+                type="file"
+                accept="multipart/form-data"
+              ></input>
+            </p>
 
-      <div>
-        <p>
-          Pièce d'identité
-          <input
-            id="fileInput"
-            name="cni"
-            type="file"
-            accept="multipart/form-data"
-          ></input>
-        </p>
+            <br />
+          </div>
 
-        <br />
-      </div>
-      
-      <div>
-        <p>
-          Justificatif de domicile
-          <input
-            id="fileInput"
-            name="justificatif"
-            type="file"
-            accept="multipart/form-data"
-          ></input>
-        </p>
+          <div>
+            <p>
+              Justificatif de domicile
+              <input
+                id="fileInput"
+                name="justificatif"
+                type="file"
+                accept="multipart/form-data"
+              ></input>
+            </p>
 
-        <br />
-        <div>
-        <p>
-          R.I.B
-          <input
-            id="fileInput"
-            name="rib"
-            type="file"
-            accept="multipart/form-data"
-          ></input>
-        </p>
-        <br />
-        <input onClick={(e) => sendFiles(e) } type="submit"></input>
-      </div>
-       
-      </div>
-        </form> 
+            <br />
+            <div>
+              <p>
+                R.I.B
+                <input
+                  id="fileInput"
+                  name="rib"
+                  type="file"
+                  accept="multipart/form-data"
+                ></input>
+              </p>
+              <br />
+              <input onClick={(e) => handleSubmit(e)} type="submit"></input>
+            </div>
+          </div>
+        </form>
       </Modal>
-
-            
-        </div>
-    )
+    </div>
+  );
 }
-
 
 export default Docs;

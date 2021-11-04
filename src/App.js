@@ -45,7 +45,7 @@ function App() {
         <Navbar isLoggedIn={isLoggedIn} />
         <Switch>
           <Route path="/log">
-            <Log isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Log isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
           </Route>
           <Route path="/profile">
             <Profile user={user} isLoggedIn={isLoggedIn} />

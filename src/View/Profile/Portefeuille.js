@@ -34,7 +34,7 @@ function Portefeuille(props) {
       }
     }  
     if (body?.operationValue !== undefined){
-    let addOrRemoveCoin = await Service.userPortfolio(body);
+    let addOrRemoveCoin = await Service.editUserCoin(body);
     console.log(addOrRemoveCoin);
     setMessage(addOrRemoveCoin)}
    

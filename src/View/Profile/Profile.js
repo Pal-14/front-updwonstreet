@@ -28,7 +28,7 @@ function Profile(props) {
 // pour avoir les composants validé  dans let test = "Validé laisser tel quel
 // et pour avoir le status non validé dans let test retiré juste le (é).
 
-let test = "Valid"
+let test = "Validé"
 
   return (
     <div>

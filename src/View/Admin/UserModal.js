@@ -21,8 +21,11 @@ function UserModal(props) {
     /* Affichage front */
     return (
         <div>
-            <p>{props.user.firstName} {props.user.lastName}</p>
-            <button onClick={openModal}>Voir profil</button>
+            <div className="userSummary">
+                <p>{props.user.firstName} {props.user.lastName}</p>
+                <p>Adresse e-mail: {props.user.email}</p>
+                <button onClick={openModal}>Voir profil</button>
+            </div>
             <Modal isOpen={modalIsOpen}>
                 <div className="closeButton">
                     <button onClick={closeModal}>&times;</button>
@@ -42,15 +45,12 @@ function UserModal(props) {
                     <h2>Mes pièces justificatives:</h2>
                     <div>
                         <p>Carte d'identité:</p>
-                        <img />
                     </div>
                     <div>
                         <p>RIB:</p>
-                        <img />
                     </div>
                     <div>
                         <p>Justificatifs de domicile:</p>
-                        <img />
                     </div>
                 </div>
             </Modal>

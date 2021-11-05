@@ -24,13 +24,14 @@ function Biens() {
           <div><p>Adresse:</p></div>
           <div><p>Ville: </p></div>
           <div><p>Type de Bien: </p></div>
-          <div><p>Salon(s): </p></div>
+          <div><p>Nombre de pièces): </p></div>
           <div><p>Chambre(s): </p></div>
           <div><p>Surface de terrain:</p></div>
           <div><p>Garage: </p></div>
+          <div><p>Parking: </p></div>
+          <div><p> Zone de parcelle: </p></div>
 
-          <div><p>Email: </p></div>
-          <div><p>Téléphone: </p></div>
+          
         </div>
 
        

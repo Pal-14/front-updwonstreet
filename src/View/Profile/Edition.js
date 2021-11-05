@@ -65,6 +65,17 @@ function Edition(props) {
           </label>
           <br />
 
+          <label for="dob">
+            Date de Naissance :
+            <input
+              onChange={(e) => onChange(e, setDateOfBirth)}
+              type="date"
+              placeholder="Date de naissance"
+              name="dob"
+            ></input>
+            <br />
+          </label>
+
           <label for="Adresse">
             Adresse :
             <input
@@ -85,16 +96,6 @@ function Edition(props) {
           </label>
           <br />
 
-          <label for="Pays">
-            Pays :
-            <input
-              onChange={(e) => onChange(e, setCountry)}
-              type="text"
-              placeholder="Pays"
-            ></input>
-          </label>
-          <br />
-
           <label for="CodePostal">
             Code Postal :
             <input
@@ -105,16 +106,19 @@ function Edition(props) {
           </label>
           <br />
 
-          <label for="dob">
-            Date de Naissance :
+          <label for="Pays">
+            Pays :
             <input
-              onChange={(e) => onChange(e, setDateOfBirth)}
-              type="date"
-              placeholder="Date de naissance"
-              name="dob"
+              onChange={(e) => onChange(e, setCountry)}
+              type="text"
+              placeholder="Pays"
             ></input>
-            <br />
           </label>
+          <br />
+
+         
+
+         
 
           <input
             onRequestClose={closeModal}

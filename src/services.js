@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const baseURL =  "https://projet-back.osc-fr1.scalingo.io/" || "http://localhost:5000";
+const baseURL =  "https://projet-back.osc-fr1.scalingo.io/" /* "https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/"  */|| "http://localhost:5000";
 
 const base = axios.create({
   baseURL,
 });
 const Service = {
   addUsers(body) {
-    return base.post ('/users/signUp', body) 
+    return base.post ('/users/signup', body) 
   },
 
   logUsers(body) {
@@ -16,7 +16,7 @@ const Service = {
 
   checkToken() {
     let jwt = localStorage.getItem("jwt"); // Récupération du token de connexion
-    return base.get ('/users/checkToken', { headers:{
+    return base.get ('/users/check-token', { headers:{
       Authorization: `Bearer ${jwt}`}
     })
   },
@@ -30,19 +30,19 @@ const Service = {
 
   editUser (body) {
     let jwt = localStorage.getItem("jwt");
-    return base.put ('/users/editUser', body, {headers :{
+    return base.put ('/users/edit-user', body, {headers :{
       Authorization: `Bearer ${jwt}`}
     })
   },
   editUserCoin (body) {
     let jwt = localStorage.getItem("jwt"); 
-    return base.put ('/users/editUserCoin', body, {headers : {
+    return base.put ('/users/edit-user-coin', body, {headers : {
       Authorization: `Bearer ${jwt}`}
     })
   },
   filesProof (formData) {
     let jwt = localStorage.getItem("jwt"); 
-    return base.post ('/users/filesProof', formData, {headers : {
+    return base.post ('/users/files-proof', formData, {headers : {
       Authorization: `Bearer ${jwt}`,
       "Content-Type" : "multipart/form-data"
     }

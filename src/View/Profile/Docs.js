@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import Service from "../../services";
+import axios from "axios";
 
 function Docs() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [selectedFile, setSelectedFile] =  useState(null)
+
+
+
 
   async function handleSubmit(e) {
-    e.preventDefault();
-    let formData = new FormData();
-    formData.append("file1", e.target.form.elements[0]);
-    formData.append("file2", e.target.form.elements[1]);
-    formData.append("file3", e.target.form.elements[2]);
-    console.log(formData);
-    let sendFiles = await Service.filesProof(formData);
-    {
-      console.log(sendFiles.data.success);
-    }
+    
+    console.log(e.target.files[0]);
+    
+    
+
+   
   }
+
+   const fileUploadHandler = (e) => {
+     let fd = new FormData();
+     fd.append('image', selectedFile,selectedFile.name );
+    axios.post('https://projet-back.osc-fr1.scalingo.io/users/files-proof', fd)
+    .then(res => {
+      console.log(res);
+    });
+    
+  }
+    
+  
+  
 
   function openModal() {
     setIsOpen(true);
@@ -37,6 +51,7 @@ function Docs() {
             <p>
               Pièce d'identité
               <input
+              onChange={handleSubmit}
                 id="fileInput"
                 name="cni"
                 type="file"
@@ -51,6 +66,7 @@ function Docs() {
             <p>
               Justificatif de domicile
               <input
+               onChange={handleSubmit}
                 id="fileInput"
                 name="justificatif"
                 type="file"
@@ -63,6 +79,7 @@ function Docs() {
               <p>
                 R.I.B
                 <input
+                 onChange={handleSubmit}
                   id="fileInput"
                   name="rib"
                   type="file"
@@ -70,7 +87,9 @@ function Docs() {
                 ></input>
               </p>
               <br />
-              <input onClick={(e) => handleSubmit(e)} type="submit"></input>
+                 <input  onClick={(e) => handleSubmit(e)}   type="submit"></input> 
+
+              <button onclick={fileUploadHandler}>upload</button>  
             </div>
           </div>
         </form>

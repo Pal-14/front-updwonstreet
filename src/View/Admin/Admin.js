@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import "./Admin.css";
 import Service from "../../services";
 import UserModal from './UserModal';
-import Modal from "react-modal";
 
 
 function Admin() {

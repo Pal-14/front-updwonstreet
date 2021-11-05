@@ -6,18 +6,17 @@ function Docs() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   async function handleSubmit(e) {
+    e.preventDefault();
     let formData = new FormData();
-    formData.append(e.target.form.elements[0]);
-    formData.append(e.target.form.elements[1]);
-    formData.append(e.target.form.elements[2]);
-    
+    formData.append("file1", e.target.form.elements[0]);
+    formData.append("file2", e.target.form.elements[1]);
+    formData.append("file3", e.target.form.elements[2]);
+    console.log(formData);
     let sendFiles = await Service.filesProof(formData);
-  {
-    console.log(sendFiles.data.success);
+    {
+      console.log(sendFiles.data.success);
+    }
   }
-  }
-
-  
 
   function openModal() {
     setIsOpen(true);
@@ -30,7 +29,7 @@ function Docs() {
   return (
     <div>
       <button onClick={openModal}>Documents Justificatifs à fournir</button>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+      <Modal isOpen={modalIsOpen} /* onRequestClose={closeModal} */>
         <button onClick={closeModal}>close</button>
 
         <form>

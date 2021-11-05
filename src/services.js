@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://projet-back.osc-fr1.scalingo.io/" || "http://192.168.1.10:5000";
+const baseURL = /* "https://projet-back.osc-fr1.scalingo.io/" ||  */"http://localhost:5000";
 
 const base = axios.create({
   baseURL,

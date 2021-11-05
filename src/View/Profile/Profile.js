@@ -24,7 +24,7 @@ function Profile(props) {
      }
    }
  }
-let test = "Valid"
+let test = "Validé"
   return (
     <div>
       <h1>Page de profil</h1>

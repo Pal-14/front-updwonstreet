@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./Admin.css";
 import Service from "../../services";
+import UserModal from './UserModal';
+import Modal from "react-modal";
 
 
 function Admin() {
@@ -31,18 +33,11 @@ function Admin() {
     console.log("User list:", userList);
     console.log("Filtered list:", filteredList);
 
-    /* CLIC */
-    const handleUser = (userData) => {
-        console.log(userData);
-    };
-
-    /* Fonction d'affichage d'un utilisateur */
+    /* Fonction d'affichage des utilisateurs */
     const renderUsers = () => {
         return filteredList.map((user, id) => {
             return (
-                <div key={id} className="userIdentity" onClick={() => handleUser(user)}>
-                    <p>{user.firstName} {user.lastName}</p>
-                </div>
+                <UserModal user={user} id={id} />
             );
         });
     };

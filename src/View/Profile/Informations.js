@@ -26,7 +26,7 @@ console.log(props?.user);
         <button onClick={closeModal}>close</button>
 
         <div>
-          <h2>Informations Personelles : </h2>
+          <h2>Informations Personnelles : </h2>
 
           <div><p>Prénom: {data?.firstName}</p></div>
           <div><p>Nom de Famille: {data?.lastName}</p></div>

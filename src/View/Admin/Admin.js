@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import "./Admin.css";
 import Service from "../../services";
 import UserModal from './UserModal';
-import Modal from "react-modal";
 
 
 function Admin() {
@@ -18,7 +17,7 @@ function Admin() {
         let result = [];
         console.log("Value:", value);
         result = userList.filter((data) => {
-            return (data.lastName.toLowerCase().search(value) != -1 || data.firstName.toLowerCase().search(value) != -1);
+            return (data.lastName.toLowerCase().search(value) != -1 || data.firstName.toLowerCase().search(value) != -1 || data.email.toLowerCase().search(value) != -1);
         });
         setFilteredList(result);
     };
@@ -46,8 +45,11 @@ function Admin() {
     return (
         <div className="generalContainer">
             <h2>Liste des utilisateurs</h2>
-            <input type="text" placeholder="Rechercher" onChange={handleSearch} />
-            <div className="userList">{renderUsers()}</div>
+            <label for="searchInput">Rechercher un utilisateur:</label>
+            <input type="text" placeholder="Nom, prénom ou e-mail" className="searchInput" onChange={handleSearch} />
+            <div className="userList">
+                {renderUsers()}
+            </div>
         </div>
     );
 }

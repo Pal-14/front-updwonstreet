@@ -20,7 +20,7 @@ function App() {
   useEffect ( async () => {
     let info = await Service.checkToken();
     setUser(info)
-  },[]);
+  },[isLoggedIn]);
 
   /* Actualisation de l'affichage */
   useEffect(() => {
@@ -45,10 +45,10 @@ function App() {
         <Navbar isLoggedIn={isLoggedIn} />
         <Switch>
           <Route path="/log">
-            <Log isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Log isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
           </Route>
           <Route path="/profile">
-            <Profile user={user} isLoggedIn={isLoggedIn} />
+            <Profile user={user} isLoggedIn={isLoggedIn}  setIsLoggedIn={setIsLoggedIn}/>
           </Route>
           <Route path="/catalog">
             <Catalog />

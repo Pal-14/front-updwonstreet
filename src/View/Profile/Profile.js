@@ -11,7 +11,7 @@ import Docs from "./Docs";
 function Profile(props) {
     
   const [title, setTitle] = useState ("Validé")
-  const [erreur, setErreur] = useState ("")
+  const [error, setError] = useState ("")
   
 
  function Isaccepted () {
@@ -24,13 +24,18 @@ function Profile(props) {
      }
    }
  }
+ // variable pour : changer l'etat de User a compte validé et envoi des composants si validé 
+// pour avoir les composants validé  dans let test = "Validé laisser tel quel
+// et pour avoir le status non validé dans let test retiré juste le (é).
+
 let test = "Validé"
+
   return (
     <div>
       <h1>Page de profil</h1>
-      <h3>{erreur}</h3>
-      <h3>{title} </h3> 
-     {test ==="Validé" ? <div><Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition /> </div>: <div><Finalisation  /> <Docs /></div> }
+      <h3>{error} </h3>
+      <h3>{title} (plus tard mettre Compe confirmé ou certifié)</h3> 
+     {test ==="Validé" ? <div><Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition {...props} /> </div>: <div><Finalisation {...props} /> <Docs /></div> }
 
      
       

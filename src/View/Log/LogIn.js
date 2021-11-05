@@ -9,7 +9,7 @@ import services from '../../services'
 function LogIn(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [erreur, setErreur] = useState("");
+  const [error, setError] = useState("");
 
   async function handleSubmit(event) {
     
@@ -25,7 +25,7 @@ function LogIn(props) {
           localStorage.setItem("jwt",logIn.data.token);
           props.setIsLoggedIn (true)
         } else {
-          setErreur(logIn.data.message);
+          setError(logIn.data.message);
         }
       }
     }
@@ -35,7 +35,7 @@ function LogIn(props) {
     <div>
      
      
-      <h3>{erreur}</h3>
+      <h3>{error}</h3>
      
       <input
         onChange={(e) => onChange(e, setEmail)}

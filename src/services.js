@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://projet-back.osc-fr1.scalingo.io/" || "http://192.168.1.10:5000";
+const baseURL =  "https://projet-back.osc-fr1.scalingo.io/"    /*  ||  "https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/"   */ ||  "http://localhost:5000";
 
 const base = axios.create({
   baseURL,
@@ -28,18 +28,27 @@ const Service = {
     })
   },
 
-  feedUsers (body) {
+  editUser (body) {
     let jwt = localStorage.getItem("jwt");
-    return base.put ('/users/feedUsers', body, {headers :{
+    return base.put ('/users/editUser', body, {headers :{
       Authorization: `Bearer ${jwt}`}
     })
   },
-  userPortfolio (body) {
+  editUserCoin (body) {
     let jwt = localStorage.getItem("jwt"); 
-    return base.put ('/users/??????', body, {headers : {
+    return base.put ('/users/editUserCoin', body, {headers : {
       Authorization: `Bearer ${jwt}`}
     })
   },
+  filesProof (formData) {
+    let jwt = localStorage.getItem("jwt"); 
+    return base.post ('/users/filesProof', formData, {headers : {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type" : "multipart/form-data"
+    }
+    })
+  },
+
 };
 
 export default Service;

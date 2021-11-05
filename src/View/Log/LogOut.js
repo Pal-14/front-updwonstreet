@@ -6,6 +6,7 @@ function LogOut(props) {
   function logOut() {
     localStorage.removeItem("jwt");
     props.setIsLoggedIn(false);
+    props.setUser("")
   }
 
   return (

@@ -34,7 +34,7 @@ let test = "Validé"
     <div>
       <h1>Page de profil</h1>
       <h3>{error} </h3>
-      <h3>{title} (plus tard mettre Compe confirmé ou certifié)</h3> 
+      <h3>{title} (plus tard mettre Compte confirmé ou certifié)</h3> 
      {test ==="Validé" ? <div><Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition {...props} /> </div>: <div><Finalisation {...props} /> <Docs /></div> }
 
      

@@ -5,28 +5,32 @@ import axios from "axios";
 
 function Docs() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [selectedFile, setSelectedFile] =  useState(null)
+  const [selectedFile, setSelectedFile] =  useState([])
 
 
 
 
-  async function handleSubmit(e) {
-    
-    console.log(e.target.files[0]);
-    
-    
-
-   
+  function handleSubmit(e) {
+    setSelectedFile(selectedFile => [...selectedFile, e.target.files]);
+    console.log(selectedFile);
   }
 
-   const fileUploadHandler = (e) => {
+   const fileUploadHandler = () => {
      let fd = new FormData();
-     fd.append('image', selectedFile,selectedFile.name );
-    axios.post('https://projet-back.osc-fr1.scalingo.io/users/files-proof', fd)
-    .then(res => {
-      console.log(res);
-    });
-    
+     let jwt = localStorage.getItem("jwt")
+     console.log(selectedFile.name, selectedFile)
+     fd.append(selectedFile[0].name, selectedFile[0] );
+     fd.append(selectedFile[1].name, selectedFile[1] )
+     fd.append(selectedFile[2].name, selectedFile[2] )
+     axios.post( /* 'https://projet-back.osc-fr1.scalingo.io/users/files-proof' */ "http://localhost:5000/users/files-proof", fd, { headers:{
+       Authorization: `Bearer ${jwt}`}, onUploadProgress: progressEvent => {
+         console.log('upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total*100) + '%');
+        } })
+        .then(res => {
+          console.log(res); 
+        });
+        console.log(fd);
+        
   }
     
   
@@ -46,12 +50,12 @@ function Docs() {
       <Modal isOpen={modalIsOpen} /* onRequestClose={closeModal} */>
         <button onClick={closeModal}>close</button>
 
-        <form>
+        <form enctype="multipart/form-data" >
           <div>
             <p>
               Pièce d'identité
               <input
-              onChange={handleSubmit}
+              onChange={(e) => handleSubmit(e)}
                 id="fileInput"
                 name="cni"
                 type="file"
@@ -63,10 +67,10 @@ function Docs() {
           </div>
 
           <div>
-            <p>
+             <p>
               Justificatif de domicile
               <input
-               onChange={handleSubmit}
+               onChange={(e) => handleSubmit(e)}
                 id="fileInput"
                 name="justificatif"
                 type="file"
@@ -79,7 +83,7 @@ function Docs() {
               <p>
                 R.I.B
                 <input
-                 onChange={handleSubmit}
+                 onChange={(e) => handleSubmit(e)}
                   id="fileInput"
                   name="rib"
                   type="file"
@@ -89,7 +93,7 @@ function Docs() {
               <br />
                  <input  onClick={(e) => handleSubmit(e)}   type="submit"></input> 
 
-              <button onclick={fileUploadHandler}>upload</button>  
+              <p onClick={fileUploadHandler}>upload</p>  
             </div>
           </div>
         </form>

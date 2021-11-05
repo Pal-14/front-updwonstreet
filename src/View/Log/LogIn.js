@@ -7,6 +7,7 @@ import services from '../../services'
 
 
 function LogIn(props) {
+  //je déclare mes variables d'états + celle des erreurs pour retourné les messages du back
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

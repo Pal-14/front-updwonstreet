@@ -28,6 +28,7 @@ console.log(props?.user);
         <div>
           <h2>Informations Personelles : </h2>
 
+          <div><p>Pseudo: {data?.userName}</p></div>
           <div><p>Prénom: {data?.firstName}</p></div>
           <div><p>Nom de Famille: {data?.lastName}</p></div>
           <div><p>Date de Naissance: {info?.dateOfBirth}</p></div>

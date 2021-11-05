@@ -22,7 +22,7 @@ function UserModal(props) {
     return (
         <div>
             <div className="userSummary">
-                <p>{props.user.firstName} {props.user.lastName}</p>
+                <h4>{props.user.firstName} {props.user.lastName}</h4>
                 <p>Adresse e-mail: {props.user.email}</p>
                 <button onClick={openModal}>Voir profil</button>
             </div>

@@ -7,17 +7,17 @@ import UserModal from './UserModal';
 
 function Admin() {
 
-    /* Déclaration variables d'état - Liste d'utilisateurs */
+    /* Variables d'état */
     const [userList, setUserList] = useState([]); // Tous les utilisateurs
-    const [filteredList, setFilteredList] = useState(userList); // Utilisateurs filtrés
+    const [filteredList, setFilteredList] = useState(userList); // Utilisateurs filtrés en fonction du nom, prénom ou adresse e-mail
 
-    /* Événement de recherche */
+    /* Recherche filtrée */
     const handleSearch = (e) => {
         let value = e.target.value.toLowerCase();
         let result = [];
         console.log("Value:", value);
         result = userList.filter((data) => {
-            return (data.lastName.toLowerCase().search(value) != -1 || data.firstName.toLowerCase().search(value) != -1 || data.email.toLowerCase().search(value) != -1);
+            return (data.lastName.toLowerCase().search(value) !== -1 || data.firstName.toLowerCase().search(value) !== -1 || data.email.toLowerCase().search(value) !== -1);
         });
         setFilteredList(result);
     };
@@ -45,8 +45,10 @@ function Admin() {
     return (
         <div className="generalContainer">
             <h2>Liste des utilisateurs</h2>
-            <label for="searchInput">Rechercher un utilisateur:</label>
-            <input type="text" placeholder="Nom, prénom ou e-mail" className="searchInput" onChange={handleSearch} />
+            <div>
+                <label for="searchInput">Rechercher un utilisateur:</label>
+                <input type="text" placeholder="Nom, prénom ou e-mail" className="searchInput" onChange={handleSearch} />
+            </div>
             <div className="userList">
                 {renderUsers()}
             </div>

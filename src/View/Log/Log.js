@@ -6,8 +6,8 @@ import LogOut from "./LogOut"
 
 
 function Log(props) {
-
-  const [title, setTitle] = useState("Connexion")
+  // Variable état
+  const [title, setTitle] = useState("Connexion") //titre pour definir si je suis connecté si mon titre es différent de connexion je propose un autre composant
   const [text, setText] = useState("Je n'ai pas encore de compte et je souhaite m'inscrire")
   const [button, setButton] = useState ("Aller à l'inscription")
 

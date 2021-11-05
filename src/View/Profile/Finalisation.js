@@ -4,13 +4,14 @@ import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
 
 function Finalisation(props) {
-  const [telephone, setTelephone] = useState("");
-  const [adresse, setAdress] = useState("");
-  const [ville, setVille] = useState("");
-  const [codePostal, setCodePostal] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [adress, setAdress] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [country, setCountry] = useState("")
   const [message, setMessage] = useState("");
-  const [erreur, setErreur] = useState ("")
+  const [error, setError] = useState ("")
 
 
   
@@ -27,29 +28,33 @@ function Finalisation(props) {
 
   async function handleSubmit() {
     let body = {
-      phoneNumber: telephone,
-      adress: adresse,
-      city: ville,
-      postalCode: codePostal,
+      phoneNumber: phoneNumber,
+      adress: adress,
+      city: city,
+      country: country,
+      postalCode: postalCode,
       dateOfBirth: dateOfBirth,
     };
     let accountPut = await Service.editUser(body);
     console.log(accountPut);
     setMessage(accountPut.data.message);
+    if (accountPut.data.success) {
+      props.setIsLoggedIn(false)
+    }
   }
 
   return (
     <div>
       <h3>{message}</h3>
-      <h3>{erreur}</h3>
-      <label for="telephone">
+      <h3>{error}</h3>
+      <label for="phoneNumber">
         Numéro de Téléphone :
         <input
-          onChange={(e) => onChange(e, setTelephone)}
+          onChange={(e) => onChange(e, setPhoneNumber)}
           type="tel"
           placeholder="N° de Téléphone"
-          name="telephone"
-          id="telephone"
+          name="phoneNumber"
+          id="phoneNumber"
         ></input>
       </label>
       <br />
@@ -64,20 +69,30 @@ function Finalisation(props) {
       </label>
       <br />
 
-      <label for="Ville">
+      <label for="city">
         Ville :
         <input
-          onChange={(e) => onChange(e, setVille)}
+          onChange={(e) => onChange(e, setCity)}
           type="text"
           placeholder="Ville"
         ></input>
       </label>
       <br />
 
+      <label for="Pays">
+            Pays :
+            <input
+              onChange={(e) => onChange(e, setCountry)}
+              type="text"
+              placeholder="Pays"
+            ></input>
+          </label>
+          <br />
+
       <label for="CodePostal">
         Code Postal :
         <input
-          onChange={(e) => onChange(e, setCodePostal)}
+          onChange={(e) => onChange(e, setPostalCode)}
           type="text"
           placeholder="Code Postal"
         ></input>

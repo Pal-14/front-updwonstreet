@@ -9,7 +9,7 @@ function SignUp(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [erreur, setErreur] = useState("");
+  const [error, setError] = useState("");
 
   async function handleSubmit(event) {
     if (
@@ -34,14 +34,14 @@ function SignUp(props) {
         localStorage.setItem("jwt", signUp.data.token);
         props.setIsLoggedIn(true);
       } else {
-        setErreur(signUp.data.message);
+        setError(signUp.data.message);
       }
     }
   }
 
   return (
     <div>
-      <h3>{erreur}</h3>
+      <h3>{error}</h3>
       <input
         onChange={(e) => onChange(e, setlLastName)}
         placeholder="Nom de Famille"

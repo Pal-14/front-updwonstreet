@@ -44,11 +44,11 @@ const Service = {
     let jwt = localStorage.getItem("jwt"); 
     return base.post ('/users/filesProof', formData, {headers : {
       Authorization: `Bearer ${jwt}`,
-      "Content-type" : "multipart/form-data"
+      "Content-Type" : "multipart/form-data"
     }
     })
   },
-  
+
 };
 
 export default Service;

@@ -4,6 +4,7 @@ import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
 
 function Finalisation(props) {
+  const [userName, setUserName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [adress, setAdress] = useState("");
   const [city, setCity] = useState("");
@@ -28,6 +29,7 @@ function Finalisation(props) {
 
   async function handleSubmit() {
     let body = {
+      userName:userName,
       phoneNumber: phoneNumber,
       adress: adress,
       city: city,
@@ -47,12 +49,24 @@ function Finalisation(props) {
     <div>
       <h3>{message}</h3>
       <h3>{error}</h3>
+      <label for="userName">
+        Pseudo :
+        <input
+          onChange={(e) => onChange(e, setUserName)}
+          type="tel"
+          placeholder="(Pseudo) "
+          name="userName"
+          id="userName"
+        ></input>
+      </label>
+      <br />
+
       <label for="phoneNumber">
         Numéro de Téléphone :
         <input
           onChange={(e) => onChange(e, setPhoneNumber)}
           type="tel"
-          placeholder="N° de Téléphone"
+          placeholder=" 02.12.34.56.78"
           name="phoneNumber"
           id="phoneNumber"
         ></input>
@@ -64,7 +78,7 @@ function Finalisation(props) {
         <input
           onChange={(e) => onChange(e, setAdress)}
           type="text"
-          placeholder="Adresse"
+          placeholder=" 4 rue Charles de Gaulles"
         ></input>
       </label>
       <br />
@@ -74,7 +88,7 @@ function Finalisation(props) {
         <input
           onChange={(e) => onChange(e, setCity)}
           type="text"
-          placeholder="Ville"
+          placeholder=" Nantes"
         ></input>
       </label>
       <br />
@@ -84,7 +98,7 @@ function Finalisation(props) {
             <input
               onChange={(e) => onChange(e, setCountry)}
               type="text"
-              placeholder="Pays"
+              placeholder=" France"
             ></input>
           </label>
           <br />
@@ -94,7 +108,7 @@ function Finalisation(props) {
         <input
           onChange={(e) => onChange(e, setPostalCode)}
           type="text"
-          placeholder="Code Postal"
+          placeholder=" 44300"
         ></input>
       </label>
       <br />

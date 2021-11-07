@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
+import Docs from "./Docs";
 
 function Edition(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -117,7 +118,7 @@ function Edition(props) {
           <br />
 
          
-
+<Docs/>
          
 
           <input

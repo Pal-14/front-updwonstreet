@@ -12,9 +12,17 @@ function Docs() {
   let formData =useMemo(()=>  new FormData(),[]);
 
   const onFileChange = useCallback( (e) => {
+    let fileTypeCheck = e.target.files[0].type
+    console.log(e.target.files[0].type,'premier');
+    console.log(e.target.files[0].name,'premiernnnnnnnn');
 
-    console.log(e.target.files[0]);
-    if (e.target && e.target.files[0]) {
+    if(fileTypeCheck != "image/png" && "application/pdf" && "image/jpeg" && "image/jpg") {
+      console.log(e.target.files[0],"deuxieme");
+      e.target.value = ("")
+      alert("Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg")
+    }
+
+   else {
       formData.append("file_upload", e.target.files[0]);
     }
   },[formData]);
@@ -51,19 +59,19 @@ function Docs() {
         <form encType="multipart/form-data" method="POST" action="/users/files-proof"  >
           <div>
             <h3>Pièce d'identié</h3>
-            <input type="file" name="file_upload"  onChange={onFileChange} />
+            <input type="file" name="cni"  onChange={onFileChange} />
 
             <br />
           </div>
           <div>
           <h3>Justificatif de domicile de(-de 6 mois)</h3>
-            <input type="file" name="file_upload"  onChange={onFileChange} />
+            <input type="file" name="jdd"  onChange={onFileChange} />
 
             <br />
           </div>
           <div>
           <h3>Relevé d'identité Bancaire </h3>
-            <input type="file" name="file_upload"  onChange={onFileChange} />
+            <input type="file" name="rib"  onChange={onFileChange} />
 
             <br />
           </div>

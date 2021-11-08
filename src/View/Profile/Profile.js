@@ -8,6 +8,7 @@ import Edition from "./Edition";
 import Docs from "./Docs";
 
 
+
 function Profile(props) {
     
   const [title, setTitle] = useState ("Validé")
@@ -35,7 +36,7 @@ let test = "Validé"
       <h1>Page de profil</h1>
       <h3>{error} </h3>
       <h3>{title} (plus tard mettre Compte confirmé ou certifié)</h3> 
-     {test ==="Validé" ? <div><Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition {...props} /> </div>: <div><Finalisation {...props} /> <Docs /></div> }
+     {test ==="Validé" ? <div> <Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition {...props} />  </div>: <div><Finalisation {...props} />  <Docs {...props} /></div> }
 
      
       

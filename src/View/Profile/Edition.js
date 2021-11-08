@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
+import Docs from "./Docs";
 
 function Edition(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -53,7 +54,7 @@ function Edition(props) {
         <div>
           <h3>{message}</h3>
           <h3>{error}</h3>
-          <label for="telephone">
+          <label htmlFor="telephone">
             Numéro de Téléphone :
             <input
               onChange={(e) => onChange(e, setPhoneNumber)}
@@ -65,7 +66,7 @@ function Edition(props) {
           </label>
           <br />
 
-          <label for="dob">
+          <label htmlFor="dob">
             Date de Naissance :
             <input
               onChange={(e) => onChange(e, setDateOfBirth)}
@@ -76,7 +77,7 @@ function Edition(props) {
             <br />
           </label>
 
-          <label for="Adresse">
+          <label htmlFor="Adresse">
             Adresse :
             <input
               onChange={(e) => onChange(e, setAdress)}
@@ -86,7 +87,7 @@ function Edition(props) {
           </label>
           <br />
 
-          <label for="Ville">
+          <label htmlFor="Ville">
             Ville :
             <input
               onChange={(e) => onChange(e, setCity)}
@@ -96,7 +97,7 @@ function Edition(props) {
           </label>
           <br />
 
-          <label for="CodePostal">
+          <label htmlFor="CodePostal">
             Code Postal :
             <input
               onChange={(e) => onChange(e, setPostalCode)}
@@ -106,7 +107,7 @@ function Edition(props) {
           </label>
           <br />
 
-          <label for="Pays">
+          <label htmlFor="Pays">
             Pays :
             <input
               onChange={(e) => onChange(e, setCountry)}
@@ -117,7 +118,7 @@ function Edition(props) {
           <br />
 
          
-
+<Docs/>
          
 
           <input

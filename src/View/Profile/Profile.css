@@ -1,5 +1,4 @@
 .card {
-    width: 60%;
     text-align: center;
 }
 
@@ -18,4 +17,8 @@
 
 #rouge {
     color: #DC0C0B;
+}
+
+.column {
+    flex-direction: column;
 }

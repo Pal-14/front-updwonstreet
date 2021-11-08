@@ -13,7 +13,12 @@ function SignUp(props) {
 
   async function handleSubmit(event) {
     if (
-      lastName !== "" ||firstName !== "" ||email !== "" || password !== "" || confirmPassword !== "") {
+      lastName !== "" ||
+      firstName !== "" ||
+      email !== "" ||
+      password !== "" ||
+      confirmPassword !== ""
+    ) {
       let body = {
         lastName: lastName,
         firstName: firstName,
@@ -40,42 +45,57 @@ function SignUp(props) {
   }
 
   return (
-    <div>
-      <h3>{error}</h3>
-      <input
-        onChange={(e) => onChange(e, setlLastName)}
-        placeholder="Nom de Famille"
-        name="lastName"
-        type="text"
-      ></input>
-      <input
-        onChange={(e) => onChange(e, setFirstName)}
-        placeholder="Prénom"
-        name="firstName"
-        type="text"
-      ></input>
-      <input
-        onChange={(e) => onChange(e, setEmail)}
-        placeholder="Email"
-        name="email"
-        type="email"
-      ></input>
-      <input
-        onChange={(e) => onChange(e, setPassword)}
-        placeholder="Mot de Passe"
-        name="password"
-        type="password"
-      ></input>
-      <input
-        onChange={(e) => onChange(e, setConfirmPassword)}
-        placeholder="Confirmez le mot de Passe"
-        name="confirmPassword"
-        type="password"
-      ></input>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <p class="rouge">{error}</p>
+          <div class="input-field col s12">
+            <input
+              class="col s6"
+              id="first_name"
+              onChange={(e) => onChange(e, setlLastName)}
+              placeholder="Nom de Famille"
+              name="lastName"
+              type="text"
+            ></input>
+            <input
+              class="col s6"
+              onChange={(e) => onChange(e, setFirstName)}
+              placeholder="Prénom"
+              name="firstName"
+              type="text"
+            ></input>
+          </div>
 
-      <button onClick={(e) => handleSubmit(e)} type="submit">
-        Send
-      </button>
+          <div class="input-field col s12">
+            <input
+              onChange={(e) => onChange(e, setEmail)}
+              placeholder="Email"
+              name="email"
+              type="email"
+            ></input>
+          </div>
+          <div class="input-field col s12">
+            <input
+              class="col s6"
+              onChange={(e) => onChange(e, setPassword)}
+              placeholder="Mot de Passe"
+              name="password"
+              type="password"
+            ></input>
+            <input
+              class="col s6"
+              onChange={(e) => onChange(e, setConfirmPassword)}
+              placeholder="Confirmez le mot de Passe"
+              name="confirmPassword"
+              type="password"
+            ></input>
+          </div>
+        </div>
+        <a onClick={(e) => handleSubmit(e)} type="submit">
+          Send
+        </a>
+      </form>
     </div>
   );
 }

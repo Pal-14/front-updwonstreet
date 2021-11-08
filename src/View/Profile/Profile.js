@@ -37,7 +37,7 @@ let test = "Valid"
       <span  class="card-title">Page de profil</span>
       <p>{error} </p>
       <p>{title} (plus tard mettre Compte confirmé ou certifié)</p> 
-     {test ==="Validé" ? <div class="card-action "> <Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition {...props} />  </div>: <div class="card-action"><Finalisation {...props} />  <Docs {...props} /></div> }
+     {test ==="Validé" ? <div class="card-action "> <Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition {...props} />  </div>: <div class="card-action column"><Finalisation {...props} />  <Docs {...props} /></div> }
 
      
       </div>

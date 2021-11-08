@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import Service from "../../services";
+import "./Profile.css";
+
 
 function Portefeuille(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -52,9 +54,9 @@ function Portefeuille(props) {
   
   return (
     <div>
-      <button onClick={openModal}>Consulter mon Portefeuille</button>
+      <a id="rouge" onClick={openModal}>Consulter mon Portefeuille</a>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-        <button onClick={closeModal}>close</button>
+        <a onClick={closeModal}>close</a>
 
         <div>
           <h2>Informations du Portefeuille: </h2>

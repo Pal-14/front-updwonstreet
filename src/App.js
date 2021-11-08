@@ -40,7 +40,7 @@ function App() {
 
  
   return (
-    <div className="App">
+    <div>
       <Router>
         <Navbar isLoggedIn={isLoggedIn} />
         <Switch>

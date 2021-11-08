@@ -47,9 +47,9 @@ function Edition(props) {
 
   return (
     <div>
-      <button onClick={openModal}>Modifier mon Profil</button>
+      <a id="rouge" onClick={openModal}>Modifier mon Profil</a>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-        <button onClick={closeModal}>close</button>
+        <a onClick={closeModal}>close</a>
 
         <div>
           <h3>{message}</h3>

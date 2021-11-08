@@ -14,3 +14,27 @@
 .navbarLinks {
     flex: 2;
 }
+
+.bleu {
+    color: #1D488A;
+}
+
+.bleuB {
+    background-color: #1D488A;
+}
+
+.rouge {
+    color: #DC0C0B;
+}
+
+.blanc {
+    color: #FFFDFF;
+}
+
+nav {
+    padding: 0 5%;
+}
+
+.Link {
+    margin: 0 25px;
+}

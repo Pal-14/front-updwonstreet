@@ -32,14 +32,15 @@ function Profile(props) {
 let test = "Valid"
 
   return (
-    <div>
-      <h1>Page de profil</h1>
-      <h3>{error} </h3>
-      <h3>{title} (plus tard mettre Compte confirmé ou certifié)</h3> 
-     {test ==="Validé" ? <div> <Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition {...props} />  </div>: <div><Finalisation {...props} />  <Docs {...props} /></div> }
+    <div className="containCard">
+      <div className="card">
+      <span  class="card-title">Page de profil</span>
+      <p>{error} </p>
+      <p>{title} (plus tard mettre Compte confirmé ou certifié)</p> 
+     {test ==="Validé" ? <div class="card-action "> <Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition {...props} />  </div>: <div class="card-action"><Finalisation {...props} />  <Docs {...props} /></div> }
 
      
-      
+      </div>
     </div>
   );
 }

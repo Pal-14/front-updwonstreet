@@ -44,10 +44,10 @@ function Docs() {
 
   return (
     <div>
-      <button onClick={openModal}>Documents Justificatifs à fournir</button>
+      <a id="rouge" onClick={openModal}>Documents Justificatifs à fournir</a>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-        <button onClick={closeModal}>close</button>
-        <h3>{error}</h3>
+        <a onClick={closeModal}>close</a>
+
         <form encType="multipart/form-data" method="POST" action="/users/files-proof"  >
           <div>
             <h3>Pièce d'identié</h3>

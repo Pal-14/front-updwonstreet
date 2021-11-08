@@ -14,9 +14,9 @@ function Biens() {
 
   return (
     <div>
-      <button onClick={openModal}>Consulter mes Biens</button>
+      <a id="rouge" onClick={openModal}>Consulter mes Biens</a>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-        <button onClick={closeModal}>close</button>
+        <a onClick={closeModal}>close</a>
         <div>
           <h2> Liste de Mes Biens : </h2>
 

@@ -40,6 +40,14 @@ const Service = {
       Authorization: `Bearer ${jwt}`}
     })
   },
+
+  editUserStatus(body) {
+    let jwt = localStorage.getItem("jwt");
+    return base.put ('/users/edit-user-status', body, {headers : {
+      Authorization: `Bearer ${jwt}`}
+    }) 
+  },
+
   filesProof (formData) {
     let jwt = localStorage.getItem("jwt"); 
     return base.post ('/users/files-proof', formData, {headers : {

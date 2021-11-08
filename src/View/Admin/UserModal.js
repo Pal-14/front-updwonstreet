@@ -1,16 +1,17 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './UserModal.css';
 
 
 function UserModal(props) {
 
-    /* Variable d'état */
+    /* Variables d'état */
     const [modalIsOpen, setIsOpen] = useState(false);
 
     /* Variable pour simplifier l'écriture de props */
     let user = props?.user;
+    let userInfo = props?.user?.infos;
 
     /* Ouverture modal */
     const openModal = () => {
@@ -22,6 +23,36 @@ function UserModal(props) {
         setIsOpen(false);
     };
 
+    /* Affichage conditionnel du bouton de validation */
+    const displayVerificationBtn = () => {
+        if(userInfo?.isVerifiedByAdmin === false) {
+            return (
+                <div className="verificationBtn">
+                    <button>Valider le compte</button>
+                </div>
+            );
+        } else {
+            return (
+                <div></div>
+            );
+        };
+    }
+
+    /* Affichage conditionnel du bouton pour attribuer le statut d'admin */
+    const displayAdminBtn = () => {
+        if(userInfo?.isAdmin === false) {
+            return (
+                <div className="adminBtn">
+                    <button>Passer en administrateur</button>
+                </div>
+            );
+        } else {
+            return (
+                <div></div>
+            );
+        };
+    }
+
     /* Affichage front */
     return (
         <div>
@@ -31,23 +62,23 @@ function UserModal(props) {
                 <button onClick={openModal}>Voir profil</button>
             </div>
             <Modal isOpen={modalIsOpen} style={{overlay:{backgroundColor: 'gray'}}}>
-                <div className="closeButton">
+                <div className="closeBtn">
                     <button onClick={closeModal}>&times;</button>
                 </div>
                 <div className="personalInfo">
                     <h2>Informations personnelles</h2>
                     <div><p>Prénom: {user?.firstName}</p></div>
                     <div><p>Nom de famille: {user?.lastName}</p></div>
-                    <div><p>Date de naissance: {user?.dateOfBirth}</p></div>
-                    <div><p>Adresse: {user?.adresse}</p></div>
-                    <div><p>Ville: {user?.ville}</p></div>
-                    <div><p>Code Postal: {user?.codePostal}</p></div>
+                    <div><p>Date de naissance: {userInfo?.dateOfBirth}</p></div>
+                    <div><p>Adresse: {userInfo?.adress}</p></div>
+                    <div><p>Ville: {userInfo?.city}</p></div>
+                    <div><p>Code Postal: {userInfo?.postalCode}</p></div>
                     <div><p>Email: {user?.email} </p></div>
-                    <div><p>Téléphone: {user?.telephone}</p></div>
+                    <div><p>Téléphone: {userInfo?.phoneNumber}</p></div>
                 </div>
                 <div className="wallet">
                     <h2>Informations du portefeuille</h2>
-                    <p>Stable coins possédés: {user?.stableCoins}</p>
+                    <p>Stable coins possédés: {user?.stableCoin}</p>
                     <p>Valeur totale des stable coins:</p>
                 </div>
                 <div className="idDocuments">
@@ -62,6 +93,8 @@ function UserModal(props) {
                         <p>Justificatifs de domicile</p>
                     </div>
                 </div>
+                {displayVerificationBtn()}
+                {displayAdminBtn()}
             </Modal>
         </div>
     );

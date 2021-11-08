@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import "./Admin.css";
 import Service from "../../services";
 import UserModal from './UserModal';
@@ -22,7 +22,7 @@ function Admin() {
         setFilteredList(result);
     };
 
-    /* Récupération de tous les utilisateurs */
+    /* Récupération des utilisateurs */
     useEffect(() => {
         Service.adminUserList().then((response) => {
             setUserList(response.data);
@@ -40,6 +40,19 @@ function Admin() {
             );
         });
     };
+
+    /* Affichage des utilisateurs en attente de validation */
+    /* const awaitingVerification = () => {
+        return (
+            <ul>
+                {
+                    filteredList
+                    .filter(user => user?.infos?.isVerifiedByAdmin === false)
+                    .map(user => <li key={user?.id}>{user?.firstName}</li>)
+                }
+            </ul>
+        );
+    }; */
 
     /* Affichage front */
     return (

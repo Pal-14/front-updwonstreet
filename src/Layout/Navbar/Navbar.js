@@ -11,16 +11,26 @@ function Navbar(props) {
     if (isLoggedIn === true) {
       return (
         <div>
-          <Link className="Link" to="/profile">Gérer mon profil</Link>
-          <Link className="Link" to="/catalog">Biens disponibles</Link>
-          <Link className="Link" to="/log">Déconnexion</Link>
+          <Link className="Link" to="/profile">
+            Gérer mon profil
+          </Link>
+          <Link className="Link" to="/catalog">
+            Biens disponibles
+          </Link>
+          <Link className="Link" to="/log">
+            Déconnexion
+          </Link>
         </div>
       );
     } else {
       return (
         <div>
-          <Link className="Link" to="/log">Connexion</Link>
-          <Link className="Link" to="/admin">Admin</Link>
+          <Link className="Link" to="/log">
+            Connexion
+          </Link>
+          <Link className="Link" to="/admin">
+            Admin
+          </Link>
         </div>
       );
     }
@@ -28,12 +38,14 @@ function Navbar(props) {
 
   /* Affichage front */
   return (
-    <nav  className="nav-wrapper bleuB">
-      <div className="">
-        <Link to="/" className="brand-logo Link">Updownstreet</Link>
-      </div >
-      <div class="right hide-on-med-and-down">{displayButtons()}</div>
-    </nav>
+    <div className="navbarContainer">
+      <nav className="bleuB">
+        <Link to="/" className="brand-logo Link">
+          Updownstreet
+        </Link>
+        <div class="right hide-on-med-and-down">{displayButtons()}</div>
+      </nav>
+    </div>
   );
 }
 

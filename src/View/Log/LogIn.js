@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { onChange } from "../../Fonctions/Formulaire";
-import services from '../../services'
-
-
-
-
+import services from "../../services";
 
 function LogIn(props) {
   //je déclare mes variables d'états + celle des erreurs pour retourné les messages du back
@@ -13,31 +9,27 @@ function LogIn(props) {
   const [error, setError] = useState("");
 
   async function handleSubmit(event) {
-    
     if (email !== "" || password !== "") {
       let body = {
         email: email,
         password: password,
-      };     
-        let logIn = await services.logUsers(body);
-        if (logIn.data.token) {
-          setEmail("");
-          setPassword("");
-          localStorage.setItem("jwt",logIn.data.token);
-          props.setIsLoggedIn (true)
-        } else {
-          setError(logIn.data.message);
-        }
+      };
+      let logIn = await services.logUsers(body);
+      if (logIn.data.token) {
+        setEmail("");
+        setPassword("");
+        localStorage.setItem("jwt", logIn.data.token);
+        props.setIsLoggedIn(true);
+      } else {
+        setError(logIn.data.message);
       }
     }
-  
+  }
 
   return (
     <div>
-     
-     
-      <h3>{error}</h3>
-     
+      <p className="rouge">{error}</p>
+
       <input
         onChange={(e) => onChange(e, setEmail)}
         placeholder="Email"
@@ -45,14 +37,15 @@ function LogIn(props) {
         type="email"
       ></input>
       <input
+        id="password"
         onChange={(e) => onChange(e, setPassword)}
         placeholder="Mot de Passe"
         name="password"
         type="password"
       ></input>
-      <button onClick={(e) => handleSubmit(e)} type="submit">
+      <a onClick={(e) => handleSubmit(e)} type="submit">
         Send
-      </button>
+      </a>
     </div>
   );
 }

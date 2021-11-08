@@ -32,11 +32,11 @@ function change () {
 if (props.isLoggedIn === false){return (
 
     <div>
-      <h1>{title}</h1>
+      <h4>{title}</h4>
      {title === "Connexion" ? <LogIn {...props} /> : <SignUp {...props} />}
       <div>
           <p>{text}</p>
-        <button onClick={change} >{button}</button>
+        <a onClick={change} >{button}</a>
       </div>
     </div>
   );}

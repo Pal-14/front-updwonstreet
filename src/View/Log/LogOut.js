@@ -10,9 +10,9 @@ function LogOut(props) {
   }
 
   return (
-    <div>
-        <h3>Êtes-vous sûr de vouloir vous déconnectez ?</h3>
-      <button onClick={logOut}>Déconnexion</button>
+    <div className="card col s12">
+        <p>Êtes-vous sûr de vouloir vous déconnectez ?</p>
+      <a onClick={logOut}>Déconnexion</a>
     </div>
   );
 }

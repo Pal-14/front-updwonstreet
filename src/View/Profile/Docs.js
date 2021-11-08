@@ -5,6 +5,7 @@ import axios from "axios";
 
 function Docs() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [error ,setError] = useState ("")
   const [selectedFile, setSelectedFile] = useState([]);
   
 
@@ -20,7 +21,11 @@ function Docs() {
 
 
   const SubmitFileData = () => {
-    axios.post("http://localhost:5000/users/files-proof",  formData )
+    let jwt = localStorage.getItem("jwt"); 
+    axios.post("http://localhost:5000/users/files-proof",  formData  ,
+     {headers : {
+      Authorization: `Bearer ${jwt}`}
+    })
       .then((res) => {
         console.log(res);
       })
@@ -42,26 +47,30 @@ function Docs() {
       <button onClick={openModal}>Documents Justificatifs à fournir</button>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <button onClick={closeModal}>close</button>
-
+        <h3>{error}</h3>
         <form encType="multipart/form-data" method="POST" action="/users/files-proof"  >
           <div>
-            <input type="file" name="file_upload" onChange={onFileChange} />
+            <h3>Pièce d'identié</h3>
+            <input type="file" name="file_upload"  onChange={onFileChange} />
 
             <br />
           </div>
           <div>
-            <input type="file" name="file_upload" onChange={onFileChange} />
+          <h3>Justificatif de domicile de(-de 6 mois)</h3>
+            <input type="file" name="file_upload"  onChange={onFileChange} />
 
             <br />
           </div>
           <div>
-            <input type="file" name="file_upload" onChange={onFileChange} />
+          <h3>Relevé d'identité Bancaire </h3>
+            <input type="file" name="file_upload"  onChange={onFileChange} />
 
             <br />
           </div>
+          <br />
 
           <div>
-            <button type="button" onClick={SubmitFileData}>Sub Data</button>
+            <button type="button" onClick={SubmitFileData}>Envoyer mes fichiers</button>
           </div>
         </form>
       </Modal>

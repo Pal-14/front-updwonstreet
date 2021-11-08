@@ -6,7 +6,7 @@ import Finalisation from "./Finalisation";
 import { useState } from "react";
 import Edition from "./Edition";
 import Docs from "./Docs";
-import DocsTest from "./DocsTest"
+
 
 
 function Profile(props) {
@@ -36,7 +36,7 @@ let test = "Valid"
       <h1>Page de profil</h1>
       <h3>{error} </h3>
       <h3>{title} (plus tard mettre Compte confirmé ou certifié)</h3> 
-     {test ==="Validé" ? <div>{/* <Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition {...props} /> */} </div>: <div>{/* <Finalisation {...props} />  */}{<Docs {...props} />}</div> }
+     {test ==="Validé" ? <div> <Informations {...props}/> <Portefeuille  {...props}/><Biens {...props} /><Edition {...props} />  </div>: <div><Finalisation {...props} />  <Docs {...props} /></div> }
 
      
       

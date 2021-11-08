@@ -25,9 +25,11 @@ function UserModal(props) {
     };
 
     /* Modification de compte */
-    const editStatus = async (user, key) => {
+    const editStatus = async (user, key, value) => {
         let body = {
-            [key]: user._id
+            targetUserId:user._id,
+            keyOfPropertyToChange:key,
+            targetValue: value,
         }
         let change = await Service.editUserStatus(body);
         console.log(change);
@@ -73,8 +75,8 @@ function UserModal(props) {
                         <p>Justificatifs de domicile</p>
                     </div>
                 </div>
-                {!userInfo?.isVerifiedByAdmin ? <a onClick={editStatus(user, "isVerified")}>Valider le compte</a> : <></>}
-                {!userInfo?.isAdmin ? <a onClick={editStatus(user, "isAdmin")}>Passer en administrateur</a> : <></>}
+                {!userInfo?.isVerifiedByAdmin ? <a onClick={editStatus(user, "isVerified", true)}>Valider le compte</a> : <></>}
+                {!userInfo?.isAdmin ? <a onClick={editStatus(user, "isAdmin", true)}>Passer en administrateur</a> : <></>}
             </Modal>
         </div>
     );

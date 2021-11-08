@@ -1,7 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './UserModal.css';
+import Service from '../../services';
 
 
 function UserModal(props) {
@@ -23,35 +24,14 @@ function UserModal(props) {
         setIsOpen(false);
     };
 
-    /* Affichage conditionnel du bouton de validation */
-    const displayVerificationBtn = () => {
-        if(userInfo?.isVerifiedByAdmin === false) {
-            return (
-                <div className="verificationBtn">
-                    <button>Valider le compte</button>
-                </div>
-            );
-        } else {
-            return (
-                <div></div>
-            );
-        };
-    }
-
-    /* Affichage conditionnel du bouton pour attribuer le statut d'admin */
-    const displayAdminBtn = () => {
-        if(userInfo?.isAdmin === false) {
-            return (
-                <div className="adminBtn">
-                    <button>Passer en administrateur</button>
-                </div>
-            );
-        } else {
-            return (
-                <div></div>
-            );
-        };
-    }
+    /* Modification de compte */
+    const editStatus = async (user, key) => {
+        let body = {
+            [key]: user._id
+        }
+        let change = await Service.editUserStatus(body);
+        console.log(change);
+    };
 
     /* Affichage front */
     return (
@@ -93,8 +73,8 @@ function UserModal(props) {
                         <p>Justificatifs de domicile</p>
                     </div>
                 </div>
-                {displayVerificationBtn()}
-                {displayAdminBtn()}
+                {!userInfo?.isVerifiedByAdmin ? <a onClick={editStatus(user, "isVerified")}>Valider le compte</a> : <></>}
+                {!userInfo?.isAdmin ? <a onClick={editStatus(user, "isAdmin")}>Passer en administrateur</a> : <></>}
             </Modal>
         </div>
     );

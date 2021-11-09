@@ -20,10 +20,10 @@ function Informations(props) {
   }
   console.log(props?.user);
   return (
-    <div class="card">
+    <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Consulter mon Portefeuille</span>
-        <p>Tout les informations sur votre portefeuille et ça gestion</p>
+        <span class="card-title ">Consulter mes informations</span>
+        <p>Tout vos informations</p>
         <p>
           <a id="rouge" onClick={openModal}>
             Ici pour consulter
@@ -32,9 +32,6 @@ function Informations(props) {
       </div>
 
       <div>
-        <a id="rouge" onClick={openModal}>
-          Consulter mes informations
-        </a>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <div>
             <a onClick={closeModal}>close</a>

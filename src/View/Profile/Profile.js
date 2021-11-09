@@ -26,7 +26,7 @@ function Profile(props) {
 
   const siValide = () => {
     return (
-      <div>
+      <div className="cardInCard">
         <Informations {...props} />
         <Portefeuille {...props} />
         <Biens {...props} />
@@ -44,10 +44,10 @@ function Profile(props) {
           <div className="imageProfile" />
         </div>
       </div>
-      <div className="card">
+      <div className="card Profile">
         <span class="card-title">Page de profil</span>
         <p>{error}</p>
-        <p>{title}</p>
+        <p>Statu de votre profil : {title}</p>
         {test === "Validé" ? (
           siValide()
         ) : (

@@ -51,7 +51,7 @@ function Portefeuille(props) {
   }
 
   return (
-    <div class="card">
+    <div class="card cardProfile">
       <div class="card-content">
         <span class="card-title ">Consulter mon Portefeuille</span>
         <p>Tout les informations sur votre portefeuille et ça gestion</p>

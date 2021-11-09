@@ -7,11 +7,11 @@
   width: 100%;
 }
 
-.card-action {
+.card-content {
   display: flex;
-  justify-content: center;
-  width: 100%;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
 }
 
 #rouge {
@@ -56,4 +56,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .Profile {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin:  40px auto;
+  }
+
+  .cardInCard {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .cardProfile {
+    width: 48%;
   }

@@ -59,7 +59,7 @@ function Portefeuille(props) {
         <a onClick={closeModal}>close</a>
 
         <div>
-          <h2>Informations du Portefeuille: </h2>
+          <h4>Informations du Portefeuille: </h4>
           <div> 
             <p>Stable coins Possédés: {data?.stableCoin}</p>
           </div>
@@ -69,8 +69,8 @@ function Portefeuille(props) {
 
           <div>
             <label for="">Achat de Stable Coin(s)</label>
-            <h3>{message}</h3>
-            <h3>{error}</h3>
+            <p>{message}</p>
+            <p>{error}</p>
             <input onchange={(e) => onchange(e, setAddCoin)} name="StableCoins" type="text"></input>
            
           </div>
@@ -78,14 +78,12 @@ function Portefeuille(props) {
 
           <div>
             <label for="">Vente de Stable Coin(s)</label>
-            <h3>{message}</h3>
-            <h3>{error}</h3>
             <input onchange={(e) => onchange(e, setRemoveCoin)} name="StableCoins" type="text"></input>
            
           </div>
 
           <div>
-            <button onClick={handleSubmit}  type="submit" >Acheter/Vendre</button>
+            <a onClick={handleSubmit}  type="submit" >Acheter/Vendre</a>
           </div>
 
         </div>

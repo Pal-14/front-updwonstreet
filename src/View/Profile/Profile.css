@@ -22,3 +22,18 @@
 .column {
     flex-direction: column;
 }
+
+.containP {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.petitP {
+    width: 300px;
+}
+
+.grandP {
+    width: 500px;
+}

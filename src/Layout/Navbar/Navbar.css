@@ -27,3 +27,12 @@ nav {
 .Link {
     margin: 0 25px;
 }
+
+.uplogo {
+    background-image: url("../../img/petitlogo.png");
+    height: 64px;
+    width: 107px;
+    background-position: center;
+    background-size: auto;
+
+}

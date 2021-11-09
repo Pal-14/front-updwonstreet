@@ -41,7 +41,7 @@ function Navbar(props) {
     <div className="navbarContainer">
       <nav className="bleuB">
         <Link to="/" className="brand-logo Link">
-          Updownstreet
+          <div className="uplogo"></div>
         </Link>
         <div class="right hide-on-med-and-down">{displayButtons()}</div>
       </nav>

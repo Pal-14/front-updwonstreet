@@ -45,7 +45,7 @@ function SignUp(props) {
   }
 
   return (
-    <div class="row">
+    <div class="containSignup">
       <form class="col s12">
         <div class="row">
           <p class="rouge">{error}</p>

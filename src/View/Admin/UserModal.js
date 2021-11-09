@@ -37,15 +37,15 @@ function UserModal(props) {
 
     /* Affichage front */
     return (
-        <div>
+        <li className="collection-item">
             <div className="userSummary">
-                <h4>{user.firstName} {user.lastName}</h4>
+                <p>{user.firstName} {user.lastName}</p>
                 <p>Adresse e-mail: {user.email}</p>
-                <button onClick={openModal}>Voir profil</button>
+                <a onClick={openModal}>Voir profil</a>
             </div>
             <Modal isOpen={modalIsOpen} style={{overlay:{backgroundColor: 'gray'}}}>
                 <div className="closeBtn">
-                    <button onClick={closeModal}>&times;</button>
+                    <a onClick={closeModal}>&times;</a>
                 </div>
                 <div className="personalInfo">
                     <h2>Informations personnelles</h2>
@@ -78,7 +78,7 @@ function UserModal(props) {
                 {!userInfo?.isVerifiedByAdmin ? <a onClick={editStatus(user, "isVerified", true)}>Valider le compte</a> : <></>}
                 {!userInfo?.isAdmin ? <a onClick={editStatus(user, "isAdmin", true)}>Passer en administrateur</a> : <></>}
             </Modal>
-        </div>
+        </li>
     );
 }
 

@@ -9,7 +9,7 @@ function Edition(props) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [adress, setAdress] = useState("");
   const [city, setCity] = useState("");
-  const [country, setCountry] = useState("")
+  const [country, setCountry] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [message, setMessage] = useState("");
@@ -47,13 +47,15 @@ function Edition(props) {
 
   return (
     <div>
-      <a id="rouge" onClick={openModal}>Modifier mon Profil</a>
+      <a id="rouge" onClick={openModal}>
+        Modifier mon Profil
+      </a>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <a onClick={closeModal}>close</a>
 
         <div>
-          <h3>{message}</h3>
-          <h3>{error}</h3>
+          <p>{message}</p>
+          <p>{error}</p>
           <label htmlFor="telephone">
             Numéro de Téléphone :
             <input
@@ -115,11 +117,8 @@ function Edition(props) {
               placeholder="Pays"
             ></input>
           </label>
-          <br />
 
-         
-<Docs/>
-         
+          <Docs />
 
           <input
             onRequestClose={closeModal}

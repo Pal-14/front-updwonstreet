@@ -24,7 +24,7 @@ function Biens() {
           <div><p>Adresse:</p></div>
           <div><p>Ville: </p></div>
           <div><p>Type de Bien: </p></div>
-          <div><p>Nombre de pièces): </p></div>
+          <div><p>Nombre de pièces: </p></div>
           <div><p>Chambre(s): </p></div>
           <div><p>Surface de terrain:</p></div>
           <div><p>Garage: </p></div>
@@ -39,7 +39,7 @@ function Biens() {
           
       </Modal>
     </div>
-  );
+);
 }
 
 export default Biens;

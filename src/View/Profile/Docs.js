@@ -14,8 +14,9 @@ function Docs() {
   const onFileChange = useCallback( (e) => {
     let fileTypeCheck = e.target.files[0].type
     console.log(e.target.files[0].type,'premier');
-    console.log(e.target.files[0].name,'premiernnnnnnnn');
-
+    console.log(e.target.files[0].name,'Deuxième');
+    console.log(e.target.name,'troisieme');
+    
     if(fileTypeCheck != "image/png" && "application/pdf" && "image/jpeg" && "image/jpg") {
       console.log(e.target.files[0],"deuxieme");
       e.target.value = ("")
@@ -23,19 +24,20 @@ function Docs() {
     }
 
    else {
-      formData.append("file_upload", e.target.files[0]);
+      formData.append(e.target.name, e.target.files[0]);
     }
   },[formData]);
 
 
   const SubmitFileData = () => {
     let jwt = localStorage.getItem("jwt"); 
-    axios.post("http://localhost:5000/users/files-proof",  formData  ,
+    axios.post("http://localhost:5000/users/upload",  formData  ,
      {headers : {
       Authorization: `Bearer ${jwt}`}
     })
       .then((res) => {
-        console.log(res);
+        closeModal()///////////////////////////////faire condition de fermeture de modal quand success à voir 
+        console.log(res,);
       })
       .catch((error) => {
         console.log(error);
@@ -56,7 +58,7 @@ function Docs() {
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <a onClick={closeModal}>close</a>
 
-        <form encType="multipart/form-data" method="POST" action="/users/files-proof"  >
+        <form encType="multipart/form-data" method="POST" action="/users/upload"  >
           <div>
             <h3>Pièce d'identié</h3>
             <input type="file" name="cni"  onChange={onFileChange} />

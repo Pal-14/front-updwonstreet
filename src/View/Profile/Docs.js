@@ -7,7 +7,7 @@ function Docs() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [error ,setError] = useState ("")
   const [selectedFile, setSelectedFile] = useState([]);
-  
+  const [submitedDocumentType, setSubmitedDocumentType] = useState("CARTE ID")
 
   let formData =useMemo(()=>  new FormData(),[]);
 
@@ -30,9 +30,11 @@ function Docs() {
 
   const SubmitFileData = () => {
     let jwt = localStorage.getItem("jwt"); 
-    axios.post("http://localhost:5000/users/files-proof",  formData  ,
+    axios.post("http://localhost:5000/users/upload",  formData  ,
      {headers : {
-      Authorization: `Bearer ${jwt}`}
+      Authorization: `Bearer ${jwt}`,
+      typeOfDocumentSubmited:submitedDocumentType,
+    }
     })
       .then((res) => {
         console.log(res);
@@ -56,7 +58,7 @@ function Docs() {
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <a onClick={closeModal}>close</a>
 
-        <form encType="multipart/form-data" method="POST" action="/users/files-proof"  >
+        <form encType="multipart/form-data" method="POST" action="/users/upload"  >
           <div>
             <h3>Pièce d'identié</h3>
             <input type="file" name="cni"  onChange={onFileChange} />

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./Layout/Navbar/Navbar";
 import { useState, useEffect } from "react";
 import Log from "./View/Log/Log";
-import checkToken from "./services";
 import Profile from "./View/Profile/Profile";
 import Catalog from "./View/Catalog/Catalog";
 import Admin from "./View/Admin/Admin";

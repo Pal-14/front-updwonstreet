@@ -9,7 +9,7 @@ function Docs() {
   const [selectedFile, setSelectedFile] = useState([]);
   const [submitedDocumentType, setSubmitedDocumentType] = useState("CARTE ID")
 
-  let formData =useMemo(()=>  new FormData(),[]);
+  let formData =  new FormData();
 
   const onFileChange = useCallback( (e) => {
     let fileTypeCheck = e.target.files[0].type
@@ -17,16 +17,19 @@ function Docs() {
     console.log(e.target.files[0].name,'Deuxième');
     console.log(e.target.name,'troisieme');
     
+    
     if(fileTypeCheck != "image/png" && "application/pdf" && "image/jpeg" && "image/jpg") {
       console.log(e.target.files[0],"deuxieme");
-      e.target.value = ("")
+      e.target.value = ("")//pour remmettre la  value a 0
       alert("Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg")
     }
-
-   else {
+    
+    else {
       formData.append(e.target.name, e.target.files[0]);
+      
     }
   },[formData]);
+  
 
 
   const SubmitFileData = () => {
@@ -36,9 +39,10 @@ function Docs() {
       Authorization: `Bearer ${jwt}`,
       typeOfDocumentSubmited:submitedDocumentType,
     }
-    })
+  })
+  /* if(status === 200){input.value =("")} */
       .then((res) => {
-        closeModal()///////////////////////////////faire condition de fermeture de modal quand success à voir 
+       //////// closeModal()///////////////////////////////faire condition de fermeture de modal quand success à voir 
         console.log(res,);
       })
       .catch((error) => {
@@ -69,7 +73,7 @@ function Docs() {
           </div>
           <div>
           <h3>Justificatif de domicile de(-de 6 mois)</h3>
-            <input type="file" name="jdd"  onChange={onFileChange} />
+            <input type="file" name="justificatif"  onChange={onFileChange} />
 
             <br />
           </div>

@@ -30,18 +30,24 @@
 .ReactModal__Overlay {
   text-align: center;
   width: 100%;
+  display: flex;
+}
+
+.ReactModal__Content {
+  position: unset !important;
 }
 
 .ReactModal__Content--after-open {
   width: 50%;
   margin: auto;
+  max-height: 70%;
 }
 
 .containHome {
-  margin-top: 20px;
   background-image: url("./img/city-4235697_960_720.jpg");
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   height: 400px;
   width: 100%;
   display: flex;
@@ -52,10 +58,10 @@
 
 .imageHome {
   height: 212px;
-  width: 353px;
   background-image: url("./img/logo.png");
   background-position: center;
   background-repeat: no-repeat;
+  align-items: center;
 }
 
 .boxHome {
@@ -71,6 +77,20 @@
   color: white;
   text-shadow: 1px 1px 2px black;
 }
+
+.best {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.cardHome {
+  width: 48%;
+}
+
+
 
 @keyframes App-logo-spin {
   from {

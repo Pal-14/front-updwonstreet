@@ -7,9 +7,6 @@ import UserModal from './UserModal';
 
 function Admin() {
 
-    /* Variables d'état */
-    /* const [userList, setUserList] = useState([]); // Tous les utilisateurs
-    const [filteredList, setFilteredList] = useState(userList); // Utilisateurs filtrés en fonction du nom, prénom ou adresse e-mail */
 
     /* Variables d'état */
 
@@ -17,16 +14,6 @@ function Admin() {
     const [showPendingApproval, setShowPendingApproval] = useState(false);
     const [searchInput, setSearchInput] = useState("");
 
-    /* Recherche filtrée */
-    /* const handleSearch = (e) => {
-        let value = e.target.value.toLowerCase();
-        let result = [];
-        console.log("Value:", value);
-        result = userList.filter((data) => {
-            return (data.lastName.toLowerCase().search(value) !== -1 || data.firstName.toLowerCase().search(value) !== -1 || data.email.toLowerCase().search(value) !== -1);
-        });
-        setFilteredList(result);
-    }; */
 
     /* Récupération des utilisateurs */
 
@@ -47,8 +34,6 @@ function Admin() {
     const handleSearchInput = (e) => {
         setSearchInput(e.target.value);
     };
-
-    useEffect(() => { }, [searchInput]);
 
 
     /* Fonctions de filtre */
@@ -88,8 +73,9 @@ function Admin() {
                 </label>
             </div>
             <div>
-                <label for="checkbox">En attente de validation:
-                    <input type="checkbox" className="filled-in" id="checkbox" onChange={toggleShowPendingApproval} checked={showPendingApproval} />
+                <label for="checkbox">
+                    <input type="checkbox" id="checkbox" onChange={toggleShowPendingApproval} checked={showPendingApproval} />
+                    <span>En attente de validation</span>
                 </label>
             </div>
             <ul className="collection">

@@ -8,6 +8,7 @@ import Profile from "./View/Profile/Profile";
 import Catalog from "./View/Catalog/Catalog";
 import Admin from "./View/Admin/Admin";
 import Service from "./services";
+import Home from "./View/Home";
 
 function App() {
   /* Déclaration variable d'état */
@@ -61,7 +62,9 @@ function App() {
             <Route path="/admin">
               <Admin />
             </Route>
-            <Route path="/"></Route>
+            <Route path="/">
+              <Home/>
+            </Route>
           </Switch>
         </div>
       </Router>

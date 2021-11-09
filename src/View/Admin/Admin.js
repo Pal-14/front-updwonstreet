@@ -57,14 +57,14 @@ function Admin() {
     /* Affichage front */
     return (
         <div className="generalContainer">
-            <h2>Liste des utilisateurs</h2>
+            <h3>Liste des utilisateurs</h3>
             <div>
                 <label for="searchInput">Rechercher un utilisateur:</label>
                 <input type="text" placeholder="Nom, prénom ou e-mail" className="searchInput" onChange={handleSearch} />
             </div>
-            <div className="userList">
+            <ul className="collection">
                 {renderUsers()}
-            </div>
+            </ul>
         </div>
     );
 }

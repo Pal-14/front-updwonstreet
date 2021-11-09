@@ -7,7 +7,7 @@ function Docs() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [error ,setError] = useState ("")
   const [selectedFile, setSelectedFile] = useState([]);
-  
+  const [submitedDocumentType, setSubmitedDocumentType] = useState("CARTE ID")
 
   let formData =useMemo(()=>  new FormData(),[]);
 
@@ -33,7 +33,9 @@ function Docs() {
     let jwt = localStorage.getItem("jwt"); 
     axios.post("http://localhost:5000/users/upload",  formData  ,
      {headers : {
-      Authorization: `Bearer ${jwt}`}
+      Authorization: `Bearer ${jwt}`,
+      typeOfDocumentSubmited:submitedDocumentType,
+    }
     })
       .then((res) => {
         closeModal()///////////////////////////////faire condition de fermeture de modal quand success à voir 

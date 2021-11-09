@@ -1,6 +1,8 @@
 .userList {
     display: flex;
     flex-direction: column;
-    text-align: left;
-    margin-left: 5vw;
+}
+
+.generalContainer {
+    width: 70%;
 }

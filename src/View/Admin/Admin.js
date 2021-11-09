@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import "./Admin.css";
 import Service from "../../services";
 import UserModal from './UserModal';
@@ -8,11 +8,17 @@ import UserModal from './UserModal';
 function Admin() {
 
     /* Variables d'état */
-    const [userList, setUserList] = useState([]); // Tous les utilisateurs
-    const [filteredList, setFilteredList] = useState(userList); // Utilisateurs filtrés en fonction du nom, prénom ou adresse e-mail
+    /* const [userList, setUserList] = useState([]); // Tous les utilisateurs
+    const [filteredList, setFilteredList] = useState(userList); // Utilisateurs filtrés en fonction du nom, prénom ou adresse e-mail */
+
+    /* Variables d'état */
+
+    const [userList, setUserList] = useState([]);
+    const [showPendingApproval, setShowPendingApproval] = useState(false);
+    const [searchInput, setSearchInput] = useState("");
 
     /* Recherche filtrée */
-    const handleSearch = (e) => {
+    /* const handleSearch = (e) => {
         let value = e.target.value.toLowerCase();
         let result = [];
         console.log("Value:", value);
@@ -20,47 +26,71 @@ function Admin() {
             return (data.lastName.toLowerCase().search(value) !== -1 || data.firstName.toLowerCase().search(value) !== -1 || data.email.toLowerCase().search(value) !== -1);
         });
         setFilteredList(result);
-    };
+    }; */
 
     /* Récupération des utilisateurs */
+
     useEffect(() => {
         Service.adminUserList().then((response) => {
             setUserList(response.data);
-            setFilteredList(response.data);
         });
     }, []);
     console.log("User list:", userList);
-    console.log("Filtered list:", filteredList);
+
+
+    /* Événements */
+
+    const toggleShowPendingApproval = () => {
+        setShowPendingApproval(!showPendingApproval);
+    };
+
+    const handleSearchInput = (e) => {
+        setSearchInput(e.target.value);
+    };
+
+    useEffect(() => { }, [searchInput]);
+
+
+    /* Fonctions de filtre */
+
+    const checkboxFilterUsers = (userList) => {
+        return showPendingApproval
+            ? userList.filter(user => !user.infos.isVerifiedByAdmin)
+            : userList
+    };
+
+    const searchbarFilterUsers = () => {
+        return userList.filter(user => user.lastName.toLowerCase().includes(searchInput.toLowerCase()) || user.firstName.toLowerCase().includes(searchInput.toLowerCase()) || user.email.toLowerCase().includes(searchInput.toLowerCase()));
+    };
+
 
     /* Fonction d'affichage des utilisateurs */
+
     const renderUsers = () => {
-        return filteredList.map((user, id) => {
+        let searchbarFilteredUsers = searchbarFilterUsers();
+        let searchbarCheckboxFilteredUsers = checkboxFilterUsers(searchbarFilteredUsers);
+        return searchbarCheckboxFilteredUsers.map((user, id) => {
             return (
                 <UserModal user={user} id={id} />
             );
         });
     };
 
-    /* Affichage des utilisateurs en attente de validation */
-    /* const awaitingVerification = () => {
-        return (
-            <ul>
-                {
-                    filteredList
-                    .filter(user => user?.infos?.isVerifiedByAdmin === false)
-                    .map(user => <li key={user?.id}>{user?.firstName}</li>)
-                }
-            </ul>
-        );
-    }; */
 
     /* Affichage front */
+
     return (
         <div className="generalContainer">
-            <h3>Liste des utilisateurs</h3>
+            <h3>Utilisateurs inscrits</h3>
             <div>
-                <label for="searchInput">Rechercher un utilisateur:</label>
-                <input type="text" placeholder="Nom, prénom ou e-mail" className="searchInput" onChange={handleSearch} />
+                <label for="searchInput">Rechercher par:
+                    <input type="text" id="searchInput" placeholder="Nom, prénom ou e-mail" className="searchInput" onChange={handleSearchInput} />
+                </label>
+            </div>
+            <div>
+                <label for="checkbox">En attente de validation:
+                    <input type="checkbox" className="filled-in" id="checkbox" onChange={toggleShowPendingApproval} checked={showPendingApproval} />
+                </label>
             </div>
             <ul className="collection">
                 {renderUsers()}

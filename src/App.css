@@ -65,7 +65,7 @@
 }
 
 .boxHome {
-  width: 30%;
+  width: 360px;
 }
 
 .homeP {
@@ -90,7 +90,14 @@
   width: 48%;
 }
 
+a {
+  margin: 0 !important;
+}
 
+.card-contentHome {
+  display: flex;
+  flex-direction: column;
+}
 
 @keyframes App-logo-spin {
   from {

@@ -46,13 +46,13 @@ function Profile(props) {
       </div>
       <div className="card Profile">
         <span class="card-title">Page de profil</span>
-        <p>{error}</p>
         <p>Statu de votre profil : {title}</p>
+        <p>{error}</p>
         {test === "Validé" ? (
           siValide()
         ) : (
           <div class="card-action">
-            <Finalisation {...props} /> <Docs {...props} />
+            <Docs {...props}/> <Finalisation {...props}/> 
           </div>
         )}
       </div>

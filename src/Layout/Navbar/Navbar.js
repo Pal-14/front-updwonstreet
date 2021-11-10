@@ -11,28 +11,38 @@ function Navbar(props) {
   const displayButtons = () => {
     if (isLoggedIn === true) {
       return (
-        <div>
-          <Link className="Link" to="/profile">
-            Gérer mon profil
-          </Link>
-          <Link className="Link" to="/catalog">
-            Biens disponibles
-          </Link>
-          <Link className="Link" to="/log">
-            Déconnexion
-          </Link>
-        </div>
+        <ul id="nav-mobile" class="right">
+          <li>
+            <Link className="Link" to="/profile">
+              Gérer mon profil
+            </Link>
+          </li>
+          <li>
+            <Link className="Link" to="/catalog">
+              Biens disponibles
+            </Link>
+          </li>
+          <li>
+            <Link className="Link" to="/log">
+              Déconnexion
+            </Link>
+          </li>
+        </ul>
       );
     } else {
       return (
-        <div>
-          <Link className="Link" to="/log">
-            Connexion
-          </Link>
-          <Link className="Link" to="/admin">
-            Admin
-          </Link>
-        </div>
+        <ul id="nav-mobile" class="right">
+          <li>
+            <Link className="Link" to="/log">
+              Connexion
+            </Link>
+          </li>
+          <li>
+            <Link className="Link" to="/admin">
+              Admin
+            </Link>
+          </li>
+        </ul>
       );
     }
   };
@@ -41,10 +51,12 @@ function Navbar(props) {
   return (
     <div className="navbarContainer">
       <nav className="bleuB">
-        <Link to="/" className="brand-logo Link">
-          <div className="uplogo"></div>
-        </Link>
-        <div class="right hide-on-med-and-down">{displayButtons()}</div>
+        <div class="nav-wrapper">
+          <Link to="/" className="logoNavBar Link">
+            <div className="uplogo"></div>
+          </Link>
+          {displayButtons()}
+        </div>
       </nav>
     </div>
   );

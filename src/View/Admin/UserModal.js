@@ -75,8 +75,8 @@ function UserModal(props) {
                         <p>Justificatifs de domicile</p>
                     </div>
                 </div>
-                {!userInfo?.isVerifiedByAdmin ? <a onClick={editStatus(user, "isVerifiedByAdmin", true)}>Valider le compte</a> : <></>}
-                {!userInfo?.isAdmin ? <a onClick={editStatus(user, "isAdmin", true)}>Passer en administrateur</a> : <></>}
+                {!userInfo?.isVerifiedByAdmin ? <a onClick={editStatus(user, "infos.isVerifiedByAdmin", true)}>Valider le compte</a> : <></>}
+                {!userInfo?.isAdmin ? <a onClick={editStatus(user, "infos.isAdmin", true)}>Accorder le statut d'administrateur</a> : <a onClick={editStatus(user, "infos.isAdmin", false)}>Retirer le statut d'administrateur</a>}
             </Modal>
         </li>
     );

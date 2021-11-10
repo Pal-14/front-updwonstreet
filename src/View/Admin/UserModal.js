@@ -32,7 +32,7 @@ function UserModal(props) {
             targetValue: value,
         }
         let change = await Service.editUserStatus(body);
-        console.log(change);
+        console.log("VALIDATION", change);
     };
 
     /* Affichage front */
@@ -75,7 +75,7 @@ function UserModal(props) {
                         <p>Justificatifs de domicile</p>
                     </div>
                 </div>
-                {!userInfo?.isVerifiedByAdmin ? <a onClick={editStatus(user, "isVerified", true)}>Valider le compte</a> : <></>}
+                {!userInfo?.isVerifiedByAdmin ? <a onClick={editStatus(user, "isVerifiedByAdmin", true)}>Valider le compte</a> : <></>}
                 {!userInfo?.isAdmin ? <a onClick={editStatus(user, "isAdmin", true)}>Passer en administrateur</a> : <></>}
             </Modal>
         </li>

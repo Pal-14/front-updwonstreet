@@ -24,12 +24,12 @@ function Home() {
           <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src={appt1} />
           </div>
-          <div class="card-content">
+          <div class="card-contentHome">
             <span class="card-title activator grey-text text-darken-4">
               Le Bastion
             </span>
             <p>
-              <a className="rouge">Voir le bien</a>
+            <a className="rouge">Voir le bien</a>
             </p>
           </div>
           <div class="card-reveal">
@@ -50,7 +50,7 @@ function Home() {
           <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src={appt2} />
           </div>
-          <div class="card-content">
+          <div class="card-contentHome">
             <span class="card-title activator grey-text text-darken-4">
               Centre Antibes
             </span>

@@ -7,16 +7,13 @@ import UserModal from './UserModal';
 
 function Admin() {
 
-
     /* Variables d'état */
-
     const [userList, setUserList] = useState([]);
     const [showPendingApproval, setShowPendingApproval] = useState(false);
     const [searchInput, setSearchInput] = useState("");
 
 
     /* Récupération des utilisateurs */
-
     useEffect(() => {
         Service.adminUserList().then((response) => {
             setUserList(response.data);
@@ -26,7 +23,6 @@ function Admin() {
 
 
     /* Événements */
-
     const toggleShowPendingApproval = () => {
         setShowPendingApproval(!showPendingApproval);
     };
@@ -37,7 +33,6 @@ function Admin() {
 
 
     /* Fonctions de filtre */
-
     const checkboxFilterUsers = (userList) => {
         return showPendingApproval
             ? userList.filter(user => !user.infos.isVerifiedByAdmin)
@@ -50,7 +45,6 @@ function Admin() {
 
 
     /* Fonction d'affichage des utilisateurs */
-
     const renderUsers = () => {
         let searchbarFilteredUsers = searchbarFilterUsers();
         let searchbarCheckboxFilteredUsers = checkboxFilterUsers(searchbarFilteredUsers);
@@ -63,7 +57,6 @@ function Admin() {
 
 
     /* Affichage front */
-
     return (
         <div className="generalContainer">
             <h3>Utilisateurs inscrits</h3>

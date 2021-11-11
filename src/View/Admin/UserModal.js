@@ -32,7 +32,7 @@ function UserModal(props) {
             targetValue: value,
         }
         let change = await Service.editUserStatus(body);
-        console.log("VALIDATION", change);
+        console.log(change);
     };
 
     /* Affichage front */

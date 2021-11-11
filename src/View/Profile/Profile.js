@@ -30,7 +30,7 @@ function Profile(props) {
         <Informations {...props} />
         <Portefeuille {...props} />
         <Biens {...props} />
-        <Edition {...props} />
+        <Edition {...props} /> {/* ajouter un bien */}
       </div>
     );
   };
@@ -46,7 +46,7 @@ function Profile(props) {
       </div>
       <div className="card Profile">
         <span class="card-title">Page de profil</span>
-        <p>Statu de votre profil : {title}</p>
+        <p>Statut de votre profil : {title}</p>
         <p>{error}</p>
         {test === "Validé" ? (
           siValide()

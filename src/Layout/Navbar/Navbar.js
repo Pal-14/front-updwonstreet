@@ -2,6 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
+
 function Navbar(props) {
   /* Récupération du statut de connexion */
   let isLoggedIn = props.isLoggedIn;

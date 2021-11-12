@@ -21,8 +21,6 @@ function Informations(props) {
   console.log(props?.user);
   console.log(data?.documents?.documentsUrl)
 
-let BASEURL = "http://localhost:5000/" || "http://scalingomesballs.io/"
-let PATHOFPUBLICPICS = "get-public-pic" 
 
 
   return (
@@ -64,12 +62,7 @@ let PATHOFPUBLICPICS = "get-public-pic"
                 </li>
               </ul>
 
-              <img src={`http://localhost:5000/get-public-pic/${data.documents.documentsUrl[0]}`} />
-              <img src={`http://localhost:5000/get-public-pic/${data.documents.documentsUrl[1]}`} />
-              <img src={`http://localhost:5000/get-public-pic/${data.documents.documentsUrl[2]}`} />
-              <img src={`${BASEURL}/${PATHOFPUBLICPICS}/${data.documents.documentsUrl[0]}`} />
-              <img src={`http://localhost:5000/get-public-pic/${data.documents.documentsUrl[1]}`} />
-              <img src={`http://localhost:5000/get-public-pic/${data.documents.documentsUrl[2]}`} />
+              
             </div>
           </div>
         </Modal>

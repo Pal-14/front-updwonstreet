@@ -6,6 +6,7 @@ function Biens(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   
   let data = props?.user?.data?.data?.documents;
+  
   let Url = `http://localhost:5000/get-public-pic/`
   
   function openModal() {
@@ -31,17 +32,17 @@ function Biens(props) {
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>close</a>
           <div>
-              <img src={`${Url}${data?.documentsUrl[0]}`} />
+            {data? <img src={`${Url}${data?.documentsUrl[0]}`}  /> : <p>Pas d'image enregistrer</p>}
             <h2> Liste de Mes Biens : </h2>
             <div>
               <p>Nom du Bien:  </p>
-              <img src={`${Url}${data?.documentsUrl[1]}`} />
+              {data? <img src={`${Url}${data?.documentsUrl[1]}`}  /> : <p>Pas d'image enregistrer</p>}
             </div>
             <div>
               <p>Adresse: </p>
             </div>
             <div>
-            <img src={`${Url}${data?.documentsUrl[2]}`} />
+            {data? <img src={`${Url}${data?.documentsUrl[2]}`}  /> : <p>Pas d'image enregistrer</p>}
               <p>Ville: </p>
             </div>
             <div>

@@ -6,9 +6,9 @@ import axios from "axios";
 
 function Docs(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [selectedImage, setSelectedImage] = useState();
-  const [selectedImage1, setSelectedImage1] = useState();
-  const [selectedImage2, setSelectedImage2] = useState();
+  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedImage1, setSelectedImage1] = useState("");
+  const [selectedImage2, setSelectedImage2] = useState("");
   const [selectedFile, setSelectedFile] = useState([]); //<==========on supprime ?pas besoin?
   const [submitedDocumentType, setSubmitedDocumentType] = useState("CARTE ID");
   const [error, setError] = useState("");
@@ -125,6 +125,9 @@ function Docs(props) {
   );
 
   async function SubmitFileData  (e) {
+    console.log(selectedImage);
+    console.log(selectedImage1);
+    console.log(selectedImage2);
     if(selectedImage !== "" && selectedImage1 !== "" && selectedImage2 !== ""){
         
       let docsSubmitted = await Service.filesProof(formData);

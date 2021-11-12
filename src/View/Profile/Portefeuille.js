@@ -1,46 +1,50 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import {put, putCoins} from '../../services_rom';
 import Service from "../../services";
 import "./Profile.css";
 
+
+
 function Portefeuille(props) {
+  const defaultState = {
+    operationValue:"",
+  }
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [state, setState] = useState(defaultState);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [addCoin, setAddCoin] = useState(0);
-  const [removeCoin, setRemoveCoin] = useState(0);
-
+  const [target, setRemoveCoin] = useState(0);
+  
   //variable pour eviter de taper :props?.user?.data?.data à chaque fois que je veut récup une info de mes objets de la BDD
   let data = props?.user?.data?.data;
 
-  async function handleSubmit() {
-    let body;
-    if (addCoin <= 0 && removeCoin <= 0) {
-      setMessage("Veuillez entrer un champ");
+  function handleClickSubmit(event) {
+    event.preventDefault();
+    console.log("STATE ICI", state)
+    if (!state.operationValue){
+      alert("Merci de bien vouloir indiquer un nombre de Stable Coin à créditer");
+      return;
     }
-    if (addCoin < 0 || removeCoin < 0) {
-      setMessage("Veuillez entrer une bonne valeur");
-    }
-    if (addCoin < 0 && removeCoin < 0) {
-      setMessage("Veuillez ne remplir qu'un seul champ à la fois");
-    }
-    if (addCoin > 0 && removeCoin === 0) {
-      body = {
-        operationValue: addCoin,
-      };
-    }
-    if (removeCoin > 0 && addCoin === 0) {
-      let removeC = removeCoin * -1;
-      body = {
-        operationValue: removeC,
-      };
-    }
-    if (body?.operationValue !== undefined) {
-      let addOrRemoveCoin = await Service.editUserCoin(body);
-      console.log(addOrRemoveCoin);
-      setMessage(addOrRemoveCoin);
-    }
+    putCoins(state)
+      .then((response)=> {
+        if ("error" in response){
+          alert(response.error);
+          return;
+        }
+        alert("Normalement ça a bien marché");
+        setState(defaultState)
+      })
+      .catch((err) => console.log(err));
   }
+
+  function handleChange(event){
+    let key=event.target.name;
+    let value=event.target.value;
+    setState({...state, [key]:value,})
+  }
+
 
   function openModal() {
     setIsOpen(true);
@@ -65,38 +69,13 @@ function Portefeuille(props) {
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>close</a>
-
           <div>
-            <div>
-              <p>Stable coins Possédés: {data?.stableCoin}</p>
-            </div>
+            <div><p>Stable coins Possédés: {data?.stableCoin}</p></div>
 
-            <div>
-              <label for="">Achat de Stable Coin(s)</label>
-              <p>{message}</p>
-              <p>{error}</p>
-              <input
-                onchange={(e) => onchange(e, setAddCoin)}
-                name="StableCoins"
-                type="text"
-              ></input>
-            </div>
-            <br />
-
-            <div>
-              <label for="">Vente de Stable Coin(s)</label>
-              <input
-                onchange={(e) => onchange(e, setRemoveCoin)}
-                name="StableCoins"
-                type="text"
-              ></input>
-            </div>
-
-            <div>
-              <a onClick={handleSubmit} type="submit">
-                Acheter/Vendre
-              </a>
-            </div>
+            <form onChange={handleChange} onSubmit={handleClickSubmit}>
+              <input name="operationValue" type="number" value={state.operationValue}></input>
+              <button type="submit">ACHAT</button>
+            </form>
           </div>
         </Modal>
       </div>

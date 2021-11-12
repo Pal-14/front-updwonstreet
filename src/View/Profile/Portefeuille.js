@@ -27,14 +27,17 @@ function Portefeuille(props) {
       alert("Merci de bien vouloir indiquer un nombre de Stable Coin à créditer");
       return;
     }
-    putCoins(state)
+    Service.editUserCoin(state)
       .then((response)=> {
         if ("error" in response){
           alert(response.error);
           return;
         }
-        alert("Normalement ça a bien marché");
         setState(defaultState)
+        if (response.data.success) {
+          props.setIsLoggedIn(false);
+          closeModal();
+        }
       })
       .catch((err) => console.log(err));
   }

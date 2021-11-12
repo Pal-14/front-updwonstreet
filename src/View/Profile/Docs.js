@@ -9,26 +9,9 @@ function Docs(props) {
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedImage1, setSelectedImage1] = useState("");
   const [selectedImage2, setSelectedImage2] = useState("");
-  const [selectedFile, setSelectedFile] = useState([]); //<==========on supprime ?pas besoin?
-  const [submitedDocumentType, setSubmitedDocumentType] = useState("CARTE ID");
   const [error, setError] = useState("");
   const [message, setMessage] = useState ("")
 
-  const imageChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
-    }
-  };
-  const imageChange1 = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage1(e.target.files[0]);
-    }
-  };
-  const imageChange2 = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage2(e.target.files[0]);
-    }
-  };
   const removeSelectedImage = () => {
     setSelectedImage();
   };
@@ -50,10 +33,10 @@ function Docs(props) {
       console.log(e.target.name, "troisieme");
 
       if (
-        fileTypeCheck != "image/png" &&
-        "application/pdf" &&
-        "image/jpeg" &&
-        "image/jpg"
+        fileTypeCheck !== "image/png" &&
+        fileTypeCheck !== "application/pdf" &&
+        fileTypeCheck !== "image/jpeg" &&
+        fileTypeCheck !== "image/jpg"
       ) {
         console.log(e.target.files[0], "deuxieme");
         e.target.value = ""; //pour remmettre la  value a 0
@@ -77,10 +60,10 @@ function Docs(props) {
       console.log(e.target.name, "troisieme");
 
       if (
-        fileTypeCheck != "image/png" &&
-        "application/pdf" &&
-        "image/jpeg" &&
-        "image/jpg"
+        fileTypeCheck !== "image/png" &&
+        fileTypeCheck !== "application/pdf" &&
+        fileTypeCheck !== "image/jpeg" &&
+        fileTypeCheck !== "image/jpg"
       ) {
         console.log(e.target.files[0], "deuxieme");
         e.target.value = ""; //pour remmettre la  value a 0
@@ -105,10 +88,10 @@ function Docs(props) {
       console.log(e.target.name, "troisieme");
 
       if (
-        fileTypeCheck != "image/png" &&
-        "application/pdf" &&
-        "image/jpeg" &&
-        "image/jpg"
+        fileTypeCheck !== "image/png" &&
+        fileTypeCheck !== "application/pdf" &&
+        fileTypeCheck !== "image/jpeg" &&
+        fileTypeCheck !== "image/jpg"
       ) {
         console.log(e.target.files[0], "deuxieme");
         e.target.value = ""; //pour remmettre la  value a 0

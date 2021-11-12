@@ -2,11 +2,12 @@ import React, { useState, useCallback, useMemo } from "react";
 import Modal from "react-modal";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
+import PhotoBiens from "./PhotoBiens";
 
 function AjoutDeBiens(props) {
   const [name, setName] = useState("");
   const [adress, setAdress] = useState("");
-  const [postalCode, setPostalCode] = useState("")
+  const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [description, setDescription] = useState("");
 
@@ -18,8 +19,11 @@ function AjoutDeBiens(props) {
   const [garage, setGarage] = useState(false);
   const [parking, setParking] = useState(false);
   const [swimmingPool, setSwimmingpool] = useState(false);
-  
+
   const [selectedImage, setSelectedImage] = useState();
+  const [selectedImage1, setSelectedImage1] = useState("");
+  const [selectedImage2, setSelectedImage2] = useState("");
+  const [selectedImage3, setSelectedImage3] = useState("");
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -43,9 +47,9 @@ function AjoutDeBiens(props) {
 
       if (
         fileTypeCheck != "image/png" &&
-        "application/pdf" &&
-        "image/jpeg" &&
-        "image/jpg"
+        fileTypeCheck !== "application/pdf" &&
+        fileTypeCheck !== "image/jpeg" &&
+        fileTypeCheck !== "image/jpg"
       ) {
         console.log(e.target.files[0], "deuxieme");
         e.target.value = ""; //pour remmettre la  value a 0
@@ -59,10 +63,11 @@ function AjoutDeBiens(props) {
     [formData]
   );
 
-  async function SubmitFileData  (e) {
+  async function SubmitFileData(e) {
     let body = {
       name: name,
-      adress, adress,
+      adress,
+      adress,
       city: city,
       postalCode: postalCode,
       description: description,
@@ -74,30 +79,30 @@ function AjoutDeBiens(props) {
       garage: garage,
       parking: parking,
       swimmingPool: swimmingPool,
-    }
+    };
     let docsSubmitted = await Service.filesProof(formData);
-      console.log(docsSubmitted,'log de docsSubmitted');
-      setName("");
-      setAdress("");
-      setCity("");
-      setDescription("");
-      setType("");
-      setLivingArea("");
-      setRooms("");
-      setBedrooms("");
-      setTerraceSurface("");
-      setGarage("");
-      setParking("");
-      setSwimmingpool("");
-      setMessage(docsSubmitted.data.message);
-      if(docsSubmitted.data.success) {
-        e.target.value =("");
-        return closeModal()
-     
+    console.log(docsSubmitted, "log de docsSubmitted");
+    setName("");
+    setAdress("");
+    setCity("");
+    setDescription("");
+    setType("");
+    setLivingArea("");
+    setRooms("");
+    setBedrooms("");
+    setTerraceSurface("");
+    setGarage("");
+    setParking("");
+    setSwimmingpool("");
+    setMessage(docsSubmitted.data.message);
+    e.target.value = "";
+    if (docsSubmitted.data.success) {
+      e.target.value = "";
+      return closeModal();
+    } else {
+      setError(docsSubmitted.data.error);
     }
-    
-
-    }
+  }
 
   return (
     <div class="card cardProfile">
@@ -114,6 +119,7 @@ function AjoutDeBiens(props) {
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>close</a>
           <form
+            name="ajoutdebiens"
             encType="multipart/form-data"
             method="POST"
             action="/users/upload"
@@ -263,7 +269,7 @@ function AjoutDeBiens(props) {
                 </label>
                 <label>
                   <input
-                   /*  onChange={(e) => onChange(e)} */
+                    /*  onChange={(e) => onChange(e)} */
                     class="with-gap"
                     name="group1"
                     type="radio"
@@ -273,56 +279,8 @@ function AjoutDeBiens(props) {
               </label>
               <br />
               <br />
-              <div>
-                <h5>Photos de bien à ajouter au site</h5>
-                <p>Photo Principale</p>
-                <input
-                onChange={onFileChange}
-                  type="file"
-                  name="photoPrincipale"
-                />
-
-                <br />
-              </div>
-              <br />           
-              <div>
-               
-                <p>Photo 1</p>
-                <input
-                onChange={onFileChange}
-                  type="file"
-                  name="photo1"
-                />
-
-                <br />
-              </div>
-              <br />       
-              <div>
-             
-                <p>Photo 2</p>
-                <input
-                onChange={onFileChange}
-                  type="file"
-                  name="photo2"
-                />
-
-                <br />
-              </div>
-              <br />       
-              <div>
-                
-                <p>Photo 3</p>
-                <input
-                onChange={onFileChange}
-                  type="file"
-                  name="photo3"
-                />
-
-                <br />
-              </div>
-              <br />          
+              <PhotoBiens />
               <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
-             
             </div>
           </form>
         </Modal>

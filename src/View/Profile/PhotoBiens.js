@@ -1,13 +1,16 @@
-import React, { useCallback, useState, useMemo } from "react";
+import React, { useCallback, useState, useMemo, useEffect } from "react";
 import Modal from "react-modal";
 import Service from "../../services";
 import axios from "axios";
 
-function Docs(props) {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+function PhotoBiens(props) {
+  const [modalIsOpen, setIsOpen] = React.useState(props.openPhoto);
+
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedImage1, setSelectedImage1] = useState("");
   const [selectedImage2, setSelectedImage2] = useState("");
+  const [selectedImage3, setSelectedImage3] = useState("");
+
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
@@ -20,21 +23,31 @@ function Docs(props) {
   const removeSelectedImage2 = () => {
     setSelectedImage2();
   };
+  const removeSelectedImage3 = () => {
+    setSelectedImage3();
+  };
 
+  useEffect(() => {
+    setIsOpen(props.ouverture)
+  }, [props.ouverture])
+
+console.log('photo bien se charge');
   let formData = useMemo(() => new FormData(), []);
 
   const onFileChange = useCallback(
     (e) => {
-     
       let fileTypeCheck = e.target.files[0].type;
-      console.log(e.target.name, "input value");
+      console.log(e.target.files[0].type, "premier");
+      console.log(e.target.files[0].name, "Deuxième");
+      console.log(e.target.name, "troisieme");
 
       if (
-        fileTypeCheck !== "image/png" &&
+        fileTypeCheck != "image/png" &&
         fileTypeCheck !== "application/pdf" &&
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
       ) {
+        console.log(e.target.files[0], "deuxieme");
         e.target.value = ""; //pour remmettre la  value a 0
         alert(
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
@@ -51,14 +64,17 @@ function Docs(props) {
     (e) => {
       let fileChange = e.target.files[0];
       let fileTypeCheck = e.target.files[0].type;
-      console.log(e.target.name, "input value");
+      console.log(e.target.files[0].type, "premier");
+      console.log(e.target.files[0].name, "Deuxième");
+      console.log(e.target.name, "troisieme");
 
       if (
-        fileTypeCheck !== "image/png" &&
+        fileTypeCheck != "image/png" &&
         fileTypeCheck !== "application/pdf" &&
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
       ) {
+        console.log(e.target.files[0], "deuxieme");
         e.target.value = ""; //pour remmettre la  value a 0
         alert(
           /*  */
@@ -76,14 +92,17 @@ function Docs(props) {
     (e) => {
       let fileChange = e.target.files[0];
       let fileTypeCheck = e.target.files[0].type;
-      console.log(e.target.name, "input value");
+      console.log(e.target.files[0].type, "premier");
+      console.log(e.target.files[0].name, "Deuxième");
+      console.log(e.target.name, "troisieme");
 
       if (
-        fileTypeCheck !== "image/png" &&
+        fileTypeCheck != "image/png" &&
         fileTypeCheck !== "application/pdf" &&
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
       ) {
+        console.log(e.target.files[0], "deuxieme");
         e.target.value = ""; //pour remmettre la  value a 0
         alert(
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
@@ -91,7 +110,35 @@ function Docs(props) {
       } else {
         formData.append(e.target.name, e.target.files[0]);
       }
+
       setSelectedImage2(e.target.files[0]);
+    },
+    [formData]
+  );
+  const onFileChange3 = useCallback(
+    (e) => {
+      let fileChange = e.target.files[0];
+      let fileTypeCheck = e.target.files[0].type;
+      console.log(e.target.files[0].type, "premier");
+      console.log(e.target.files[0].name, "Deuxième");
+      console.log(e.target.name, "troisieme");
+
+      if (
+        fileTypeCheck !== "image/png" &&
+        fileTypeCheck !== "application/pdf" &&
+        fileTypeCheck !== "image/jpeg" &&
+        fileTypeCheck !== "image/jpg"
+      ) {
+        console.log(e.target.files[0], "deuxieme");
+        e.target.value = ""; //pour remmettre la  value a 0
+        alert(
+          "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
+        );
+      } else {
+        formData.append(e.target.name, e.target.files[0]);
+      }
+
+      setSelectedImage3(e.target.files[0]);
     },
     [formData]
   );
@@ -103,7 +150,8 @@ function Docs(props) {
     if (
       selectedImage !== "" &&
       selectedImage1 !== "" &&
-      selectedImage2 !== ""
+      selectedImage2 !== "" &&
+      selectedImage3 !== ""
     ) {
       let docsSubmitted = await Service.filesProof(formData);
       console.log(docsSubmitted, "log de docsSubmitted");
@@ -113,12 +161,14 @@ function Docs(props) {
         setSelectedImage("");
         setSelectedImage1("");
         setSelectedImage2("");
-        return closeModal();
+        setSelectedImage3("");
+        return props.setOpenPhoto(false)
       } else {
         setError(docsSubmitted.data.error);
       }
     }
   }
+
   function openModal() {
     setIsOpen(true);
   }
@@ -130,11 +180,9 @@ function Docs(props) {
   return (
     <>
       <div>
-        <a id="rouge" onClick={openModal}>
-          Documents Justificatifs à fournir
-        </a>
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a onClick={closeModal}>close</a>
+       
+        <Modal isOpen={props.openPhoto} onRequestClose={closeModal}>
+          <a onClick={() =>props.setOpenPhoto(false)}>close</a>
           <form
             encType="multipart/form-data"
             method="POST"
@@ -145,8 +193,12 @@ function Docs(props) {
                 {message}
                 {error}
               </h3>
-              <h3>Carte d'identité:</h3>
-              <input type="file" name="cni" onChange={onFileChange} />
+              <h3>Photo principale :</h3>
+              <input
+                type="file"
+                name="photoPricipale"
+                onChange={onFileChange}
+              />
 
               <br />
             </div>
@@ -165,8 +217,8 @@ function Docs(props) {
             )}
 
             <div style={styles.container}>
-              <h3>Justificatif de domicile de(-de 6 mois)</h3>
-              <input type="file" name="justificatif" onChange={onFileChange1} />
+              <h3>Photo 1 :</h3>
+              <input type="file" name="photo1" onChange={onFileChange1} />
 
               <br />
             </div>
@@ -185,8 +237,8 @@ function Docs(props) {
             )}
 
             <div style={styles.container}>
-              <h3>Relevé d'identité Bancaire</h3>
-              <input type="file" name="rib" onChange={onFileChange2} />
+              <h3>Photo 2 : </h3>
+              <input type="file" name="photo2" onChange={onFileChange2} />
 
               <br />
             </div>
@@ -204,6 +256,26 @@ function Docs(props) {
               </div>
             )}
 
+            <div style={styles.container}>
+              <h3>Photo 3 : </h3>
+              <input type="file" name="photo3" onChange={onFileChange3} />
+
+              <br />
+            </div>
+            {selectedImage3 && (
+              <div style={styles.preview}>
+                <h3></h3>
+                <img
+                  src={URL.createObjectURL(selectedImage3)}
+                  style={styles.image}
+                  alt="Thumb"
+                />
+                <button onClick={removeSelectedImage3} style={styles.delete}>
+                  Réduire l'image
+                </button>
+              </div>
+            )}
+
             <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
           </form>
         </Modal>
@@ -212,7 +284,7 @@ function Docs(props) {
   );
 }
 
-export default Docs;
+export default PhotoBiens;
 
 const styles = {
   container: {

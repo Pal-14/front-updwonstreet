@@ -6,18 +6,14 @@ import Finalisation from "./Finalisation";
 import { useState, useEffect } from "react";
 import Edition from "./Edition";
 import Docs from "./Docs";
-import AjoutDeBiens from "./AjoutDeBiens";
-import PhotoBiens from "./PhotoBiens";
 
 function Profile(props) {
   const [title, setTitle] = useState("Validé");
   const [error, setError] = useState("");
 
-  const [openPhoto, setOpenPhoto] = useState(false)
+  const [openPhoto, setOpenPhoto] = useState(false);
 
-  useEffect(() => {
-    
-  }, [openPhoto])
+  useEffect(() => {}, [openPhoto]);
 
   function Isaccepted() {
     if (title === "Validé") {
@@ -38,9 +34,7 @@ function Profile(props) {
         <Informations {...props} />
         <Portefeuille {...props} />
         <Biens {...props} />
-        <Edition {...props} />  
-        <AjoutDeBiens {...props} setOpenPhoto={setOpenPhoto} />
-        <PhotoBiens {...props} openPhoto={openPhoto} setOpenPhoto={setOpenPhoto} />
+        <Edition {...props} />
       </div>
     );
   };
@@ -62,7 +56,7 @@ function Profile(props) {
           siValide()
         ) : (
           <div class="card-action">
-            <Docs {...props}/> <Finalisation {...props}/> 
+            <Docs {...props} /> <Finalisation {...props} />
           </div>
         )}
       </div>

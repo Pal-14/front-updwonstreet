@@ -4,8 +4,6 @@ import Service from "../../services";
 import axios from "axios";
 
 function PhotoBiens(props) {
-  const [modalIsOpen, setIsOpen] = React.useState(props.openPhoto);
-
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedImage1, setSelectedImage1] = useState("");
   const [selectedImage2, setSelectedImage2] = useState("");
@@ -27,11 +25,7 @@ function PhotoBiens(props) {
     setSelectedImage3();
   };
 
-  useEffect(() => {
-    setIsOpen(props.ouverture)
-  }, [props.ouverture])
-
-console.log('photo bien se charge');
+  console.log("photo bien se charge");
   let formData = useMemo(() => new FormData(), []);
 
   const onFileChange = useCallback(
@@ -162,27 +156,18 @@ console.log('photo bien se charge');
         setSelectedImage1("");
         setSelectedImage2("");
         setSelectedImage3("");
-        return props.setOpenPhoto(false)
+        return props.setOpenPhoto(false);
       } else {
         setError(docsSubmitted.data.error);
       }
     }
   }
 
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   return (
     <>
       <div>
-       
-        <Modal isOpen={props.openPhoto} onRequestClose={closeModal}>
-          <a onClick={() =>props.setOpenPhoto(false)}>close</a>
+        <Modal isOpen={props.openPhoto}>
+          <a onClick={() => props.setOpenPhoto(false)}>close</a>
           <form
             encType="multipart/form-data"
             method="POST"

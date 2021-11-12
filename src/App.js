@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Log from "./View/Log/Log";
 import Profile from "./View/Profile/Profile";
 import Catalog from "./View/Catalog/Catalog";
-import Admin from "./View/Admin/Admin";
+import HomeAdmin from "./View/Admin/HomeAdmin";
 import Service from "./services";
 import Home from "./View/Home";
 
@@ -60,7 +60,7 @@ function App() {
               <Catalog />
             </Route>
             <Route path="/admin">
-              <Admin />
+              <HomeAdmin />
             </Route>
             <Route path="/">
               <Home/>

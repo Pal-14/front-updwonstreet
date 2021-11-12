@@ -27,13 +27,15 @@ function UserModal(props) {
     /* Modification de compte */
     const editStatus = async (user, key, value) => {
         let body = {
-            targetUserId:user._id,
-            keyOfPropertyToChange:key,
+            targetUserId: user._id,
+            keyOfPropertyToChange: key,
             targetValue: value,
         }
+        console.log("BODY:", body);
         let change = await Service.editUserStatus(body);
-        console.log("VALIDATION", change);
+        console.log("Change:", change);
     };
+
 
     /* Affichage front */
     return (
@@ -43,7 +45,7 @@ function UserModal(props) {
                 <p>Adresse e-mail: {user.email}</p>
                 <a onClick={openModal}>Voir profil</a>
             </div>
-            <Modal isOpen={modalIsOpen} style={{overlay:{backgroundColor: 'gray'}}}>
+            <Modal isOpen={modalIsOpen} style={{ overlay: { backgroundColor: 'gray' } }}>
                 <div className="closeBtn">
                     <a onClick={closeModal}>&times;</a>
                 </div>
@@ -75,8 +77,11 @@ function UserModal(props) {
                         <p>Justificatifs de domicile</p>
                     </div>
                 </div>
-                {!userInfo?.isVerifiedByAdmin ? <a onClick={editStatus(user, "infos.isVerifiedByAdmin", true)}>Valider le compte</a> : <></>}
-                {!userInfo?.isAdmin ? <a onClick={editStatus(user, "infos.isAdmin", true)}>Accorder le statut d'administrateur</a> : <a onClick={editStatus(user, "infos.isAdmin", false)}>Retirer le statut d'administrateur</a>}
+                <div className="statusBtns">
+                    {!userInfo?.isVerifiedByAdmin ? <a onClick={() => editStatus(user, "infos.isVerifiedByAdmin", true)}>Valider le compte</a> : <></>}
+                    <br />
+                    {!userInfo?.isAdmin ? <a onClick={() => editStatus(user, "infos.isAdmin", true)}>Accorder le statut d'administrateur</a> : <a onClick={() => editStatus(user, "infos.isAdmin", false)}>Retirer le statut d'administrateur</a>}
+                </div>
             </Modal>
         </li>
     );

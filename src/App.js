@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="" >
       <Router>
-        <Navbar isLoggedIn={isLoggedIn} />
+        <Navbar user={user} isLoggedIn={isLoggedIn} />
         <div className="Contain">
           <Switch>
             <Route path="/log">

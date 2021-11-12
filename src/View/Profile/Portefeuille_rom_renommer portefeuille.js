@@ -9,7 +9,6 @@ import "./Profile.css";
 function Portefeuille(props) {
   const defaultState = {
     operationValue:"",
-    targetUserId:"ALors"
   }
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [state, setState] = useState(defaultState);

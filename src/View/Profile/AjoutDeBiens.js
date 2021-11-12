@@ -1,20 +1,24 @@
 import React, { useState, useCallback, useMemo } from "react";
 import Modal from "react-modal";
+import { onChange } from "../../Fonctions/Formulaire";
+import Service from "../../services";
 
 function AjoutDeBiens(props) {
-  const [name, setName]= useState("");
-  const [adress, setAdress]= useState("");
-  const [city, setCity]= useState("");
-  const [description,setDescription]= useState("");
+  const [name, setName] = useState("");
+  const [adress, setAdress] = useState("");
+  const [postalCode, setPostalCode] = useState("")
+  const [city, setCity] = useState("");
+  const [description, setDescription] = useState("");
+
+  const [type, setType] = useState("");
+  const [livingArea, setLivingArea] = useState("");
+  const [rooms, setRooms] = useState("");
+  const [bedrooms, setBedrooms] = useState("");
+  const [terraceSurface, setTerraceSurface] = useState("");
+  const [garage, setGarage] = useState(false);
+  const [parking, setParking] = useState(false);
+  const [swimmingPool, setSwimmingpool] = useState(false);
   
-  const [type, setType]= useState("");
-  const [livingArea, setLivingArea]= useState("");
-  const [rooms, setRooms]= useState("");
-  const [bedrooms, setBedrooms]= useState("");
-  const [terraceSurface,setTerraceSurface]= useState("");
-  const [garage, setGarage]= useState(false);
-  const [parking, setParking]= useState(false);
-  const [swimmingPool,setSwimmingpool]= useState(false);
   const [selectedImage, setSelectedImage] = useState();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [message, setMessage] = useState("");
@@ -32,7 +36,6 @@ function AjoutDeBiens(props) {
 
   const onFileChange = useCallback(
     (e) => {
-      let fileChange = e.target.files[0];
       let fileTypeCheck = e.target.files[0].type;
       console.log(e.target.files[0].type, "premier");
       console.log(e.target.files[0].name, "Deuxième");
@@ -52,11 +55,49 @@ function AjoutDeBiens(props) {
       } else {
         formData.append(e.target.name, e.target.files[0]);
       }
-
-      setSelectedImage(e.target.files[0]);
     },
     [formData]
   );
+
+  async function SubmitFileData  (e) {
+    let body = {
+      name: name,
+      adress, adress,
+      city: city,
+      postalCode: postalCode,
+      description: description,
+      type: type,
+      livingArea: livingArea,
+      rooms: rooms,
+      bedrooms: bedrooms,
+      terraceSurface: terraceSurface,
+      garage: garage,
+      parking: parking,
+      swimmingPool: swimmingPool,
+    }
+    let docsSubmitted = await Service.filesProof(formData);
+      console.log(docsSubmitted,'log de docsSubmitted');
+      setName("");
+      setAdress("");
+      setCity("");
+      setDescription("");
+      setType("");
+      setLivingArea("");
+      setRooms("");
+      setBedrooms("");
+      setTerraceSurface("");
+      setGarage("");
+      setParking("");
+      setSwimmingpool("");
+      setMessage(docsSubmitted.data.message);
+      if(docsSubmitted.data.success) {
+        e.target.value =("");
+        return closeModal()
+     
+    }
+    
+
+    }
 
   return (
     <div class="card cardProfile">
@@ -80,10 +121,10 @@ function AjoutDeBiens(props) {
             <div>
               <p>{message}</p>
               <p>{/* {error} */}</p>
-              <label htmlFor="telephone">
+              <label htmlFor="adress">
                 Adresse :
                 <input
-                  /* onChange={(e) => onChange(e, )} */
+                  onChange={(e) => onChange(e, setAdress)}
                   type="text"
                   placeholder="Adresse du bien"
                   name="adress"
@@ -94,7 +135,7 @@ function AjoutDeBiens(props) {
               <label htmlFor="CodePostal">
                 Code Postal :
                 <input
-                  /*       onChange={(e) => onChange(e, )} */
+                  onChange={(e) => onChange(e, setPostalCode)}
                   type="text"
                   placeholder="Code Postal"
                 ></input>
@@ -103,7 +144,7 @@ function AjoutDeBiens(props) {
               <label htmlFor="ville">
                 Ville :
                 <input
-                  /*  onChange={(e) => onChange(e, )} */
+                  onChange={(e) => onChange(e, setCity)}
                   type="text"
                   placeholder="Ville du bien"
                   name="ville"
@@ -113,7 +154,7 @@ function AjoutDeBiens(props) {
               <label htmlFor="description">
                 Description :
                 <textarea
-                  /*    onChange={(e) => onChange(e, )} */
+                  onChange={(e) => onChange(e, setDescription)}
                   type="text"
                   placeholder="Description du bien"
                 ></textarea>
@@ -122,7 +163,7 @@ function AjoutDeBiens(props) {
               <label htmlFor="type">
                 Type de bien :
                 <input
-                  /*     onChange={(e) => onChange(e, )} */
+                  onChange={(e) => onChange(e, setType)}
                   type="text"
                   placeholder="Type de bien ex:(Appartement, Maison, Villa,etc...)"
                 ></input>
@@ -131,7 +172,7 @@ function AjoutDeBiens(props) {
               <label htmlFor="surface">
                 Surface Habitable :
                 <input
-                  /*      onChange={(e) => onChange(e, )} */
+                  onChange={(e) => onChange(e, setLivingArea)}
                   type="text"
                   placeholder="Superficie en M²"
                 ></input>
@@ -140,7 +181,7 @@ function AjoutDeBiens(props) {
               <label htmlFor="pieces">
                 Nombre de Pièces :
                 <input
-                  /*      onChange={(e) => onChange(e, )} */
+                  onChange={(e) => onChange(e, setRooms)}
                   type="text"
                   placeholder="4"
                 ></input>
@@ -149,7 +190,7 @@ function AjoutDeBiens(props) {
               <label htmlFor="chambres">
                 Nombre de Chambres :
                 <input
-                  /*      onChange={(e) => onChange(e, )} */
+                  onChange={(e) => onChange(e, setBedrooms)}
                   type="text"
                   placeholder="3"
                 ></input>
@@ -158,7 +199,7 @@ function AjoutDeBiens(props) {
               <label htmlFor="surfaceterrain">
                 Superficie du Terrain :
                 <input
-                  /*      onChange={(e) => onChange(e, )} */
+                  onChange={(e) => onChange(e, setTerraceSurface)}
                   type="text"
                   placeholder="Superficie du terrain en M²"
                 ></input>
@@ -168,7 +209,8 @@ function AjoutDeBiens(props) {
                 Garage :
                 <label>
                   <input
-                    /*      onChange={(e) => onChange(e, )} */ class="with-gap"
+                    onChange={(e) => onChange(e, setGarage)}
+                    class="with-gap"
                     name="group1"
                     type="radio"
                   />
@@ -176,7 +218,8 @@ function AjoutDeBiens(props) {
                 </label>
                 <label>
                   <input
-                    /*      onChange={(e) => onChange(e, )} */ class="with-gap"
+                    /* onChange={(e) => onChange(e)} */
+                    class="with-gap"
                     name="group1"
                     type="radio"
                   />
@@ -189,7 +232,8 @@ function AjoutDeBiens(props) {
                 Parking :
                 <label>
                   <input
-                    /*      onChange={(e) => onChange(e, )} */ class="with-gap"
+                    onChange={(e) => onChange(e, setParking)}
+                    class="with-gap"
                     name="group1"
                     type="radio"
                   />
@@ -197,7 +241,8 @@ function AjoutDeBiens(props) {
                 </label>
                 <label>
                   <input
-                    /*      onChange={(e) => onChange(e, )} */ class="with-gap"
+                    /* onChange={(e) => onChange(e ,)} */
+                    class="with-gap"
                     name="group1"
                     type="radio"
                   />
@@ -209,7 +254,8 @@ function AjoutDeBiens(props) {
                 Piscine :
                 <label>
                   <input
-                    /*      onChange={(e) => onChange(e, )} */ class="with-gap"
+                    onChange={(e) => onChange(e, setSwimmingpool)}
+                    class="with-gap"
                     name="group1"
                     type="radio"
                   />
@@ -217,7 +263,8 @@ function AjoutDeBiens(props) {
                 </label>
                 <label>
                   <input
-                    /*      onChange={(e) => onChange(e, )} */ class="with-gap"
+                   /*  onChange={(e) => onChange(e)} */
+                    class="with-gap"
                     name="group1"
                     type="radio"
                   />
@@ -226,11 +273,56 @@ function AjoutDeBiens(props) {
               </label>
               <br />
               <br />
-              <input
-                onRequestClose={closeModal}
-                /*  onClick={handleSubmit} */
-                type="submit"
-              ></input>
+              <div>
+                <h5>Photos de bien à ajouter au site</h5>
+                <p>Photo Principale</p>
+                <input
+                onChange={onFileChange}
+                  type="file"
+                  name="photoPrincipale"
+                />
+
+                <br />
+              </div>
+              <br />           
+              <div>
+               
+                <p>Photo 1</p>
+                <input
+                onChange={onFileChange}
+                  type="file"
+                  name="photo1"
+                />
+
+                <br />
+              </div>
+              <br />       
+              <div>
+             
+                <p>Photo 2</p>
+                <input
+                onChange={onFileChange}
+                  type="file"
+                  name="photo2"
+                />
+
+                <br />
+              </div>
+              <br />       
+              <div>
+                
+                <p>Photo 3</p>
+                <input
+                onChange={onFileChange}
+                  type="file"
+                  name="photo3"
+                />
+
+                <br />
+              </div>
+              <br />          
+              <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
+             
             </div>
           </form>
         </Modal>

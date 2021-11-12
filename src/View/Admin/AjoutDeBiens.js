@@ -243,7 +243,7 @@ function AjoutDeBiens(props) {
                   <input
                     onChange={(e) => onChange(e, setParking)}
                     class="with-gap"
-                    name="group1"
+                    name="group2"
                     type="radio"
                   />
                   <span>Oui</span>
@@ -252,7 +252,7 @@ function AjoutDeBiens(props) {
                   <input
                     /* onChange={(e) => onChange(e ,)} */
                     class="with-gap"
-                    name="group1"
+                    name="group2"
                     type="radio"
                   />
                   <span>Non</span>
@@ -265,7 +265,7 @@ function AjoutDeBiens(props) {
                   <input
                     onChange={(e) => onChange(e, setSwimmingpool)}
                     class="with-gap"
-                    name="group1"
+                    name="group3"
                     type="radio"
                   />
                   <span>Oui</span>
@@ -274,7 +274,7 @@ function AjoutDeBiens(props) {
                   <input
                     /*  onChange={(e) => onChange(e)} */
                     class="with-gap"
-                    name="group1"
+                    name="group3"
                     type="radio"
                   />
                   <span>Non</span>

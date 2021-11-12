@@ -33,7 +33,7 @@ function Biens(props) {
           <a onClick={closeModal}>close</a>
           <div>
             {data? <img src={`${Url}${data?.documentsUrl[0]}`}  /> : <p>Pas d'image enregistrer</p>}
-            <h2> Liste de Mes Biens : </h2>
+            <h4> Liste de Mes Biens : </h4>
             <div>
               <p>Nom du Bien:  </p>
               {data? <img src={`${Url}${data?.documentsUrl[1]}`}  /> : <p>Pas d'image enregistrer</p>}

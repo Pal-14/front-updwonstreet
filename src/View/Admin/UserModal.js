@@ -7,6 +7,12 @@ import Service from '../../services';
 
 function UserModal(props) {
 
+    let Url = `http://localhost:5000/get-public-pic/`
+
+    let image = props.user.documents.documentsUrl
+    let taille = image.length
+
+
     /* Variables d'état */
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -49,7 +55,7 @@ function UserModal(props) {
                     <a onClick={closeModal}>&times;</a>
                 </div>
                 <div className="personalInfo">
-                    <h2>Informations personnelles</h2>
+                    <h4>Informations personnelles</h4>
                     <div><p>Prénom: {user?.firstName}</p></div>
                     <div><p>Nom de famille: {user?.lastName}</p></div>
                     <div><p>Date de naissance: {userInfo?.dateOfBirth}</p></div>
@@ -60,20 +66,23 @@ function UserModal(props) {
                     <div><p>Téléphone: {userInfo?.phoneNumber}</p></div>
                 </div>
                 <div className="wallet">
-                    <h2>Informations du portefeuille</h2>
+                    <h4>Informations du portefeuille</h4>
                     <p>Stable coins possédés: {user?.stableCoin}</p>
                     <p>Valeur totale des stable coins:</p>
                 </div>
                 <div className="idDocuments">
-                    <h2>Mes pièces justificatives</h2>
+                    <h4>Mes pièces justificatives</h4>
                     <div>
                         <p>Carte d'identité</p>
+                        <img src={`${Url}${image[taille - 3]}`} />
                     </div>
                     <div>
                         <p>RIB</p>
+                        <img src={`${Url}${image[taille - 2]}`} />
                     </div>
                     <div>
                         <p>Justificatifs de domicile</p>
+                        <img src={`${Url}${image[taille - 1]}`} />
                     </div>
                 </div>
                 <div className="statusBtns">

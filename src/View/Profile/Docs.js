@@ -27,9 +27,7 @@ function Docs(props) {
     (e) => {
      
       let fileTypeCheck = e.target.files[0].type;
-      console.log(e.target.files[0].type, "premier");
-      console.log(e.target.files[0].name, "Deuxième");
-      console.log(e.target.name, "troisieme");
+      console.log(e.target.name, "input value");
 
       if (
         fileTypeCheck !== "image/png" &&
@@ -37,7 +35,6 @@ function Docs(props) {
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
       ) {
-        console.log(e.target.files[0], "deuxieme");
         e.target.value = ""; //pour remmettre la  value a 0
         alert(
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
@@ -54,9 +51,7 @@ function Docs(props) {
     (e) => {
       let fileChange = e.target.files[0];
       let fileTypeCheck = e.target.files[0].type;
-      console.log(e.target.files[0].type, "premier");
-      console.log(e.target.files[0].name, "Deuxième");
-      console.log(e.target.name, "troisieme");
+      console.log(e.target.name, "input value");
 
       if (
         fileTypeCheck !== "image/png" &&
@@ -64,7 +59,6 @@ function Docs(props) {
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
       ) {
-        console.log(e.target.files[0], "deuxieme");
         e.target.value = ""; //pour remmettre la  value a 0
         alert(
           /*  */
@@ -82,9 +76,7 @@ function Docs(props) {
     (e) => {
       let fileChange = e.target.files[0];
       let fileTypeCheck = e.target.files[0].type;
-      console.log(e.target.files[0].type, "premier");
-      console.log(e.target.files[0].name, "Deuxième");
-      console.log(e.target.name, "troisieme");
+      console.log(e.target.name, "input value");
 
       if (
         fileTypeCheck !== "image/png" &&
@@ -92,7 +84,6 @@ function Docs(props) {
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
       ) {
-        console.log(e.target.files[0], "deuxieme");
         e.target.value = ""; //pour remmettre la  value a 0
         alert(
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
@@ -100,7 +91,6 @@ function Docs(props) {
       } else {
         formData.append(e.target.name, e.target.files[0]);
       }
-
       setSelectedImage2(e.target.files[0]);
     },
     [formData]

@@ -1,10 +1,10 @@
-import React, { useCallback, useState, useMemo } from "react";
+import React, { useCallback, useState, useMemo, useEffect } from "react";
 import Modal from "react-modal";
 import Service from "../../services";
 import axios from "axios";
 
 function PhotoBiens(props) {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState(props.openPhoto);
 
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedImage1, setSelectedImage1] = useState("");
@@ -27,6 +27,11 @@ function PhotoBiens(props) {
     setSelectedImage3();
   };
 
+  useEffect(() => {
+    setIsOpen(props.ouverture)
+  }, [props.ouverture])
+
+console.log('photo bien se charge');
   let formData = useMemo(() => new FormData(), []);
 
   const onFileChange = useCallback(
@@ -157,12 +162,13 @@ function PhotoBiens(props) {
         setSelectedImage1("");
         setSelectedImage2("");
         setSelectedImage3("");
-        return closeModal();
+        return props.setOpenPhoto(false)
       } else {
         setError(docsSubmitted.data.error);
       }
     }
   }
+
   function openModal() {
     setIsOpen(true);
   }
@@ -174,11 +180,9 @@ function PhotoBiens(props) {
   return (
     <>
       <div>
-        <a id="rouge" onClick={openModal}>
-          Photos de bien a Ajouter au site
-        </a>
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a onClick={closeModal}>close</a>
+       
+        <Modal isOpen={props.openPhoto} onRequestClose={closeModal}>
+          <a onClick={() =>props.setOpenPhoto(false)}>close</a>
           <form
             encType="multipart/form-data"
             method="POST"
@@ -189,8 +193,12 @@ function PhotoBiens(props) {
                 {message}
                 {error}
               </h3>
-              <h3>Carte d'identité:</h3>
-              <input type="file" name="cni" onChange={onFileChange} />
+              <h3>Photo principale :</h3>
+              <input
+                type="file"
+                name="photoPricipale"
+                onChange={onFileChange}
+              />
 
               <br />
             </div>
@@ -209,8 +217,8 @@ function PhotoBiens(props) {
             )}
 
             <div style={styles.container}>
-              <h3>Justificatif de domicile de(-de 6 mois)</h3>
-              <input type="file" name="justificatif" onChange={onFileChange1} />
+              <h3>Photo 1 :</h3>
+              <input type="file" name="photo1" onChange={onFileChange1} />
 
               <br />
             </div>
@@ -229,8 +237,8 @@ function PhotoBiens(props) {
             )}
 
             <div style={styles.container}>
-              <h3>Relevé d'identité Bancaire</h3>
-              <input type="file" name="rib" onChange={onFileChange2} />
+              <h3>Photo 2 : </h3>
+              <input type="file" name="photo2" onChange={onFileChange2} />
 
               <br />
             </div>
@@ -249,8 +257,8 @@ function PhotoBiens(props) {
             )}
 
             <div style={styles.container}>
-              <h3>Relevé d'identité Bancaire</h3>
-              <input type="file" name="rib" onChange={onFileChange3} />
+              <h3>Photo 3 : </h3>
+              <input type="file" name="photo3" onChange={onFileChange3} />
 
               <br />
             </div>

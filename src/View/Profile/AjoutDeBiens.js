@@ -34,6 +34,8 @@ function AjoutDeBiens(props) {
 
   function closeModal() {
     setIsOpen(false);
+
+   
   }
 
   let formData = useMemo(() => new FormData(), []);
@@ -82,6 +84,8 @@ function AjoutDeBiens(props) {
     };
     let docsSubmitted = await Service.filesProof(formData);
     console.log(docsSubmitted, "log de docsSubmitted");
+  
+    if (docsSubmitted.status === 400) {
     setName("");
     setAdress("");
     setCity("");
@@ -96,9 +100,8 @@ function AjoutDeBiens(props) {
     setSwimmingpool("");
     setMessage(docsSubmitted.data.message);
     e.target.value = "";
-    if (docsSubmitted.data.success) {
-      e.target.value = "";
-      return closeModal();
+    props.setOpenPhoto(true)
+    return closeModal();
     } else {
       setError(docsSubmitted.data.error);
     }
@@ -279,7 +282,7 @@ function AjoutDeBiens(props) {
               </label>
               <br />
               <br />
-              <PhotoBiens />
+              {/* <PhotoBiens /> */}
               <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
             </div>
           </form>

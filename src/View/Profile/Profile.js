@@ -3,14 +3,21 @@ import Informations from "./Informations";
 import Portefeuille from "./Portefeuille";
 import "./Profile.css";
 import Finalisation from "./Finalisation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Edition from "./Edition";
 import Docs from "./Docs";
 import AjoutDeBiens from "./AjoutDeBiens";
+import PhotoBiens from "./PhotoBiens";
 
 function Profile(props) {
   const [title, setTitle] = useState("Validé");
   const [error, setError] = useState("");
+
+  const [openPhoto, setOpenPhoto] = useState(false)
+
+  useEffect(() => {
+    
+  }, [openPhoto])
 
   function Isaccepted() {
     if (title === "Validé") {
@@ -32,7 +39,8 @@ function Profile(props) {
         <Portefeuille {...props} />
         <Biens {...props} />
         <Edition {...props} />  
-        <AjoutDeBiens {...props}/>
+        <AjoutDeBiens {...props} setOpenPhoto={setOpenPhoto} />
+        <PhotoBiens {...props} openPhoto={openPhoto} setOpenPhoto={setOpenPhoto} />
       </div>
     );
   };

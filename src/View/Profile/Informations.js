@@ -19,6 +19,12 @@ function Informations(props) {
     setIsOpen(false);
   }
   console.log(props?.user);
+  console.log(data?.documents?.documentsUrl)
+
+let BASEURL = "http://localhost:5000/" || "http://scalingomesballs.io/"
+let PATHOFPUBLICPICS = "get-public-pic" 
+
+
   return (
     <div class="card cardProfile">
       <div class="card-content">
@@ -57,6 +63,13 @@ function Informations(props) {
                   Code Postal: {info?.postalCode}
                 </li>
               </ul>
+
+              <img src={`http://localhost:5000/get-public-pic/${data.documents.documentsUrl[0]}`} />
+              <img src={`http://localhost:5000/get-public-pic/${data.documents.documentsUrl[1]}`} />
+              <img src={`http://localhost:5000/get-public-pic/${data.documents.documentsUrl[2]}`} />
+              <img src={`${BASEURL}/${PATHOFPUBLICPICS}/${data.documents.documentsUrl[0]}`} />
+              <img src={`http://localhost:5000/get-public-pic/${data.documents.documentsUrl[1]}`} />
+              <img src={`http://localhost:5000/get-public-pic/${data.documents.documentsUrl[2]}`} />
             </div>
           </div>
         </Modal>

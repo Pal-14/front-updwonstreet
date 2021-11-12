@@ -14,18 +14,18 @@ function AjoutDeBiens(props) {
   const [livingArea, setLivingArea] = useState("");
   const [rooms, setRooms] = useState("");
   const [bedrooms, setBedrooms] = useState("");
-  const [terrace ,setTerrace] =useState(false)
+  const [terrace, setTerrace] = useState(false);
   const [terraceSurface, setTerraceSurface] = useState("");
   const [garage, setGarage] = useState(false);
-  const [garageNumber, setGarageNumber] = useState (0)
+  const [garageNumber, setGarageNumber] = useState(0);
   const [parking, setParking] = useState(false);
-  const [ParkingNumber, setParkingNumber] = useState(0)
+  const [ParkingNumber, setParkingNumber] = useState(0);
   const [swimmingPool, setSwimmingpool] = useState(false);
-  const [otherSpecialPerks, setOtherSpecialPerks] = useState ("")
-  
-  const [askedPriceByUser, setAskedPriceByUser] = useState ("")
-  const [fundingStartDate, setFundingStartDate] = useState ("")
-  const [fundingEndDeadlineDate, setFundingDeadlineData] = useState ("")
+  const [otherSpecialPerks, setOtherSpecialPerks] = useState("");
+
+  const [askedPriceByUser, setAskedPriceByUser] = useState("");
+  const [fundingStartDate, setFundingStartDate] = useState("");
+  const [fundingEndDeadlineDate, setFundingDeadlineData] = useState("");
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
@@ -40,31 +40,6 @@ function AjoutDeBiens(props) {
   }
 
   let formData = useMemo(() => new FormData(), []);
-
-  const onFileChange = useCallback(
-    (e) => {
-      let fileTypeCheck = e.target.files[0].type;
-      console.log(e.target.files[0].type, "premier");
-      console.log(e.target.files[0].name, "Deuxième");
-      console.log(e.target.name, "troisieme");
-
-      if (
-        fileTypeCheck != "image/png" &&
-        fileTypeCheck !== "application/pdf" &&
-        fileTypeCheck !== "image/jpeg" &&
-        fileTypeCheck !== "image/jpg"
-      ) {
-        console.log(e.target.files[0], "deuxieme");
-        e.target.value = ""; //pour remmettre la  value a 0
-        alert(
-          "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
-        );
-      } else {
-        formData.append(e.target.name, e.target.files[0]);
-      }
-    },
-    [formData]
-  );
 
   async function SubmitFileData(e) {
     let body = {
@@ -95,6 +70,7 @@ function AjoutDeBiens(props) {
     console.log(docsSubmitted, "log de docsSubmitted");
 
     if (docsSubmitted.status === 400) {
+      setIsPublic("");
       setName("");
       setAdress("");
       setCity("");
@@ -103,10 +79,19 @@ function AjoutDeBiens(props) {
       setLivingArea("");
       setRooms("");
       setBedrooms("");
+      setTerrace("");
       setTerraceSurface("");
       setGarage("");
+      setGarageNumber("");
       setParking("");
+      setParkingNumber("");
       setSwimmingpool("");
+      setOtherSpecialPerks("");
+
+      setAskedPriceByUser("");
+      setFundingStartDate("");
+      setFundingDeadlineData("");
+
       setMessage(docsSubmitted.data.message);
       e.target.value = "";
       props.setOpenPhoto(true);
@@ -137,8 +122,33 @@ function AjoutDeBiens(props) {
             action="/users/upload"
           >
             <div>
-              <p>{message}</p>
-              <p>{/* {error} */}</p>
+              <p>
+                {message}
+                {error}
+              </p>
+              <br /> <br />
+              <label htmlFor="public">
+                Annonce public :
+                <label>
+                  <input
+                    onChange={(e) => onChange(e, setIsPublic)}
+                    class="with-gap"
+                    name="isPublic"
+                    type="radio"
+                  />
+                  <span>Oui</span>
+                </label>
+                <label>
+                  <input
+                    /* onChange={(e) => onChange(e)} */
+                    class="with-gap"
+                    name="isPublic"
+                    type="radio"
+                  />
+                  <span>Non</span>
+                </label>
+              </label>
+              <br /> <br />
               <label htmlFor="adress">
                 Adresse :
                 <input
@@ -229,19 +239,27 @@ function AjoutDeBiens(props) {
                   <input
                     onChange={(e) => onChange(e, setGarage)}
                     class="with-gap"
-                    name="group1"
+                    name="garage:oui/non"
                     type="radio"
                   />
                   <span>Oui</span>
+
+                  
+                 
                 </label>
+        
                 <label>
                   <input
                     /* onChange={(e) => onChange(e)} */
                     class="with-gap"
-                    name="group1"
+                    name="garage:oui/non"
                     type="radio"
                   />
                   <span>Non</span>
+                  
+                  <input 
+                  onChange={(e) => onChange(e, setGarageNumber)}
+                  type="number"></input>
                 </label>
               </label>
               <br />
@@ -252,19 +270,23 @@ function AjoutDeBiens(props) {
                   <input
                     onChange={(e) => onChange(e, setParking)}
                     class="with-gap"
-                    name="group2"
+                    name="parking:oui/non"
                     type="radio"
                   />
                   <span>Oui</span>
+                  
                 </label>
                 <label>
                   <input
                     /* onChange={(e) => onChange(e ,)} */
                     class="with-gap"
-                    name="group2"
+                    name="parking:oui/non"
                     type="radio"
                   />
                   <span>Non</span>
+                  <input
+                  onChange={(e) => onChange(e, setParkingNumber)}
+                  type="number"></input>
                 </label>
               </label>
               <br /> <br />
@@ -274,7 +296,31 @@ function AjoutDeBiens(props) {
                   <input
                     onChange={(e) => onChange(e, setSwimmingpool)}
                     class="with-gap"
-                    name="group3"
+                    name="piscine:oui/non"
+                    type="radio"
+                  />
+                  <span>Oui</span>
+                </label>
+                <label>
+                  <input
+                    
+                    class="with-gap"
+                    name="piscine:oui/non"
+                    type="radio"
+                  />
+                  <span>Non</span>
+                 
+                </label>
+              </label>
+              <br />
+              <br />
+              <label htmlFor="piscine">
+                Autres :
+                <label>
+                  <input
+                    onChange={(e) => onChange(e, setSwimmingpool)}
+                    class="with-gap"
+                    name="autresActivités"
                     type="radio"
                   />
                   <span>Oui</span>
@@ -283,10 +329,12 @@ function AjoutDeBiens(props) {
                   <input
                     /*  onChange={(e) => onChange(e)} */
                     class="with-gap"
-                    name="group3"
+                    name="autresActivités"
                     type="radio"
                   />
                   <span>Non</span>
+                  <input
+                  type="checkbox"></input>
                 </label>
               </label>
               <br />

@@ -179,11 +179,15 @@ function PhotoBiens(props) {
                 {error}
               </h3>
               <h3>Photo principale :</h3>
-              <input
-                type="file"
-                name="photoPricipale"
-                onChange={onFileChange}
-              />
+
+              <div class="btn bleuB">
+                <input
+                  class="file-path validate"
+                  type="file"
+                  name="photoPricipale"
+                  onChange={onFileChange}
+                />
+              </div>
 
               <br />
             </div>
@@ -203,7 +207,9 @@ function PhotoBiens(props) {
 
             <div style={styles.container}>
               <h3>Photo 1 :</h3>
-              <input type="file" name="photo1" onChange={onFileChange1} />
+              <div class="btn bleuB">
+                <input type="file" name="photo1" onChange={onFileChange1} />
+              </div>
 
               <br />
             </div>
@@ -223,7 +229,9 @@ function PhotoBiens(props) {
 
             <div style={styles.container}>
               <h3>Photo 2 : </h3>
-              <input type="file" name="photo2" onChange={onFileChange2} />
+              <div class="btn bleuB">
+                <input type="file" name="photo2" onChange={onFileChange2} />
+              </div>
 
               <br />
             </div>
@@ -243,7 +251,9 @@ function PhotoBiens(props) {
 
             <div style={styles.container}>
               <h3>Photo 3 : </h3>
-              <input type="file" name="photo3" onChange={onFileChange3} />
+              <div class="btn bleuB">
+                <input type="file" name="photo3" onChange={onFileChange3} />
+              </div>
 
               <br />
             </div>

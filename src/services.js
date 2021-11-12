@@ -50,12 +50,13 @@ const Service = {
 
   filesProof (formData) {
     let jwt = localStorage.getItem("jwt"); 
-    return base.post ('/users/files-proof', formData, {headers : {
+    return base.post ('/users/upload', formData, {headers : {
       Authorization: `Bearer ${jwt}`,
-      "Content-Type" : "multipart/form-data"
+      "Content-Type" : "multipart/form-data",
     }
     })
   },
+
 
   
   

@@ -1,9 +1,13 @@
 import React from "react";
 import Modal from "react-modal";
 
-function Biens() {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
 
+function Biens(props) {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  
+  let data = props?.user?.data?.data?.documents;
+  let Url = `http://localhost:5000/get-public-pic/`
+  
   function openModal() {
     setIsOpen(true);
   }
@@ -27,15 +31,17 @@ function Biens() {
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>close</a>
           <div>
+              <img src={`${Url}${data?.documentsUrl[0]}`} />
             <h2> Liste de Mes Biens : </h2>
-
             <div>
-              <p>Nom du Bien: </p>
+              <p>Nom du Bien:  </p>
+              <img src={`${Url}${data?.documentsUrl[1]}`} />
             </div>
             <div>
-              <p>Adresse:</p>
+              <p>Adresse: </p>
             </div>
             <div>
+            <img src={`${Url}${data?.documentsUrl[2]}`} />
               <p>Ville: </p>
             </div>
             <div>

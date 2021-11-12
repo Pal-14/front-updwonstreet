@@ -3,14 +3,16 @@ import Modal from "react-modal";
 import Service from "../../services";
 import axios from "axios";
 
-function Docs() {
+
+function Docs(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [error, setError] = useState("");
-  const [selectedFile, setSelectedFile] = useState([]); //<==========on supprime ?pas besoin?
-  const [submitedDocumentType, setSubmitedDocumentType] = useState("CARTE ID");
   const [selectedImage, setSelectedImage] = useState();
   const [selectedImage1, setSelectedImage1] = useState();
   const [selectedImage2, setSelectedImage2] = useState();
+  const [selectedFile, setSelectedFile] = useState([]); //<==========on supprime ?pas besoin?
+  const [submitedDocumentType, setSubmitedDocumentType] = useState("CARTE ID");
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState ("")
 
   const imageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -38,7 +40,7 @@ function Docs() {
   };
 
   let formData = useMemo(() => new FormData(), []);
-
+ 
   const onFileChange = useCallback(
     (e) => {
       let fileChange = e.target.files[0];
@@ -65,7 +67,7 @@ function Docs() {
       setSelectedImage(e.target.files[0]);
     },
     [formData]
-  );
+  ); 
   const onFileChange1 = useCallback(
     (e) => {
       let fileChange = e.target.files[0];
@@ -122,25 +124,23 @@ function Docs() {
     [formData]
   );
 
-  const SubmitFileData = () => {
-    let jwt = localStorage.getItem("jwt");
-    axios
-      .post("http://localhost:5000/users/upload", formData, {
-        headers: {
-          Authorization: `Bearer ${jwt}`,
-          typeOfDocumentSubmited: submitedDocumentType,
-        },
-      })
-      /* if(status === 200){input.value =("")} */
-      .then((res) => {
-        //////// closeModal()///////////////////////////////faire condition de fermeture de modal quand success à voir
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  async function SubmitFileData  (e) {
+    if(selectedImage !== "" && selectedImage1 !== "" && selectedImage2 !== ""){
+        
+      let docsSubmitted = await Service.filesProof(formData);
+      console.log(docsSubmitted,'log de docsSubmitted');
+      setMessage(docsSubmitted.data.message);
+      if(docsSubmitted.data.success) {
+        e.target.value =("");
+        setSelectedImage("");
+        setSelectedImage1("");
+        setSelectedImage2(""); 
+        return closeModal()
+      }else {setError(docsSubmitted.data.error)}
+    }
+    
 
+    }
   function openModal() {
     setIsOpen(true);
   }
@@ -157,13 +157,13 @@ function Docs() {
         </a>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>close</a>
-
           <form
             encType="multipart/form-data"
             method="POST"
             action="/users/upload"
-          >
+            >
             <div style={styles.container}>
+            <h3>{message}{error}</h3>
               <h3>Carte d'identité:</h3>
               <input type="file" name="cni" onChange={onFileChange} />
 

@@ -6,6 +6,7 @@ import Finalisation from "./Finalisation";
 import { useState } from "react";
 import Edition from "./Edition";
 import Docs from "./Docs";
+import AjoutDeBiens from "./AjoutDeBiens";
 
 function Profile(props) {
   const [title, setTitle] = useState("Validé");
@@ -30,7 +31,8 @@ function Profile(props) {
         <Informations {...props} />
         <Portefeuille {...props} />
         <Biens {...props} />
-        <Edition {...props} /> {/* ajouter un bien */}
+        <Edition {...props} />  
+        <AjoutDeBiens {...props}/>
       </div>
     );
   };

@@ -34,8 +34,6 @@ function AjoutDeBiens(props) {
 
   function closeModal() {
     setIsOpen(false);
-
-   
   }
 
   let formData = useMemo(() => new FormData(), []);

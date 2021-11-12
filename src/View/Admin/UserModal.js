@@ -38,6 +38,9 @@ function UserModal(props) {
             targetValue: value,
         }
         let change = await Service.editUserStatus(body);
+        if (change.data.success) {
+            setIsOpen(false)
+        }
         console.log("Change:", change);
     };
 
@@ -51,8 +54,8 @@ function UserModal(props) {
                 <a onClick={openModal}>Voir profil</a>
             </div>
             <Modal isOpen={modalIsOpen} style={{ overlay: { backgroundColor: 'gray' } }}>
-                <div className="closeBtn">
-                    <a onClick={closeModal}>&times;</a>
+                <div className="fixed-action-btn">
+                <a onClick={closeModal} class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">close</i></a>
                 </div>
                 <div className="personalInfo">
                     <h4>Informations personnelles</h4>

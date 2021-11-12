@@ -141,18 +141,18 @@ function Docs(props) {
             action="/users/upload"
           >
             <div style={styles.container}>
-              <h3>
+              <h4>
                 {message}
                 {error}
-              </h3>
-              <h3>Carte d'identité:</h3>
+              </h4>
+              <h4>Carte d'identité:</h4>
               <input type="file" name="cni" onChange={onFileChange} />
 
               <br />
             </div>
             {selectedImage && (
               <div style={styles.preview}>
-                <h3></h3>
+                <h4></h4>
                 <img
                   src={URL.createObjectURL(selectedImage)}
                   style={styles.image}
@@ -165,14 +165,14 @@ function Docs(props) {
             )}
 
             <div style={styles.container}>
-              <h3>Justificatif de domicile de(-de 6 mois)</h3>
+              <h4>Justificatif de domicile de(-de 6 mois)</h4>
               <input type="file" name="justificatif" onChange={onFileChange1} />
 
               <br />
             </div>
             {selectedImage1 && (
               <div style={styles.preview}>
-                <h3></h3>
+                <h4></h4>
                 <img
                   src={URL.createObjectURL(selectedImage1)}
                   style={styles.image}
@@ -185,14 +185,14 @@ function Docs(props) {
             )}
 
             <div style={styles.container}>
-              <h3>Relevé d'identité Bancaire</h3>
+              <h4>Relevé d'identité Bancaire</h4>
               <input type="file" name="rib" onChange={onFileChange2} />
 
               <br />
             </div>
             {selectedImage2 && (
               <div style={styles.preview}>
-                <h3></h3>
+                <h4></h4>
                 <img
                   src={URL.createObjectURL(selectedImage2)}
                   style={styles.image}

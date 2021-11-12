@@ -124,13 +124,14 @@ function Edition(props) {
               ></input>
             </label>
 
-            <Docs />
 
-            <input
+            <a
               onRequestClose={closeModal}
               onClick={handleSubmit}
-              type="submit"
-            ></input>
+            >Valider les informations</a>
+
+            
+            <Docs />
           </div>
         </Modal>
       </div>

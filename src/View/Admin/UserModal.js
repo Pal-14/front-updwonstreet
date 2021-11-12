@@ -31,7 +31,6 @@ function UserModal(props) {
             keyOfPropertyToChange: key,
             targetValue: value,
         }
-        console.log("BODY:", body);
         let change = await Service.editUserStatus(body);
         console.log("Change:", change);
     };
@@ -80,7 +79,7 @@ function UserModal(props) {
                 <div className="statusBtns">
                     {!userInfo?.isVerifiedByAdmin ? <a onClick={() => editStatus(user, "infos.isVerifiedByAdmin", true)}>Valider le compte</a> : <></>}
                     <br />
-                    {!userInfo?.isAdmin ? <a onClick={() => editStatus(user, "infos.isAdmin", true)}>Accorder le statut d'administrateur</a> : <a onClick={() => editStatus(user, "infos.isAdmin", false)}>Retirer le statut d'administrateur</a>}
+                    {!userInfo?.isAdmin ? <a onClick={() => editStatus(user, "infos.isAdmin", true)}>Accorder le statut d'administrateur</a> : <a onClick={() => editStatus(user, "infos.isAdmin", "false")}>Retirer le statut d'administrateur</a>}
                 </div>
             </Modal>
         </li>

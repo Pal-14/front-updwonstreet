@@ -31,7 +31,6 @@ function UserModal(props) {
             keyOfPropertyToChange: key,
             targetValue: value,
         }
-        console.log("BODY:", body);
         let change = await Service.editUserStatus(body);
         console.log("Change:", change);
     };

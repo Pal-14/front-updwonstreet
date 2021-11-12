@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 
 function Navbar(props) {
+  
   /* Récupération du statut de connexion */
   let isLoggedIn = props.isLoggedIn;
   let isAdmin = props?.user?.data?.data?.infos?.isAdmin;

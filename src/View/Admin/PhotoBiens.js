@@ -147,7 +147,7 @@ function PhotoBiens(props) {
       selectedImage2 !== "" &&
       selectedImage3 !== ""
     ) {
-      let docsSubmitted = await Service.filesProof(formData);
+      let docsSubmitted = await Service.addItemPics(formData);
       console.log(docsSubmitted, "log de docsSubmitted");
       setMessage(docsSubmitted.data.message);
       if (docsSubmitted.data.success) {

@@ -57,6 +57,16 @@ const Service = {
     })
   },
 
+  addItemPics (formData) {
+    let jwt = localStorage.getItem("jwt"); 
+    return base.post ('/items/upload', formData, {headers : {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type" : "multipart/form-data",
+    }
+    })
+    
+  }
+
 
   
   

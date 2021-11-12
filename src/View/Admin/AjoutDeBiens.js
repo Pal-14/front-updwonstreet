@@ -2,29 +2,32 @@ import React, { useState, useCallback, useMemo } from "react";
 import Modal from "react-modal";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
-import PhotoBiens from "./PhotoBiens";
 
 function AjoutDeBiens(props) {
+  const [isPublic, setIsPublic] = useState(false);
   const [name, setName] = useState("");
   const [adress, setAdress] = useState("");
-  const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [description, setDescription] = useState("");
-
-  const [type, setType] = useState("");
+  const [typeOfItem, setTypeOfItem] = useState("");
   const [livingArea, setLivingArea] = useState("");
   const [rooms, setRooms] = useState("");
   const [bedrooms, setBedrooms] = useState("");
+  const [terrace ,setTerrace] =useState(false)
   const [terraceSurface, setTerraceSurface] = useState("");
   const [garage, setGarage] = useState(false);
+  const [garageNumber, setGarageNumber] = useState (0)
   const [parking, setParking] = useState(false);
+  const [ParkingNumber, setParkingNumber] = useState(0)
   const [swimmingPool, setSwimmingpool] = useState(false);
+  const [otherSpecialPerks, setOtherSpecialPerks] = useState ("")
+  
+  const [askedPriceByUser, setAskedPriceByUser] = useState ("")
+  const [fundingStartDate, setFundingStartDate] = useState ("")
+  const [fundingEndDeadlineDate, setFundingDeadlineData] = useState ("")
 
-  const [selectedImage, setSelectedImage] = useState();
-  const [selectedImage1, setSelectedImage1] = useState("");
-  const [selectedImage2, setSelectedImage2] = useState("");
-  const [selectedImage3, setSelectedImage3] = useState("");
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
@@ -34,8 +37,6 @@ function AjoutDeBiens(props) {
 
   function closeModal() {
     setIsOpen(false);
-
-   
   }
 
   let formData = useMemo(() => new FormData(), []);
@@ -67,41 +68,49 @@ function AjoutDeBiens(props) {
 
   async function SubmitFileData(e) {
     let body = {
+      isPublic: isPublic,
       name: name,
-      adress,
-      adress,
+      adress: adress,
       city: city,
       postalCode: postalCode,
       description: description,
-      type: type,
+      typeOfItem: typeOfItem,
       livingArea: livingArea,
       rooms: rooms,
       bedrooms: bedrooms,
+      terrace: terrace,
       terraceSurface: terraceSurface,
       garage: garage,
+      garageNumber: garageNumber,
       parking: parking,
+      ParkingNumber: ParkingNumber,
       swimmingPool: swimmingPool,
+      otherSpecialPerks: otherSpecialPerks,
+
+      askedPriceByUser: askedPriceByUser,
+      fundingStartDate: fundingStartDate,
+      fundingEndDeadlineDate: fundingEndDeadlineDate,
     };
     let docsSubmitted = await Service.filesProof(formData);
     console.log(docsSubmitted, "log de docsSubmitted");
-  
+
     if (docsSubmitted.status === 400) {
-    setName("");
-    setAdress("");
-    setCity("");
-    setDescription("");
-    setType("");
-    setLivingArea("");
-    setRooms("");
-    setBedrooms("");
-    setTerraceSurface("");
-    setGarage("");
-    setParking("");
-    setSwimmingpool("");
-    setMessage(docsSubmitted.data.message);
-    e.target.value = "";
-    props.setOpenPhoto(true)
-    return closeModal();
+      setName("");
+      setAdress("");
+      setCity("");
+      setDescription("");
+      setTypeOfItem("");
+      setLivingArea("");
+      setRooms("");
+      setBedrooms("");
+      setTerraceSurface("");
+      setGarage("");
+      setParking("");
+      setSwimmingpool("");
+      setMessage(docsSubmitted.data.message);
+      e.target.value = "";
+      props.setOpenPhoto(true);
+      return closeModal();
     } else {
       setError(docsSubmitted.data.error);
     }
@@ -172,7 +181,7 @@ function AjoutDeBiens(props) {
               <label htmlFor="type">
                 Type de bien :
                 <input
-                  onChange={(e) => onChange(e, setType)}
+                  onChange={(e) => onChange(e, setTypeOfItem)}
                   type="text"
                   placeholder="Type de bien ex:(Appartement, Maison, Villa,etc...)"
                 ></input>

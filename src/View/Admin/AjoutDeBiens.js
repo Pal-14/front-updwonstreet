@@ -340,7 +340,7 @@ function AjoutDeBiens(props) {
                 />
                 <span>Non</span>
                 <input
-                  onChange={(e) => onChange(e, setParkingNumber)}
+                  onChange={(e) => onChange(e, setOtherSpecialPerks)}
                   type="text"
                 ></input>
                 <input type="checkbox"></input>

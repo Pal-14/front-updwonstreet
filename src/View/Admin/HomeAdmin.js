@@ -3,6 +3,7 @@ import Admin from "./Admin";
 import AjoutDeBiens from "./AjoutDeBiens";
 import PhotoBiens from "./PhotoBiens";
 import "./Admin.css";
+import ReviewItems from "./ReviewItems";
 
 function HomeAdmin(props) {
   const [title, setTitle] = useState("Validé");
@@ -40,6 +41,7 @@ function HomeAdmin(props) {
             openPhoto={openPhoto}
             setOpenPhoto={setOpenPhoto}
           />
+          <ReviewItems />
         </div>
       </div>
     </div>

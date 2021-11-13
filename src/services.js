@@ -65,9 +65,14 @@ const Service = {
     }
     })
     
-  }
+  },
 
-
+  adminItemList() {
+    let jwt = localStorage.getItem("jwt");
+    return base.get ('/items/show-funding', { headers:{
+      Authorization: `Bearer ${jwt}`}
+    })
+  },
   
   
 

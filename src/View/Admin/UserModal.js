@@ -7,18 +7,17 @@ import Service from '../../services';
 
 function UserModal(props) {
 
-    let Url = `http://localhost:5000/get-public-pic/`
-
-    let image = props.user.documents.documentsUrl
-    let taille = image.length
-
-
     /* Variables d'état */
     const [modalIsOpen, setIsOpen] = useState(false);
 
-    /* Variable pour simplifier l'écriture de props */
+    /* Variables */
     let user = props?.user;
     let userInfo = props?.user?.infos;
+
+    let Url = `http://localhost:5000/get-public-pic/`;
+
+    let image = props.user.documents.documentsUrl;
+    let taille = image.length;
 
     /* Ouverture modal */
     const openModal = () => {
@@ -55,7 +54,7 @@ function UserModal(props) {
             </div>
             <Modal isOpen={modalIsOpen} style={{ overlay: { backgroundColor: 'gray' } }}>
                 <div className="fixed-action-btn">
-                <a onClick={closeModal} class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">close</i></a>
+                    <a onClick={closeModal} class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">close</i></a>
                 </div>
                 <div className="personalInfo">
                     <h4>Informations personnelles</h4>

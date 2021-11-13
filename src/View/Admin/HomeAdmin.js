@@ -9,6 +9,7 @@ function HomeAdmin(props) {
   const [error, setError] = useState("");
 
   const [openPhoto, setOpenPhoto] = useState(false);
+  const [targetItemFundingId ,setTargetItemFundingId] =useState ("");
 
   useEffect(() => {}, [openPhoto]);
 
@@ -35,10 +36,11 @@ function HomeAdmin(props) {
         <div className="full">
           <Admin />
           <AjoutDeBiens {...props} setOpenPhoto={setOpenPhoto} />
-          <PhotoBiens
-            {...props}
-            openPhoto={openPhoto}
+          <PhotoBiens {...props} openPhoto={openPhoto}
             setOpenPhoto={setOpenPhoto}
+
+            targetItemFundingId={targetItemFundingId}
+            setTargetItemFundingId={setTargetItemFundingId}
           />
         </div>
       </div>

@@ -64,8 +64,16 @@ const Service = {
       "Content-Type" : "multipart/form-data",
     }
     })
-    
-  }
+  },
+
+  addFundding (body) {
+    let jwt = localStorage.getItem("jwt"); 
+    return base.post ('/items/create-funding', body, {headers : {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type" : "application/json",
+    }
+    })
+  },
 
 
   

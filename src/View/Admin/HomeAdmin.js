@@ -10,9 +10,10 @@ function HomeAdmin(props) {
   const [error, setError] = useState("");
 
   const [openPhoto, setOpenPhoto] = useState(false);
+  const [targetItemFundingId ,setTargetItemFundingId] =useState ("");
 
-  useEffect(() => {}, [openPhoto]);
-
+  useEffect(() => {}, [openPhoto,targetItemFundingId]);
+  
   function Isaccepted() {
     if (title === "Validé") {
       setTitle("Validé");

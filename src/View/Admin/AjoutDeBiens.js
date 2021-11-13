@@ -19,7 +19,7 @@ function AjoutDeBiens(props) {
   const [garage, setGarage] = useState(false);
   const [garageNumber, setGarageNumber] = useState(0);
   const [parking, setParking] = useState(false);
-  const [ParkingNumber, setParkingNumber] = useState(0);
+  const [parkingNumber, setParkingNumber] = useState(0);
   const [swimmingPool, setSwimmingpool] = useState(false);
   const [otherSpecialPerks, setOtherSpecialPerks] = useState("");
 
@@ -39,8 +39,6 @@ function AjoutDeBiens(props) {
     setIsOpen(false);
   }
 
-  let formData = useMemo(() => new FormData(), []);
-
   async function SubmitFileData(e) {
     let body = {
       isPublic: isPublic,
@@ -58,7 +56,7 @@ function AjoutDeBiens(props) {
       garage: garage,
       garageNumber: garageNumber,
       parking: parking,
-      ParkingNumber: ParkingNumber,
+      parkingNumber: parkingNumber,
       swimmingPool: swimmingPool,
       otherSpecialPerks: otherSpecialPerks,
 
@@ -66,10 +64,11 @@ function AjoutDeBiens(props) {
       fundingStartDate: fundingStartDate,
       fundingEndDeadlineDate: fundingEndDeadlineDate,
     };
-    let docsSubmitted = await Service.filesProof(formData);
+    let docsSubmitted = await Service.addFundding(body);
     console.log(docsSubmitted, "log de docsSubmitted");
+    console.log(docsSubmitted.data.itemFundingId, "mon id");
 
-    if (docsSubmitted.status === 400) {
+    if (docsSubmitted.status === 200) {
       setIsPublic("");
       setName("");
       setAdress("");
@@ -93,6 +92,9 @@ function AjoutDeBiens(props) {
       setFundingDeadlineData("");
 
       setMessage(docsSubmitted.data.message);
+
+      props.setTargetItemFundingId(docsSubmitted.data.itemFundingId);
+      console.log(docsSubmitted.data.itemFundingId, "log target fun id");
       e.target.value = "";
       props.setOpenPhoto(true);
       return closeModal();
@@ -115,234 +117,240 @@ function AjoutDeBiens(props) {
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>close</a>
-          <form
-            name="ajoutdebiens"
-            encType="multipart/form-data"
-            method="POST"
-            action="/users/upload"
-          >
-            <div>
-              <p>
-                {message}
-                {error}
-              </p>
-              <br /> <br />
-              <label htmlFor="public">
-                Annonce public :
-                <label>
-                  <input
-                    onChange={(e) => onChange(e, setIsPublic)}
-                    class="with-gap"
-                    name="isPublic"
-                    type="radio"
-                  />
-                  <span>Oui</span>
-                </label>
-                <label>
-                  <input
-                    /* onChange={(e) => onChange(e)} */
-                    class="with-gap"
-                    name="isPublic"
-                    type="radio"
-                  />
-                  <span>Non</span>
-                </label>
-              </label>
-              <br /> <br />
-              <label htmlFor="adress">
-                Adresse :
-                <input
-                  onChange={(e) => onChange(e, setAdress)}
-                  type="text"
-                  placeholder="Adresse du bien"
-                  name="adress"
-                  id="adress"
-                ></input>
-              </label>
-              <br />
-              <label htmlFor="CodePostal">
-                Code Postal :
-                <input
-                  onChange={(e) => onChange(e, setPostalCode)}
-                  type="text"
-                  placeholder="Code Postal"
-                ></input>
-              </label>
-              <br />
-              <label htmlFor="ville">
-                Ville :
-                <input
-                  onChange={(e) => onChange(e, setCity)}
-                  type="text"
-                  placeholder="Ville du bien"
-                  name="ville"
-                ></input>
-                <br />
-              </label>
-              <label htmlFor="description">
-                Description :
-                <textarea
-                  onChange={(e) => onChange(e, setDescription)}
-                  type="text"
-                  placeholder="Description du bien"
-                ></textarea>
-              </label>
-              <br />
-              <label htmlFor="type">
-                Type de bien :
-                <input
-                  onChange={(e) => onChange(e, setTypeOfItem)}
-                  type="text"
-                  placeholder="Type de bien ex:(Appartement, Maison, Villa,etc...)"
-                ></input>
-              </label>
-              <br />
-              <label htmlFor="surface">
-                Surface Habitable :
-                <input
-                  onChange={(e) => onChange(e, setLivingArea)}
-                  type="text"
-                  placeholder="Superficie en M²"
-                ></input>
-              </label>
-              <br />
-              <label htmlFor="pieces">
-                Nombre de Pièces :
-                <input
-                  onChange={(e) => onChange(e, setRooms)}
-                  type="text"
-                  placeholder="4"
-                ></input>
-              </label>
-              <br />
-              <label htmlFor="chambres">
-                Nombre de Chambres :
-                <input
-                  onChange={(e) => onChange(e, setBedrooms)}
-                  type="text"
-                  placeholder="3"
-                ></input>
-              </label>
-              <br />
-              <label htmlFor="surfaceterrain">
-                Superficie du Terrain :
-                <input
-                  onChange={(e) => onChange(e, setTerraceSurface)}
-                  type="text"
-                  placeholder="Superficie du terrain en M²"
-                ></input>
-              </label>
-              <br /> <br />
-              <label htmlFor="garage">
-                Garage :
-                <label>
-                  <input
-                    onChange={(e) => onChange(e, setGarage)}
-                    class="with-gap"
-                    name="garage:oui/non"
-                    type="radio"
-                  />
-                  <span>Oui</span>
 
-                  
-                 
-                </label>
-        
-                <label>
-                  <input
-                    /* onChange={(e) => onChange(e)} */
-                    class="with-gap"
-                    name="garage:oui/non"
-                    type="radio"
-                  />
-                  <span>Non</span>
-                  
-                  <input 
+          <div>
+            <p>
+              {message}
+              {error}
+            </p>
+            <br /> <br />
+            <label htmlFor="public">
+              Annonce public :
+              <label>
+                <input
+                  onChange={(e) => onChange(e, setIsPublic)}
+                  class="with-gap"
+                  name="isPublic"
+                  type="radio"
+                />
+                <span>Oui</span>
+              </label>
+              <label>
+                <input
+                  onChange={(e) => onChange(e, setIsPublic)}
+                  class="with-gap"
+                  name="isPublic"
+                  type="radio"
+                />
+                <span>Non</span>
+              </label>
+            </label>
+            <br /> <br />
+            <label htmlFor="titre">
+              Titre de L'annonce :
+              <input
+                onChange={(e) => onChange(e, setName)}
+                type="text"
+                placeholder="Titre de l'annonce"
+                name="name"
+                id="name"
+              ></input>
+            </label>
+            <br />
+            <label htmlFor="adress">
+              Adresse :
+              <input
+                onChange={(e) => onChange(e, setAdress)}
+                type="text"
+                placeholder="Adresse du bien"
+                name="adress"
+                id="adress"
+              ></input>
+            </label>
+            <br />
+            <label htmlFor="CodePostal">
+              Code Postal :
+              <input
+                onChange={(e) => onChange(e, setPostalCode)}
+                type="text"
+                placeholder="Code Postal"
+              ></input>
+            </label>
+            <br />
+            <label htmlFor="ville">
+              Ville :
+              <input
+                onChange={(e) => onChange(e, setCity)}
+                type="text"
+                placeholder="Ville du bien"
+                name="ville"
+              ></input>
+              <br />
+            </label>
+            <label htmlFor="description">
+              Description :
+              <textarea
+                onChange={(e) => onChange(e, setDescription)}
+                type="text"
+                placeholder="Description du bien"
+              ></textarea>
+            </label>
+            <br />
+            <label htmlFor="type">
+              Type de bien :
+              <input
+                onChange={(e) => onChange(e, setTypeOfItem)}
+                type="text"
+                placeholder="Type de bien ex:(Appartement, Maison, Villa,etc...)"
+              ></input>
+            </label>
+            <br />
+            <label htmlFor="surface">
+              Surface Habitable :
+              <input
+                onChange={(e) => onChange(e, setLivingArea)}
+                type="text"
+                placeholder="Superficie en M²"
+              ></input>
+            </label>
+            <br />
+            <label htmlFor="pieces">
+              Nombre de Pièces :
+              <input
+                onChange={(e) => onChange(e, setRooms)}
+                type="text"
+                placeholder="4"
+              ></input>
+            </label>
+            <br />
+            <label htmlFor="chambres">
+              Nombre de Chambres :
+              <input
+                onChange={(e) => onChange(e, setBedrooms)}
+                type="text"
+                placeholder="3"
+              ></input>
+            </label>
+            <br />
+            <label htmlFor="surfaceterrain">
+              Superficie du Terrain :
+              <input
+                onChange={(e) => onChange(e, setTerraceSurface)}
+                type="text"
+                placeholder="Superficie du terrain en M²"
+              ></input>
+            </label>
+            <br /> <br />
+            <label htmlFor="garage">
+              Garage :
+              <label>
+                <input
+                  onChange={(e) => onChange(e, setGarage)}
+                  class="with-gap"
+                  name="garage:oui/non"
+                  type="radio"
+                />
+                <span>Oui</span>
+              </label>
+              <label>
+                <input
+                  onChange={(e) => onChange(e, setGarage)}
+                  class="with-gap"
+                  name="garage:oui/non"
+                  type="radio"
+                />
+                <span>Non</span>
+
+                <input
                   onChange={(e) => onChange(e, setGarageNumber)}
-                  type="number"></input>
-                </label>
+                  type="number"
+                  min="0"
+                ></input>
               </label>
-              <br />
-              <br />
-              <label htmlFor="parking">
-                Parking :
-                <label>
-                  <input
-                    onChange={(e) => onChange(e, setParking)}
-                    class="with-gap"
-                    name="parking:oui/non"
-                    type="radio"
-                  />
-                  <span>Oui</span>
-                  
-                </label>
-                <label>
-                  <input
-                    /* onChange={(e) => onChange(e ,)} */
-                    class="with-gap"
-                    name="parking:oui/non"
-                    type="radio"
-                  />
-                  <span>Non</span>
-                  <input
+            </label>
+            <br />
+            <br />
+            <label htmlFor="parking">
+              Parking :
+              <label>
+                <input
+                  onChange={(e) => onChange(e, setParking)}
+                  class="with-gap"
+                  name="parking:oui/non"
+                  type="radio"
+                />
+                <span>Oui</span>
+              </label>
+              <label>
+                <input
+                  onChange={(e) => onChange(e, setParking)}
+                  class="with-gap"
+                  name="parking:oui/non"
+                  type="radio"
+                />
+                <span>Non</span>
+                <input
                   onChange={(e) => onChange(e, setParkingNumber)}
-                  type="number"></input>
-                </label>
+                  type="number"
+                  min="0"
+                ></input>
               </label>
-              <br /> <br />
-              <label htmlFor="piscine">
-                Piscine :
-                <label>
-                  <input
-                    onChange={(e) => onChange(e, setSwimmingpool)}
-                    class="with-gap"
-                    name="piscine:oui/non"
-                    type="radio"
-                  />
-                  <span>Oui</span>
-                </label>
-                <label>
-                  <input
-                    
-                    class="with-gap"
-                    name="piscine:oui/non"
-                    type="radio"
-                  />
-                  <span>Non</span>
-                 
-                </label>
+            </label>
+            <br /> <br />
+            <label htmlFor="piscine">
+              Piscine :
+              <label>
+                <input
+                  onChange={(e) => onChange(e, setSwimmingpool)}
+                  class="with-gap"
+                  name="piscine:oui/non"
+                  type="radio"
+                />
+                <span>Oui</span>
               </label>
-              <br />
-              <br />
-              <label htmlFor="piscine">
-                Autres :
-                <label>
-                  <input
-                    onChange={(e) => onChange(e, setSwimmingpool)}
-                    class="with-gap"
-                    name="autresActivités"
-                    type="radio"
-                  />
-                  <span>Oui</span>
-                </label>
-                <label>
-                  <input
-                    /*  onChange={(e) => onChange(e)} */
-                    class="with-gap"
-                    name="autresActivités"
-                    type="radio"
-                  />
-                  <span>Non</span>
-                  <input
-                  type="checkbox"></input>
-                </label>
+              <label>
+                <input
+                  onChange={(e) => onChange(e, setSwimmingpool)}
+                  class="with-gap"
+                  name="piscine:oui/non"
+                  type="radio"
+                />
+                <span>Non</span>
               </label>
-              <br />
-              <br />
-              {/* <PhotoBiens /> */}
-              <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
-            </div>
-          </form>
+            </label>
+            <br />
+            <br />
+            <label htmlFor="piscine">
+              Autres :
+              <label>
+                <input
+                  onChange={(e) => onChange(e, setOtherSpecialPerks)}
+                  class="with-gap"
+                  name="autresActivités"
+                  type="radio"
+                />
+                <span>Oui</span>
+              </label>
+              <label>
+                <input
+                  onChange={(e) => onChange(e, setOtherSpecialPerks)}
+                  class="with-gap"
+                  name="autresActivités"
+                  type="radio"
+                />
+                <span>Non</span>
+                <input
+                  onChange={(e) => onChange(e, setOtherSpecialPerks)}
+                  type="text"
+                ></input>
+                <input type="checkbox"></input>
+              </label>
+            </label>
+            <br />
+            <br />
+            {/* <PhotoBiens /> */}
+            <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
+          </div>
         </Modal>
       </div>
     </div>

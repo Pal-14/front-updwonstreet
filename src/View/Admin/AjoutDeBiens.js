@@ -93,6 +93,7 @@ function AjoutDeBiens(props) {
       setFundingDeadlineData("");
 
       setMessage(docsSubmitted.data.message);
+      
       props.setTargetItemFundingId(docsSubmitted.data.itemFundingId)
       console.log(docsSubmitted.data.itemFundingId,'log target fun id');
       e.target.value = "";
@@ -120,7 +121,6 @@ function AjoutDeBiens(props) {
 
           <div>
             <p>
-              
               {message}
               {error}
             </p>

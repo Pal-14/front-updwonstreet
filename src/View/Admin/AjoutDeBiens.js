@@ -93,7 +93,8 @@ function AjoutDeBiens(props) {
       setFundingDeadlineData("");
 
       setMessage(docsSubmitted.data.message);
-     
+      props.setTargetItemFundingId(docsSubmitted.data.itemFundingId)
+      console.log(docsSubmitted.data.itemFundingId,'log target fun id');
       e.target.value = "";
       props.setOpenPhoto(true);
       return closeModal();
@@ -119,7 +120,7 @@ function AjoutDeBiens(props) {
 
           <div>
             <p>
-              {props.targetItemFundingId}
+              
               {message}
               {error}
             </p>

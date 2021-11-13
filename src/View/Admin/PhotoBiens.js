@@ -25,17 +25,24 @@ function PhotoBiens(props) {
     setSelectedImage3();
   };
 
+  
+  
+  
   console.log("photo bien se charge");
   let formData = useMemo(() => new FormData(), []);
-
+  
+  let myIdOfFunding = props.targetItemFundingId
   const onFileChange = useCallback(
     (e) => {
+      
       let fileTypeCheck = e.target.files[0].type;
       console.log(e.target.files[0].type, "premier");
       console.log(e.target.files[0].name, "Deuxième");
       console.log(e.target.name, "troisieme");
-
+      
+      
       if (
+        
         fileTypeCheck != "image/png" &&
         fileTypeCheck !== "application/pdf" &&
         fileTypeCheck !== "image/jpeg" &&
@@ -48,6 +55,8 @@ function PhotoBiens(props) {
         );
       } else {
         formData.append(e.target.name, e.target.files[0]);
+        
+       /*  formData.append("targetItemFundingId");  */
       }
 
       setSelectedImage(e.target.files[0]);
@@ -141,11 +150,12 @@ function PhotoBiens(props) {
     console.log(selectedImage);
     console.log(selectedImage1);
     console.log(selectedImage2);
+   /*  formData.append("targetItemFundingId",props.targetItemFundingId); */
     if (
-      selectedImage !== "" &&
+      selectedImage !== ""/*  &&
       selectedImage1 !== "" &&
       selectedImage2 !== "" &&
-      selectedImage3 !== ""
+      selectedImage3 !== "" */
     ) {
       let docsSubmitted = await Service.addItemPics(formData);
       console.log(docsSubmitted, "log de docsSubmitted");
@@ -175,6 +185,7 @@ function PhotoBiens(props) {
           >
             <div style={styles.container}>
               <h3>
+                {props.targetItemFundingId}
                 {message}
                 {error}
               </h3>

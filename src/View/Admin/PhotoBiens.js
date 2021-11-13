@@ -4,6 +4,8 @@ import Service from "../../services";
 import axios from "axios";
 
 function PhotoBiens(props) {
+
+
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedImage1, setSelectedImage1] = useState("");
   const [selectedImage2, setSelectedImage2] = useState("");
@@ -147,6 +149,8 @@ function PhotoBiens(props) {
   );
 
   async function SubmitFileData(e) {
+    console.log("MAIS OUAIS", props.targetItemFundingId)
+    formData.append("targetItemFundingId", props.targetItemFundingId)
     console.log(selectedImage);
     console.log(selectedImage1);
     console.log(selectedImage2);

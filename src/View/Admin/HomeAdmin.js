@@ -10,10 +10,10 @@ function HomeAdmin(props) {
   const [error, setError] = useState("");
 
   const [openPhoto, setOpenPhoto] = useState(false);
-  const [targetItemFundingId ,setTargetItemFundingId] =useState ("");
+  const [targetItemFundingId, setTargetItemFundingId] = useState("");
 
-  useEffect(() => {}, [openPhoto,targetItemFundingId]);
-  
+  useEffect(() => {}, [openPhoto, targetItemFundingId]);
+
   function Isaccepted() {
     if (title === "Validé") {
       setTitle("Validé");
@@ -36,11 +36,16 @@ function HomeAdmin(props) {
         <span class="card-title">Page administrateur</span>
         <div className="full">
           <Admin />
-          <AjoutDeBiens {...props} setOpenPhoto={setOpenPhoto} />
+          <AjoutDeBiens
+            {...props}
+            setOpenPhoto={setOpenPhoto}
+            setTargetItemFundingId={setTargetItemFundingId}
+          />
           <PhotoBiens
             {...props}
             openPhoto={openPhoto}
             setOpenPhoto={setOpenPhoto}
+            setTargetItemFundingId={setTargetItemFundingId}
           />
           <ReviewItems />
         </div>

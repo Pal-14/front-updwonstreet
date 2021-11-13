@@ -30,7 +30,6 @@ function AjoutDeBiens(props) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  
 
   function openModal() {
     setIsOpen(true);
@@ -67,7 +66,7 @@ function AjoutDeBiens(props) {
     };
     let docsSubmitted = await Service.addFundding(body);
     console.log(docsSubmitted, "log de docsSubmitted");
-    console.log(docsSubmitted.data.itemFundingId,'mon id');
+    console.log(docsSubmitted.data.itemFundingId, "mon id");
 
     if (docsSubmitted.status === 200) {
       setIsPublic("");
@@ -93,9 +92,9 @@ function AjoutDeBiens(props) {
       setFundingDeadlineData("");
 
       setMessage(docsSubmitted.data.message);
-      
-      props.setTargetItemFundingId(docsSubmitted.data.itemFundingId)
-      console.log(docsSubmitted.data.itemFundingId,'log target fun id');
+
+      props.setTargetItemFundingId(docsSubmitted.data.itemFundingId);
+      console.log(docsSubmitted.data.itemFundingId, "log target fun id");
       e.target.value = "";
       props.setOpenPhoto(true);
       return closeModal();
@@ -310,11 +309,12 @@ function AjoutDeBiens(props) {
                 <span>Oui</span>
               </label>
               <label>
-                <input 
-                onChange={(e) => onChange(e, setSwimmingpool)}
-                class="with-gap" 
-                name="piscine:oui/non" 
-                type="radio" />
+                <input
+                  onChange={(e) => onChange(e, setSwimmingpool)}
+                  class="with-gap"
+                  name="piscine:oui/non"
+                  type="radio"
+                />
                 <span>Non</span>
               </label>
             </label>
@@ -333,12 +333,16 @@ function AjoutDeBiens(props) {
               </label>
               <label>
                 <input
-                   onChange={(e) => onChange(e, setOtherSpecialPerks)}
+                  onChange={(e) => onChange(e, setOtherSpecialPerks)}
                   class="with-gap"
                   name="autresActivités"
                   type="radio"
                 />
                 <span>Non</span>
+                <input
+                  onChange={(e) => onChange(e, setParkingNumber)}
+                  type="text"
+                ></input>
                 <input type="checkbox"></input>
               </label>
             </label>

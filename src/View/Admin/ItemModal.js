@@ -21,6 +21,8 @@ function ItemModal(props) {
     
     console.log("ITEM:", item);
 
+    let Url = `http://localhost:5000/get-public-pic/`//DÉCLARATION DE L'URL DE RÉCUPÉRATION DES PHOTOS
+
     /* Ouverture modal */
     const openModal = () => {
         setIsOpen(true);
@@ -54,7 +56,7 @@ function ItemModal(props) {
                     <p><b>Surface habitable:</b> {itemInfo?.livingArea} m²</p>
                     <p><b>Nombre de pièces: {itemInfo?.rooms}</b></p>
                     <p><b>Nombre de chambres:</b> {itemInfo?.bedrooms}</p>
-                    <p><b>Superficie du terrain:</b> {itemInfo?.terraceSurface}</p>
+                    <p><b>Superficie du terrain:</b> {itemInfo?.terraceSurface} m²</p>
                     <p><b>Garage:</b> {itemInfo?.garage ? "oui" : "non"} - <b>Quantité:</b> {itemInfo?.garageNumber}</p>
                     <p><b>Parking:</b> {itemInfo?.parking ? "oui" : "non"} - <b>Quantité:</b> {itemInfo?.parkingNumber}</p>
                     <p><b>Piscine:</b> {itemInfo?.swimmingPool ? "oui" : "non"}</p>
@@ -66,6 +68,12 @@ function ItemModal(props) {
                 </div>
                 <div className="photoGallery">
                     <p>Afficher les photos ici</p>
+                    {/* vérifier pourquoi il n'y à rien à l'index [0] */}
+                    {item? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[1]}`}  /> : <p>Pas d'image enregistrer</p>}
+                    {item? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[2]}`}  /> : <p>Pas d'image enregistrer</p>}
+                    {item? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[3]}`}  /> : <p>Pas d'image enregistrer</p>}
+                    {item? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[4]}`}  /> : <p>Pas d'image enregistrer</p>}
+                    {/* formule de recup des photos et Url déclarer en haut */}
                 </div>
             </Modal>
         </li>

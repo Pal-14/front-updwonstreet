@@ -2,6 +2,7 @@ import React, { useState, useCallback, useMemo, useEffect } from "react";
 import Modal from "react-modal";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
+import { onRadioChange } from "../../Fonctions/PropositionDeBiens";
 
 function AjoutDeBiens(props) {
   const [isPublic, setIsPublic] = useState(false);
@@ -31,6 +32,8 @@ function AjoutDeBiens(props) {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  useEffect(()=>{},[garage])
+
   function openModal() {
     setIsOpen(true);
   }
@@ -39,11 +42,17 @@ function AjoutDeBiens(props) {
     setIsOpen(false);
   }
 
-  const onRadioChange = (e) => {
+  /* const onRadioChange = (e) => {
+    if(e.target.value === "false"){
+      setIsPublic("false")
+    }else {
+      setIsPublic("true")
+    }
     console.log(e.target.name);
     console.log(e.target.value);
+    console.log(typeof(e.target.value));
     
-  };
+  }; */
 
   async function SubmitFileData(e) {
     let body = {
@@ -75,7 +84,7 @@ function AjoutDeBiens(props) {
     console.log(docsSubmitted.data.itemFundingId, "mon id");
 
     if (docsSubmitted.status === 200) {
-      setIsPublic("");
+      setIsPublic("false");
       setName("");
       setAdress("");
       setCity("");
@@ -135,7 +144,7 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setIsPublic)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setIsPublic)}
                   class="with-gap"
                   name="isPublic"
                   type="radio"
@@ -146,7 +155,7 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setIsPublic)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setIsPublic)}
                   class="with-gap"
                   name="isPublic"
                   type="radio"
@@ -257,7 +266,7 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setGarage)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setGarage)}
                   class="with-gap"
                   name="garage:oui/non"
                   type="radio"
@@ -268,7 +277,7 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setGarage)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setGarage)}
                   class="with-gap"
                   name="garage:oui/non"
                   type="radio"
@@ -276,12 +285,12 @@ function AjoutDeBiens(props) {
                 />
                 <span>Non</span>
 
-                <input
+                {garage === true ? <input
                   onChange={(e) => onChange(e, setGarageNumber)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setGarage)}
                   type="number"
                   min="0"
-                ></input>
+                ></input> : <p></p>}
               </label>
             </label>
             <br />
@@ -291,7 +300,7 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setParking)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setParking)}
                   class="with-gap"
                   name="parking:oui/non"
                   type="radio"
@@ -302,7 +311,7 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setParking)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setParking)}
                   class="with-gap"
                   name="parking:oui/non"
                   type="radio"
@@ -322,7 +331,7 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setSwimmingpool)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setSwimmingpool)}
                   class="with-gap"
                   name="piscine:oui/non"
                   type="radio"
@@ -333,7 +342,7 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setSwimmingpool)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setSwimmingpool)}
                   class="with-gap"
                   name="piscine:oui/non"
                   type="radio"
@@ -349,7 +358,7 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setOtherSpecialPerks)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setOtherSpecialPerks)}
                   class="with-gap"
                   name="autresActivités"
                   type="radio"
@@ -360,7 +369,7 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setOtherSpecialPerks)}
-                  onChange={onRadioChange}
+                  onChange={(e) => onRadioChange(e, setOtherSpecialPerks)}
                   class="with-gap"
                   name="autresActivités"
                   type="radio"
@@ -369,10 +378,10 @@ function AjoutDeBiens(props) {
                 <span>Non</span>
                 <input
                   onChange={(e) => onChange(e, setOtherSpecialPerks)}
+                  onChange={(e) => onRadioChange(e, setOtherSpecialPerks)}
                   type="text"
-                  onChange={onRadioChange}
                 ></input>
-                <input type="checkbox"></input>
+             
               </label>
             </label>
             <br />

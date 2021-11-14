@@ -59,6 +59,10 @@ function ItemModal(props) {
                     <p><b>Parking:</b> {itemInfo?.parking ? "oui" : "non"} - <b>Quantité:</b> {itemInfo?.parkingNumber}</p>
                     <p><b>Piscine:</b> {itemInfo?.swimmingPool ? "oui" : "non"}</p>
                     <p><b>Autres:</b> {itemInfo?.otherSpecialPerks}</p>
+                  {/*   IL Y A DES NOUVELLES CLES EN PLUS SI TU VEUX LES AFFICHER.
+                     GENRE isCurrentlyRented ou expectedYearlyIncome
+                     Et toutes les clés qui concernent les tokens et les sousous qui sont
+                     dans itemInfosFinance */}
                 </div>
                 <div className="photoGallery">
                     <p>Afficher les photos ici</p>

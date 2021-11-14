@@ -45,7 +45,7 @@ function HomeAdmin(props) {
             {...props}
             openPhoto={openPhoto}
             setOpenPhoto={setOpenPhoto}
-            setTargetItemFundingId={setTargetItemFundingId}
+            targetItemFundingId={targetItemFundingId}
           />
           <ReviewItems />
         </div>

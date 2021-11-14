@@ -67,6 +67,15 @@ const Service = {
     
   },
 
+  createItemByAdmin (body) {
+    let jwt = localStorage.getItem("jwt"); 
+    return base.post ('/items/create-item-by-admin', body, {headers : {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type" : "application/json",
+    }
+    })
+  },
+
   adminItemList() {
     let jwt = localStorage.getItem("jwt"); /* CHANGED PATH NAME BUT SHOULD BE FINE */
     return base.get ('/items/admin-listing', { headers:{

@@ -61,8 +61,6 @@ function Informations(props) {
                   Code Postal: {info?.postalCode}
                 </li>
               </ul>
-
-              
             </div>
           </div>
         </Modal>

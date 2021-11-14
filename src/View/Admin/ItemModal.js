@@ -10,18 +10,14 @@ function ItemModal(props) {
 
     /* Variables */
     let item = props?.item;
-    let itemInfo = props?.item?.itemPublicData?.description; /* EDITED THIS ONE TO FIT NEW ITEM MODEL */
-    
-    /* NEW DATA FROM ITEMS YOU CAN ACCESS AND SHOW */
-    let itemInfosFinance = props?.item?.itemPublicData?.funding;
-    console.log("Check OUT WHATS INSIDE THIS ITEM INFO BOX ", itemInfosFinance)
-    
-    let itemPicturesFromUser = props?.item?.itemPublicData?.itemPicturesFromUser;
-    console.log("Check OUT WHATS INSIDE THIS ITEM PIC ARRAY", itemPicturesFromUser)
+    let itemInfo = item?.itemPublicData?.description;
+    let itemInfoFinance = item?.itemPublicData?.funding;
+    let itemPicturesFromUser = item?.itemPublicData?.itemPicturesFromUser;
+    let isPublic = item?.itemPrivateData?.status?.isPublic;
     
     console.log("ITEM:", item);
 
-    let Url = `http://localhost:5000/get-public-pic/`//DÉCLARATION DE L'URL DE RÉCUPÉRATION DES PHOTOS
+    let Url = `http://localhost:5000/get-public-pic/` // URL de récupération des photos
 
     /* Ouverture modal */
     const openModal = () => {
@@ -67,16 +63,15 @@ function ItemModal(props) {
                      dans itemInfosFinance */}
                 </div>
                 <div className="photoGallery">
-                    <p>Afficher les photos ici</p>
-                    
                     {/* vérifier pourquoi il n'y à rien à l'index [0] */}
-                   
                     {/* ternaire si pas photo affiche rien */}
                     {item?.itemPublicData?.itemPicturesFromUser.length >1  ? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[1]}`}  /> : <p></p>}
                     {item?.itemPublicData?.itemPicturesFromUser.length >2  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[2]}`}  /> : <p></p>}
                     {item?.itemPublicData?.itemPicturesFromUser.length >3  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[3]}`}  /> : <p></p>}
                     {item?.itemPublicData?.itemPicturesFromUser.length >4  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[4]}`}  /> : <p></p>}
-                    {/* formule de recup des photos et Url déclarer en haut */}
+                </div>
+                <div className="statusBtn">
+                     {!isPublic ? <a>Publier la proposition</a> : <a></a>}
                 </div>
             </Modal>
         </li>

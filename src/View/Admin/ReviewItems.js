@@ -20,13 +20,22 @@ function ReviewItems() {
     }, []);
     console.log("Item list:", itemList);
 
-    /* Événements */
+    /* Événement */
+    const toggleShowNotPublic = () => {
+        setShowNotPublic(!showNotPublic);
+    };
 
-    /* Fonctions de filtre */
+    /* Filtre */
+    const checkboxFilterItems = (itemList) => {
+        return showNotPublic
+        ? itemList.filter((item) => !item?.itemPrivateData?.status?.isPublic)
+        : itemList;
+    };
 
     /* Affichage des biens */
     const renderItems = () => {
-        return itemList.map((item, id) => {
+        let checkboxFilteredItems = checkboxFilterItems(itemList);
+        return checkboxFilteredItems.map((item, id) => {
             return <ItemModal item={item} id={id} />;
         });
     };
@@ -55,21 +64,12 @@ function ReviewItems() {
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
                 <a onClick={closeModal}>close</a>
                 <div>
-                    <label for="searchInput">
-                        Rechercher par:
-                        <input
-                            type="text"
-                            id="searchInput"
-                            placeholder="Nom, prénom ou e-mail"
-                            className="searchInput"
-                        />
-                    </label>
-                </div>
-                <div>
                     <label for="checkbox">
                         <input
                             type="checkbox"
                             id="checkbox"
+                            onChange={toggleShowNotPublic}
+                            checked={showNotPublic}
                         />
                         <span>En attente de validation</span>
                     </label>

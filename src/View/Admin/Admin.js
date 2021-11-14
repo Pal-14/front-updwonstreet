@@ -35,7 +35,7 @@ function Admin() {
   const checkboxFilterUsers = (userList) => {
     return showPendingApproval
       ? userList.filter((user) => !user.infos.isVerifiedByAdmin)
-      : userList;
+      : userList
   };
 
   const searchbarFilterUsers = () => {

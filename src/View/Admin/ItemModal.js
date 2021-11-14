@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import './ItemModal.css';
+import Service from '../../services';
 
 
 function ItemModal(props) {
@@ -29,6 +30,19 @@ function ItemModal(props) {
         setIsOpen(false);
     };
 
+    /* Modification du bien */
+    const editItem = async (item, key, value) => {
+        let body = {
+            targetItemId: item._id,
+            keyOfPropertyToChange: key,
+            newValue: value,
+        }
+        let change = await Service.editItemByAdmin(body);
+        if (change.data.success) {
+            setIsOpen(false)
+        }
+        console.log("Change:", change);
+    };
 
     /* Affichage front */
     return (
@@ -71,7 +85,7 @@ function ItemModal(props) {
                     {item?.itemPublicData?.itemPicturesFromUser.length >4  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[4]}`}  /> : <p></p>}
                 </div>
                 <div className="statusBtn">
-                     {!isPublic ? <a>Publier la proposition</a> : <a></a>}
+                     {!isPublic ? <a onClick={() => editItem(item, "item.itemPrivateData.status.isPublic", true)}>Publier la proposition</a> : <a></a>}
                 </div>
             </Modal>
         </li>

@@ -3,16 +3,17 @@ import Admin from "./Admin";
 import AjoutDeBiens from "./AjoutDeBiens";
 import PhotoBiens from "./PhotoBiens";
 import "./Admin.css";
+import ReviewItems from "./ReviewItems";
 
 function HomeAdmin(props) {
   const [title, setTitle] = useState("Validé");
   const [error, setError] = useState("");
 
   const [openPhoto, setOpenPhoto] = useState(false);
-  const [targetItemFundingId ,setTargetItemFundingId] =useState ("");
+  const [targetItemFundingId, setTargetItemFundingId] = useState("");
 
-  useEffect(() => {}, [openPhoto,targetItemFundingId]);
-  
+  useEffect(() => {}, [openPhoto, targetItemFundingId]);
+
   function Isaccepted() {
     if (title === "Validé") {
       setTitle("Validé");
@@ -35,8 +36,18 @@ function HomeAdmin(props) {
         <span class="card-title">Page administrateur</span>
         <div className="full">
           <Admin />
-          <AjoutDeBiens {...props} setOpenPhoto={setOpenPhoto}  setTargetItemFundingId={setTargetItemFundingId} />
-          <PhotoBiens {...props} openPhoto={openPhoto} setOpenPhoto={setOpenPhoto}  targetItemFundingId={targetItemFundingId} />
+          <AjoutDeBiens
+            {...props}
+            setOpenPhoto={setOpenPhoto}
+            setTargetItemFundingId={setTargetItemFundingId}
+          />
+          <PhotoBiens
+            {...props}
+            openPhoto={openPhoto}
+            setOpenPhoto={setOpenPhoto}
+            targetItemFundingId={targetItemFundingId}
+          />
+          <ReviewItems />
         </div>
       </div>
     </div>

@@ -21,16 +21,16 @@ const Service = {
     })
   },
 
-  adminUserList() {
+  adminUserList() { /* NOW YOU REALLY NEED AN ADMIN TOKEN TO GO THERE */
     let jwt = localStorage.getItem("jwt");
-    return base.get ('/users', { headers:{
+    return base.get ('/users/admin-listing', { headers:{
       Authorization: `Bearer ${jwt}`}
     })
   },
 
   editUser (body) {
-    let jwt = localStorage.getItem("jwt");
-    return base.put ('/users/edit-user', body, {headers :{
+    let jwt = localStorage.getItem("jwt"); /* CHANGED PATH EDIT-USER INTO THE ONE BELOW */
+    return base.put ('/users/request-verified-status', body, {headers :{
       Authorization: `Bearer ${jwt}`}
     })
   },
@@ -42,15 +42,15 @@ const Service = {
   },
 
   editUserStatus(body) {
-    let jwt = localStorage.getItem("jwt");
-    return base.put ('/users/edit-user-status', body, {headers : {
+    let jwt = localStorage.getItem("jwt"); /* CHANGED PATH NAME BUT SHOULD BE FINE */
+    return base.put ('/users/edit-user-by-admin', body, {headers : {
       Authorization: `Bearer ${jwt}`}
     }) 
   },
 
   filesProof (formData) {
-    let jwt = localStorage.getItem("jwt"); 
-    return base.post ('/users/upload', formData, {headers : {
+    let jwt = localStorage.getItem("jwt"); /* CHANGED PATH NAME BUT SHOULD BE FINE */
+    return base.post ('/users/upload-private-document', formData, {headers : {
       Authorization: `Bearer ${jwt}`,
       "Content-Type" : "multipart/form-data",
     }
@@ -58,24 +58,30 @@ const Service = {
   },
 
   addItemPics (formData) {
-    let jwt = localStorage.getItem("jwt"); 
-    return base.post ('/items/upload', formData, {headers : {
+    let jwt = localStorage.getItem("jwt"); /* CHANGED PATH NAME BUT SHOULD BE FINE */
+    return base.post ('/items/upload-public-doc', formData, {headers : {
       Authorization: `Bearer ${jwt}`,
       "Content-Type" : "multipart/form-data",
     }
     })
+    
   },
 
-  addFundding (body) {
+  createItemByAdmin (body) {
     let jwt = localStorage.getItem("jwt"); 
-    return base.post ('/items/create-funding', body, {headers : {
+    return base.post ('/items/create-item-by-admin', body, {headers : {
       Authorization: `Bearer ${jwt}`,
       "Content-Type" : "application/json",
     }
     })
   },
 
-
+  adminItemList() {
+    let jwt = localStorage.getItem("jwt"); /* CHANGED PATH NAME BUT SHOULD BE FINE */
+    return base.get ('/items/admin-listing', { headers:{
+      Authorization: `Bearer ${jwt}`}
+    })
+  },
   
   
 

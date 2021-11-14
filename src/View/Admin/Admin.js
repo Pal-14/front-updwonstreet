@@ -5,10 +5,11 @@ import Service from "../../services";
 import Modal from "react-modal";
 import UserModal from "./UserModal";
 
+
 function Admin() {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   /* Variables d'état */
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [userList, setUserList] = useState([]);
   const [showPendingApproval, setShowPendingApproval] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -57,20 +58,21 @@ function Admin() {
     });
   };
 
+  /* Ouverture/fermeture de modal */
   function openModal() {
-    setIsOpen(true);
-  }
+    setModalIsOpen(true);
+  };
 
   function closeModal() {
-    setIsOpen(false);
-  }
+    setModalIsOpen(false);
+  };
 
   /* Affichage front */
   return (
     <div class="card cardProfile">
       <div class="card-content">
         <span class="card-title ">Utilisateurs inscrits </span>
-        <p>Ici vous pouvez nous proposer des biens </p>
+        <p>Ici vous pouvez consulter les utilisateurs inscrits.</p>
         <p>
           <a id="rouge" onClick={openModal}>
             Ici pour consulter

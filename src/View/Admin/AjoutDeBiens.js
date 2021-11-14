@@ -70,7 +70,7 @@ function AjoutDeBiens(props) {
       fundingStartDate: fundingStartDate,
       fundingEndDeadlineDate: fundingEndDeadlineDate,
     };
-    let docsSubmitted = await Service.addFundding(body);
+    let docsSubmitted = await Service.createItemByAdmin(body);
     console.log(docsSubmitted, "log de docsSubmitted");
     console.log(docsSubmitted.data.itemFundingId, "mon id");
 

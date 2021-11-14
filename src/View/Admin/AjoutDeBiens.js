@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
 import Modal from "react-modal";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
@@ -38,6 +38,12 @@ function AjoutDeBiens(props) {
   function closeModal() {
     setIsOpen(false);
   }
+
+  const onRadioChange = (e) => {
+    console.log(e.target.name);
+    console.log(e.target.value);
+    
+  };
 
   async function SubmitFileData(e) {
     let body = {
@@ -129,18 +135,23 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setIsPublic)}
+                  onChange={onRadioChange}
                   class="with-gap"
                   name="isPublic"
                   type="radio"
+                  value={true}
                 />
                 <span>Oui</span>
               </label>
               <label>
                 <input
                   onChange={(e) => onChange(e, setIsPublic)}
+                  onChange={onRadioChange}
                   class="with-gap"
                   name="isPublic"
                   type="radio"
+                  data-bind="checked:IsChecked, checkedValue: false"
+                  value={false}
                 />
                 <span>Non</span>
               </label>
@@ -246,23 +257,28 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setGarage)}
+                  onChange={onRadioChange}
                   class="with-gap"
                   name="garage:oui/non"
                   type="radio"
+                  value={true}
                 />
                 <span>Oui</span>
               </label>
               <label>
                 <input
                   onChange={(e) => onChange(e, setGarage)}
+                  onChange={onRadioChange}
                   class="with-gap"
                   name="garage:oui/non"
                   type="radio"
+                  value={false}
                 />
                 <span>Non</span>
 
                 <input
                   onChange={(e) => onChange(e, setGarageNumber)}
+                  onChange={onRadioChange}
                   type="number"
                   min="0"
                 ></input>
@@ -275,18 +291,22 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setParking)}
+                  onChange={onRadioChange}
                   class="with-gap"
                   name="parking:oui/non"
                   type="radio"
+                  value={true}
                 />
                 <span>Oui</span>
               </label>
               <label>
                 <input
                   onChange={(e) => onChange(e, setParking)}
+                  onChange={onRadioChange}
                   class="with-gap"
                   name="parking:oui/non"
                   type="radio"
+                  value={false}
                 />
                 <span>Non</span>
                 <input
@@ -302,18 +322,22 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setSwimmingpool)}
+                  onChange={onRadioChange}
                   class="with-gap"
                   name="piscine:oui/non"
                   type="radio"
+                  value={true}
                 />
                 <span>Oui</span>
               </label>
               <label>
                 <input
                   onChange={(e) => onChange(e, setSwimmingpool)}
+                  onChange={onRadioChange}
                   class="with-gap"
                   name="piscine:oui/non"
                   type="radio"
+                  value={false}
                 />
                 <span>Non</span>
               </label>
@@ -325,23 +349,28 @@ function AjoutDeBiens(props) {
               <label>
                 <input
                   onChange={(e) => onChange(e, setOtherSpecialPerks)}
+                  onChange={onRadioChange}
                   class="with-gap"
                   name="autresActivités"
                   type="radio"
+                  value={true}
                 />
                 <span>Oui</span>
               </label>
               <label>
                 <input
                   onChange={(e) => onChange(e, setOtherSpecialPerks)}
+                  onChange={onRadioChange}
                   class="with-gap"
                   name="autresActivités"
                   type="radio"
+                  value={false}
                 />
                 <span>Non</span>
                 <input
                   onChange={(e) => onChange(e, setOtherSpecialPerks)}
                   type="text"
+                  onChange={onRadioChange}
                 ></input>
                 <input type="checkbox"></input>
               </label>

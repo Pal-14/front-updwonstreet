@@ -25,24 +25,17 @@ function PhotoBiens(props) {
     setSelectedImage3();
   };
 
-  
-  
-  
   console.log("photo bien se charge");
   let formData = useMemo(() => new FormData(), []);
-  
+
   const onFileChange = useCallback(
     (e) => {
-      
-      let myIdOfFunding = props.targetItemFundingId
       let fileTypeCheck = e.target.files[0].type;
       console.log(e.target.files[0].type, "premier");
       console.log(e.target.files[0].name, "Deuxième");
       console.log(e.target.name, "troisieme");
-      
-      
+
       if (
-        
         fileTypeCheck != "image/png" &&
         fileTypeCheck !== "application/pdf" &&
         fileTypeCheck !== "image/jpeg" &&
@@ -55,8 +48,6 @@ function PhotoBiens(props) {
         );
       } else {
         formData.append(e.target.name, e.target.files[0]);
-        
-       
       }
 
       setSelectedImage(e.target.files[0]);
@@ -65,7 +56,6 @@ function PhotoBiens(props) {
   );
   const onFileChange1 = useCallback(
     (e) => {
-      let fileChange = e.target.files[0];
       let fileTypeCheck = e.target.files[0].type;
       console.log(e.target.files[0].type, "premier");
       console.log(e.target.files[0].name, "Deuxième");
@@ -93,7 +83,6 @@ function PhotoBiens(props) {
   );
   const onFileChange2 = useCallback(
     (e) => {
-      let fileChange = e.target.files[0];
       let fileTypeCheck = e.target.files[0].type;
       console.log(e.target.files[0].type, "premier");
       console.log(e.target.files[0].name, "Deuxième");
@@ -120,7 +109,6 @@ function PhotoBiens(props) {
   );
   const onFileChange3 = useCallback(
     (e) => {
-      let fileChange = e.target.files[0];
       let fileTypeCheck = e.target.files[0].type;
       console.log(e.target.files[0].type, "premier");
       console.log(e.target.files[0].name, "Deuxième");
@@ -150,7 +138,7 @@ function PhotoBiens(props) {
     console.log(selectedImage);
     console.log(selectedImage1);
     console.log(selectedImage2);
-    formData.append("targetItemFundingId",props.targetItemFundingId);
+    formData.append("targetItemFundingId", props.targetItemFundingId);
     if (
       selectedImage !== "" ||
       selectedImage1 !== "" ||

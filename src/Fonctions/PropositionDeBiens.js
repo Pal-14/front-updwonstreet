@@ -1,11 +1,11 @@
 const onRadioChange = (e, setter) => {
-    setter(e.target.value)
-    console.log(e.target.value);
- 
-  };
+  if (e.target.value === "true") {
+    setter(true);
+  } else {
+    setter(false);
+  }
+};
 
-  
-
-  module.exports = {
-    onRadioChange
-}
+module.exports = {
+  onRadioChange,
+};

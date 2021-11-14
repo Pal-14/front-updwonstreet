@@ -32,7 +32,7 @@ function AjoutDeBiens(props) {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  useEffect(()=>{},[garage])
+ 
 
   function openModal() {
     setIsOpen(true);
@@ -160,7 +160,7 @@ function AjoutDeBiens(props) {
                   name="isPublic"
                   type="radio"
                   data-bind="checked:IsChecked, checkedValue: false"
-                  value={false}
+                  value="false"
                 />
                 <span>Non</span>
               </label>
@@ -285,7 +285,7 @@ function AjoutDeBiens(props) {
                 />
                 <span>Non</span>
 
-                {garage === true ? <input
+                {garage  ? <input
                   onChange={(e) => onChange(e, setGarageNumber)}
                   onChange={(e) => onRadioChange(e, setGarage)}
                   type="number"
@@ -318,11 +318,11 @@ function AjoutDeBiens(props) {
                   value={false}
                 />
                 <span>Non</span>
-                <input
+               {parking  ? <input
                   onChange={(e) => onChange(e, setParkingNumber)}
                   type="number"
                   min="0"
-                ></input>
+                ></input> : <p></p>} 
               </label>
             </label>
             <br /> <br />
@@ -376,11 +376,11 @@ function AjoutDeBiens(props) {
                   value={false}
                 />
                 <span>Non</span>
-                <input
+                {otherSpecialPerks  ? <input
                   onChange={(e) => onChange(e, setOtherSpecialPerks)}
                   onChange={(e) => onRadioChange(e, setOtherSpecialPerks)}
                   type="text"
-                ></input>
+                ></input> : <p></p>}
              
               </label>
             </label>

@@ -85,10 +85,14 @@ const Service = {
 
   publicItemList () {
     return base.get ('/items/public-listing')
-  }
+  },
   
-  
-
+  editItemByAdmin (body) {
+    let jwt = localStorage.getItem("jwt");
+    return base.put ('/items/edit-by-admin', body, {headers :{
+      Authorization: `Bearer ${jwt}`}
+    })
+  },
 };
 
 export default Service;

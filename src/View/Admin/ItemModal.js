@@ -68,11 +68,14 @@ function ItemModal(props) {
                 </div>
                 <div className="photoGallery">
                     <p>Afficher les photos ici</p>
+                    
                     {/* vérifier pourquoi il n'y à rien à l'index [0] */}
-                    {item? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[1]}`}  /> : <p>Pas d'image enregistrer</p>}
-                    {item? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[2]}`}  /> : <p>Pas d'image enregistrer</p>}
-                    {item? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[3]}`}  /> : <p>Pas d'image enregistrer</p>}
-                    {item? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[4]}`}  /> : <p>Pas d'image enregistrer</p>}
+                   
+                    {/* ternaire si pas photo affiche rien */}
+                    {item?.itemPublicData?.itemPicturesFromUser.length >1  ? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[1]}`}  /> : <p></p>}
+                    {item?.itemPublicData?.itemPicturesFromUser.length >2  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[2]}`}  /> : <p></p>}
+                    {item?.itemPublicData?.itemPicturesFromUser.length >3  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[3]}`}  /> : <p></p>}
+                    {item?.itemPublicData?.itemPicturesFromUser.length >4  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[4]}`}  /> : <p></p>}
                     {/* formule de recup des photos et Url déclarer en haut */}
                 </div>
             </Modal>

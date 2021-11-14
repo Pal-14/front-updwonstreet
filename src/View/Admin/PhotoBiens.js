@@ -142,7 +142,7 @@ function PhotoBiens(props) {
     console.log(selectedImage);
     console.log(selectedImage1);
     console.log(selectedImage2);
-    formData.append("targetItemFundingId", props.targetItemFundingId);
+    
     if (
       selectedImage !== "" ||
       selectedImage1 !== "" ||

@@ -139,6 +139,7 @@ function Docs(props) {
             encType="multipart/form-data"
             method="POST"
             action="/users/upload"
+            
           >
             <div style={styles.container}>
               <h4>
@@ -146,12 +147,12 @@ function Docs(props) {
                 {error}
               </h4>
               <h4>Carte d'identité:</h4>
-              <input type="file" name="cni" onChange={onFileChange} />
+              <input class="btn bleuB" type="file" name="cni" onChange={onFileChange} />
 
               <br />
             </div>
             {selectedImage && (
-              <div style={styles.preview}>
+              <div style={styles.preview} >
                 <h4></h4>
                 <img
                   src={URL.createObjectURL(selectedImage)}
@@ -166,7 +167,7 @@ function Docs(props) {
 
             <div style={styles.container}>
               <h4>Justificatif de domicile de(-de 6 mois)</h4>
-              <input type="file" name="justificatif" onChange={onFileChange1} />
+              <input class="btn bleuB"  type="file" name="justificatif" onChange={onFileChange1} />
 
               <br />
             </div>
@@ -186,7 +187,7 @@ function Docs(props) {
 
             <div style={styles.container}>
               <h4>Relevé d'identité Bancaire</h4>
-              <input type="file" name="rib" onChange={onFileChange2} />
+              <input class="btn bleuB"  type="file" name="rib" onChange={onFileChange2} />
 
               <br />
             </div>

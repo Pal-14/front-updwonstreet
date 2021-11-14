@@ -39,7 +39,7 @@ function Profile(props) {
     );
   };
 
-  let test = "Validé";
+   let test = "Validé"; 
 
   return (
     <div className="containCard">

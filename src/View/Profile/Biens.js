@@ -8,6 +8,9 @@ function Biens(props) {
   let data = props?.user?.data?.data?.documents;
   console.log(data,'data');
   let Url = `http://localhost:5000/get-public-pic/`
+  let UrlBien = `http://localhost:500/get-private-doc/`
+
+  
   
   function openModal() {
     setIsOpen(true);
@@ -16,6 +19,9 @@ function Biens(props) {
   function closeModal() {
     setIsOpen(false);
   }
+  
+
+  
 
   return (
     <div class="card cardProfile">
@@ -32,40 +38,9 @@ function Biens(props) {
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>close</a>
           <div>
-        {/*     {data?.documentsUrl.length >1 ? <img src={`${Url}${data?.documentsUrl[0]}`}  /> : <p>Pas d'image enregistrer</p>} */}
-            <h4> Liste de Mes Biens : </h4>
-            <div>
-              <p>Nom du Bien:  </p>
-             {/*  {data?.documentsUrl.length >1 ? <img src={`${Url}${data?.documentsUrl[1]}`}  /> : <p>Pas d'image enregistrer</p>} */}
-            </div>
-            <div>
-              <p>Adresse: </p>
-            </div>
-            <div>
-           {/*  {data?.documentsUrl.length >1 ? <img src={`${Url}${data?.documentsUrl[2]}`}  /> : <p>Pas d'image enregistrer</p>} */}
-              <p>Ville: </p>
-            </div>
-            <div>
-              <p>Type de Bien: </p>
-            </div>
-            <div>
-              <p>Nombre de pièces: </p>
-            </div>
-            <div>
-              <p>Chambre(s): </p>
-            </div>
-            <div>
-              <p>Surface de terrain:</p>
-            </div>
-            <div>
-              <p>Garage: </p>
-            </div>
-            <div>
-              <p>Parking: </p>
-            </div>
-            <div>
-              <p> Zone de parcelle: </p>
-            </div>
+             {data?.ownedItems >1 ? <img src={`${Url}${data?.ownedItems}`}  /> : <p>Vous ne posséder pas encore de biens</p>}
+    
+           
           </div>
         </Modal>
       </div>
@@ -74,3 +49,22 @@ function Biens(props) {
 }
 
 export default Biens;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

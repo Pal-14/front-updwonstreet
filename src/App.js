@@ -14,6 +14,7 @@ function App() {
   /* Déclaration variable d'état */
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState("");
+  const [itemListPublic, setItemListPublic] = useState([]);
 
   /* Check & récupération des infos de connexion */
   useEffect(async () => {
@@ -36,6 +37,14 @@ function App() {
     console.log("Connecté:", isLoggedIn);
   }, [isLoggedIn]);
 
+   /* Récupération des biens immobiliers */
+   useEffect(() => {
+    Service.publicItemList().then((response) => {
+        setItemListPublic(response.data);
+    });
+}, []);
+console.log("Item list:", itemListPublic);
+
   return (
     <div className="" >
       <Router>
@@ -57,7 +66,8 @@ function App() {
               />
             </Route>
             <Route path="/catalog">
-              <Catalog />
+              <Catalog 
+              setItemListPublic={setItemListPublic} itemListPublic={itemListPublic}/>
             </Route>
             <Route path="/admin">
               <HomeAdmin />

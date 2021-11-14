@@ -82,6 +82,10 @@ const Service = {
       Authorization: `Bearer ${jwt}`}
     })
   },
+
+  publicItemList () {
+    return base.get ('/items/public-listing')
+  }
   
   
 

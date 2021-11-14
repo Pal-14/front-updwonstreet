@@ -82,6 +82,13 @@ const Service = {
       Authorization: `Bearer ${jwt}`}
     })
   },
+
+  publicItemList() {
+    let jwt = localStorage.getItem("jwt"); /* SHOULD NOT REQUIRE ANY AUTH BUT I KEPT THE USUAL TEMPLATE, WIL SEND A FILTERED LIST OF ITEMS WHICH HAVE isPublic Key set to true */
+    return base.get ('/items/public-listing', { headers:{
+      Authorization: `Bearer ${jwt}`}
+    })
+  },
   
   
 

@@ -32,8 +32,6 @@ function AjoutDeBiens(props) {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
- 
-
   function openModal() {
     setIsOpen(true);
   }
@@ -284,17 +282,18 @@ function AjoutDeBiens(props) {
                   value={false}
                 />
                 <span>Non</span>
-
-                {garage  ? <input
-                  onChange={(e) => onChange(e, setGarageNumber)}
-                  onChange={(e) => onRadioChange(e, setGarage)}
-                  type="number"
-                  min="0"
-                ></input> : <p></p>}
+                {garage ? (
+                  <input
+                    onChange={(e) => onChange(e, setGarageNumber)}
+                    type="number"
+                    min="0"
+                  ></input>
+                ) : (
+                  <p></p>
+                )}
               </label>
             </label>
-            <br />
-            <br />
+            <br /> <br />
             <label htmlFor="parking">
               Parking :
               <label>
@@ -318,11 +317,15 @@ function AjoutDeBiens(props) {
                   value={false}
                 />
                 <span>Non</span>
-               {parking  ? <input
-                  onChange={(e) => onChange(e, setParkingNumber)}
-                  type="number"
-                  min="0"
-                ></input> : <p></p>} 
+                {parking ? (
+                  <input
+                    onChange={(e) => onChange(e, setParkingNumber)}
+                    type="number"
+                    min="0"
+                  ></input>
+                ) : (
+                  <p></p>
+                )}
               </label>
             </label>
             <br /> <br />
@@ -361,27 +364,8 @@ function AjoutDeBiens(props) {
                   onChange={(e) => onRadioChange(e, setOtherSpecialPerks)}
                   class="with-gap"
                   name="autresActivités"
-                  type="radio"
-                  value={true}
-                />
-                <span>Oui</span>
-              </label>
-              <label>
-                <input
-                  onChange={(e) => onChange(e, setOtherSpecialPerks)}
-                  onChange={(e) => onRadioChange(e, setOtherSpecialPerks)}
-                  class="with-gap"
-                  name="autresActivités"
-                  type="radio"
-                  value={false}
-                />
-                <span>Non</span>
-                {otherSpecialPerks  ? <input
-                  onChange={(e) => onChange(e, setOtherSpecialPerks)}
-                  onChange={(e) => onRadioChange(e, setOtherSpecialPerks)}
                   type="text"
-                ></input> : <p></p>}
-             
+                />
               </label>
             </label>
             <br />

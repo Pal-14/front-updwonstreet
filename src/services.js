@@ -103,6 +103,13 @@ const Service = {
       Authorization: `Bearer ${jwt}`}
     })
   },
+
+  achatTokenBien (body) {
+    let jwt = localStorage.getItem("jwt");
+    return base.put ('/items/buy-initial-token', body, {headers :{
+      Authorization: `Bearer ${jwt}`}
+    })
+  }
 };
 
 export default Service;

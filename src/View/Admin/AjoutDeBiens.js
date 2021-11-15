@@ -76,7 +76,8 @@ function AjoutDeBiens(props) {
       swimmingPool: swimmingPool,
       otherSpecialPerks: otherSpecialPerks,
       initialTokenAmount: numberOfTokens,
-      initialSingleTokenValueInEuros: totalAmount,
+      priceSetByUpDownStreet: totalAmount,
+      priceInEuros: totalAmount,
 
       askedPriceByUser: askedPriceByUser,
       fundingStartDate: fundingStartDate,

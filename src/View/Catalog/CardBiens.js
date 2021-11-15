@@ -8,6 +8,8 @@ import Carousel from "./Carousel"
 function CardBiens(props) {
   /* Variables d'état */
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [numberOfTokens, setNumberOfTokens] = useState();
+  const [totalAmount, setTotalAmount] = useState();
 
   /* Variables */
   let item = props?.item;
@@ -15,6 +17,32 @@ function CardBiens(props) {
   let itemInfoFinance = item?.itemPublicData?.funding;
   let itemPicturesFromUser = item?.itemPublicData?.itemPicturesFromUser;
   let isPublic = item?.itemPrivateData?.status?.isPublic;
+
+  /* put /items/buy-initial-token 
+  targetItemId priceInStableCoin = totalAmount tokenQuantityOrdered = numberOfTokens JWT */
+
+  const achat = () => {
+    let body = {
+      targetItemId: item._id,
+      priceInStableCoin: totalAmount,
+      tokenQuantityOrdered: numberOfTokens 
+    }
+    let achat = await Service.achatTokenBien(body);
+    if (achat.data.success) {
+      setIsOpen(false);
+    }
+  }
+
+  const handleNumberOfTokens = (e) => {
+    setNumberOfTokens(e.target.value);
+    console.log(numberOfTokens);
+  };
+
+  /* Somme totale */
+  const handleTotalAmount = (e) => {
+    setTotalAmount(e.target.value);
+    console.log(totalAmount);
+  };
 
   /* Ouverture modal */
   const openModal = () => {
@@ -193,6 +221,28 @@ function CardBiens(props) {
               </div>
             )
           )}
+          <form>
+            <label for="tokens">
+              Nombre de tokens que vous souhaiter acheter:{" "}
+              <input
+                type="number"
+                onChange={handleNumberOfTokens}
+                class="with-gap"
+                name="buytokens"
+              />
+            </label>
+
+            <label for="totalAmount">
+              Montant que vous souhaiter investire :{" "}
+              <input
+                type="number"
+                onChange={handleTotalAmount}
+                class="with-gap"
+                name="totalAmount"
+              />
+            </label>
+            <button onClick={achat}>Acheter</button>
+          </form>
           {/*   IL Y A DES NOUVELLES CLES EN PLUS SI TU VEUX LES AFFICHER.
                     GENRE isCurrentlyRented ou expectedYearlyIncome
                     Et toutes les clés qui concernent les tokens et les sousous qui sont

@@ -1,7 +1,7 @@
-import React, { useCallback, useState, useMemo, useEffect } from "react";
+import React, { useCallback, useState, useMemo } from "react";
 import Modal from "react-modal";
 import Service from "../../services";
-import axios from "axios";
+
 
 function PhotoBiens(props) {
 
@@ -38,7 +38,7 @@ function PhotoBiens(props) {
       console.log(e.target.name, "troisieme");
 
       if (
-        fileTypeCheck != "image/png" &&
+        fileTypeCheck !== "image/png" &&
         fileTypeCheck !== "application/pdf" &&
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
@@ -64,7 +64,7 @@ function PhotoBiens(props) {
       console.log(e.target.name, "troisieme");
 
       if (
-        fileTypeCheck != "image/png" &&
+        fileTypeCheck !== "image/png" &&
         fileTypeCheck !== "application/pdf" &&
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
@@ -91,13 +91,13 @@ function PhotoBiens(props) {
       console.log(e.target.name, "troisieme");
 
       if (
-        fileTypeCheck != "image/png" &&
+        fileTypeCheck !== "image/png" &&
         fileTypeCheck !== "application/pdf" &&
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
       ) {
         console.log(e.target.files[0], "deuxieme");
-        e.target.value = ""; //pour remmettre la  value a 0
+        e.target.value = ""; // Pour remettre la  value à 0
         alert(
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
         );

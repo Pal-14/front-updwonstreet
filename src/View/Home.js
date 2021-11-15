@@ -1,5 +1,5 @@
 import "../App.css";
-import logo from "../img/city-4235697_960_720.jpg";
+/* import logo from "../img/city-4235697_960_720.jpg"; */
 import appt1 from "../img/appt1.jpg";
 import appt2 from "../img/appt2.jpeg";
 
@@ -12,7 +12,7 @@ function Home() {
           <input
             name="email"
             className="homeEmail"
-            placeholder="News letter"
+            placeholder="Newsletter"
           ></input>
           <p className="homeP">
             Pour tout savoir de nos nouveaux services et biens
@@ -38,7 +38,7 @@ function Home() {
             </span>
             <p>
               Petite résidence "Le Bastion", de 4 étages. Au centre d'Antibes.
-              Infrastructures de la Maison: ascenseur. Magasins 400 m, magasin
+              Infrastructures de la maison: ascenseur. Magasins 400 m, magasin
               d'alimentation 110 m, restaurant 130 m, bar 100 m, boulangerie 110
               m, café, arrêt du bus 100 m, gare ferroviaire 1 km, plage de sable
               350 m. Marina 2 km. Attractions à proximité: Marineland 5 km,

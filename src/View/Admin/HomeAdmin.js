@@ -7,15 +7,15 @@ import ReviewItems from "./ReviewItems";
 import Informations from "../Profile/Informations";
 
 function HomeAdmin(props) {
-  const [title, setTitle] = useState("Validé");
-  const [error, setError] = useState("");
+  /* const [title, setTitle] = useState("Validé");
+  const [error, setError] = useState(""); */
 
   const [openPhoto, setOpenPhoto] = useState(false);
   const [targetItemFundingId, setTargetItemFundingId] = useState("");
 
   useEffect(() => {}, [openPhoto, targetItemFundingId]);
 
-  function Isaccepted() {
+  /* function Isaccepted() {
     if (title === "Validé") {
       setTitle("Validé");
     } else {
@@ -23,7 +23,7 @@ function HomeAdmin(props) {
         setTitle("En attente d'admin");
       }
     }
-  }
+  } */
 
   return (
     <div className="containCard">

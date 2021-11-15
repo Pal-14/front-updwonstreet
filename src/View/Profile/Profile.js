@@ -2,22 +2,20 @@ import Biens from "./Biens";
 import Informations from "./Informations";
 import Portefeuille from "./Portefeuille";
 import "./Profile.css";
-import Finalisation from "./Finalisation";
 import { useState, useEffect } from "react";
 import Edition from "./Edition";
-import Docs from "./Docs";
 import DemandeVerification from "./DemandeVerification";
 
 function Profile(props) {
-  const [title, setTitle] = useState("Validé");
-  const [error, setError] = useState("");
+  /* const [title, setTitle] = useState("Validé");
+  const [error, setError] = useState(""); */
 
   const [openPhoto, setOpenPhoto] = useState(false);
 
   useEffect(() => {}, [openPhoto]);
 
  /*  let currentUser = props.user */
-let rom = false
+/* let rom = false */
 let currentUser = props?.user?.data?.data
 
 console.log("LOG ROM", currentUser?.infos.isVerifiedByAdmin)

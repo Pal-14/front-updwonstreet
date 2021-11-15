@@ -11,10 +11,10 @@ function Portefeuille(props) {
   const [modalIsOpen1, setIsOpen1] = React.useState(false);
   const [state, setState] = useState(defaultState);
   const [state1, setState1] = useState(defaultState);
-  const [error, setError] = useState("");
+  /* const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [addCoin, setAddCoin] = useState(0);
-  const [target, setRemoveCoin] = useState(0);
+  const [target, setRemoveCoin] = useState(0); */
 
   //variable pour eviter de taper :props?.user?.data?.data à chaque fois que je veut récup une info de mes objets de la BDD
   let data = props?.user?.data?.data;
@@ -54,7 +54,7 @@ function Portefeuille(props) {
       return;
     } else {
       body = {
-        operationValue: state1.operationValue *-1
+        operationValue: state1.operationValue * -1
       }
     }
     Service.editUserCoin(body)
@@ -107,7 +107,7 @@ function Portefeuille(props) {
         <p>Consulter votre solde. Acheter et convertir vos Coins en euros</p>
         <p>
           <a id="rouge" onClick={openModal}>
-{` Achat par Cb `}
+            {` Achat par Cb `}
           </a>
 
           <a id="rouge" onClick={openModal1}>

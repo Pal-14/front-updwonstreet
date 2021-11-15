@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import { onChange } from "../../Fonctions/Formulaire";
+/* import { onChange } from "../../Fonctions/Formulaire"; */
 import Service from "../../services";
 import Docs from "./Docs";
 import Finalisation from "./Finalisation";
@@ -14,7 +14,7 @@ function DemandeVerification(props) {
   const [postalCode, setPostalCode] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
+  /* const [error, setError] = useState(""); */
 
   function openModal() {
     setIsOpen(true);

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
@@ -31,6 +31,9 @@ function AjoutDeBiens(props) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+
+  const [numberOfTokens, setNumberOfTokens] = useState();
+  const [totalAmount, setTotalAmount] = useState();
 
   function openModal() {
     setIsOpen(true);
@@ -72,6 +75,8 @@ function AjoutDeBiens(props) {
       parkingNumber: parkingNumber,
       swimmingPool: swimmingPool,
       otherSpecialPerks: otherSpecialPerks,
+      initialTokenAmount: numberOfTokens,
+      initialSingleTokenValueInEuros: totalAmount,
 
       askedPriceByUser: askedPriceByUser,
       fundingStartDate: fundingStartDate,
@@ -115,6 +120,19 @@ function AjoutDeBiens(props) {
       setError(docsSubmitted.data.error);
     }
   }
+
+  /* Nombre de tokens */
+  const handleNumberOfTokens = (e) => {
+    setNumberOfTokens(e.target.value);
+    console.log(numberOfTokens);
+  };
+
+  /* Somme totale */
+  const handleTotalAmount = (e) => {
+    setTotalAmount(e.target.value);
+    console.log(totalAmount);
+  };
+
 
   return (
     <div class="card cardProfile">
@@ -369,7 +387,10 @@ function AjoutDeBiens(props) {
               </label>
             </label>
             <br />
-
+            <label for="tokens">Nombre de tokens:</label>
+            <input type="number" onChange={handleNumberOfTokens} class="with-gap" name="tokens"/>
+            <label for="totalAmount">Montant total:</label>
+            <input type="number" onChange={handleTotalAmount} class="with-gap" name="totalAmount"/>
             {/* <PhotoBiens /> */}
             <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
           </div>

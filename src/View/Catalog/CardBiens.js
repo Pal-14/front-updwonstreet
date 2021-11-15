@@ -124,7 +124,6 @@ function CardBiens(props) {
                 )}
               </div>
               <p> Le bien </p>
-              
               <div className="photoGallery">
               {/* JE T'AI FOUTU UN PETIT MAP POUR LES PHOTOS HISTOIRE DE MOINS TE FAIRE SUER MA POULE  */}
               {item?.itemPublicData?.itemPicturesFromUser.map((picture, id) => (

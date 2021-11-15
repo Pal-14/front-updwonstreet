@@ -10,6 +10,7 @@ function UserModal(props) {
 
     /* Variables d'état */
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [stableCoins, setStableCoins] = useState();
 
     /* Variables */
     let user = props?.user;
@@ -41,9 +42,15 @@ function UserModal(props) {
         }
         let change = await Service.editUserStatus(body);
         if (change.data.success) {
-            setIsOpen(false)
+            props.setReset(false);
+            setIsOpen(false);
         }
         console.log("Change:", change);
+    };
+
+    /* Modification des stable coins */
+    const handleStableCoins = (e) => {
+        setStableCoins(e.target.value);
     };
 
 
@@ -73,6 +80,8 @@ function UserModal(props) {
                 <div className="wallet">
                     <h4>Informations du portefeuille</h4>
                     <p>Stable coins possédés: {user?.stableCoin}</p>
+                    <input type="number" placeholder="Entrez la nouvelle valeur" onChange={handleStableCoins}></input>
+                    <button onClick={() => editStatus(user, "stableCoin", stableCoins)}>Valider</button>
                 </div>
                 <div className="idDocuments">
                     <h4>Pièces justificatives de l'utilisateur</h4>

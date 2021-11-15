@@ -13,13 +13,15 @@ function Admin() {
   const [userList, setUserList] = useState([]);
   const [showPendingApproval, setShowPendingApproval] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [reactualisation, setReactualisation] = useState(false);
 
   /* Récupération des utilisateurs */
   useEffect(() => {
     Service.adminUserList().then((response) => {
       setUserList(response.data);
+      setReactualisation(true);
     });
-  }, []);
+  }, [reactualisation]);
   console.log("User list:", userList);
 
   /* Événements */
@@ -54,7 +56,7 @@ function Admin() {
       searchbarFilteredUsers
     );
     return searchbarCheckboxFilteredUsers.map((user, id) => {
-      return <UserModal user={user} id={id} />;
+      return <UserModal user={user} id={id} setReset={setReactualisation} />;
     });
   };
 

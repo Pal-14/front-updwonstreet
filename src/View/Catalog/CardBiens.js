@@ -20,12 +20,14 @@ function CardBiens(props) {
             <a className="rouge">Voir le bien</a>
           </p>
         </div>
+
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">
-          {props?.item?.itemPublicData?.description?.name}<i class="material-icons right">close</i>
+          {props?.item?.itemPublicData?.description?.name}
           </span>
+          <i class="material-icons right">close</i>
           <p>
-          {props?.item?.itemPublicData?.description?.adresse}
+          {props?.item?.itemPublicData?.description?.city}
           </p>
         </div>
       </div>

@@ -70,7 +70,8 @@ console.log("Item list:", itemListPublic);
               setItemListPublic={setItemListPublic} itemListPublic={itemListPublic}/>
             </Route>
             <Route path="/admin">
-              <HomeAdmin />
+              <HomeAdmin
+              user={user} />
             </Route>
             <Route path="/">
               <Home/>

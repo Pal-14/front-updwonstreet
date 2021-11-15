@@ -6,6 +6,7 @@ const base = axios.create({
   baseURL,
 });
 const Service = {
+
   addUsers(body) {
     return base.post ('/users/signup', body) 
   },
@@ -69,7 +70,16 @@ const Service = {
 
   createItemByAdmin (body) {
     let jwt = localStorage.getItem("jwt"); 
-    return base.post ('/items/create-item-by-admin', body, {headers : {
+    return base.post ('/items/create-by-admin', body, {headers : {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type" : "application/json",
+    }
+    })
+  },
+
+  createItemByUser (body) {
+    let jwt = localStorage.getItem("jwt"); 
+    return base.post ('/items/create-by-user', body, {headers : {
       Authorization: `Bearer ${jwt}`,
       "Content-Type" : "application/json",
     }
@@ -96,6 +106,10 @@ const Service = {
 };
 
 export default Service;
+
+
+
+
 // Rien à voir, circulez
 // Vraiment rien à voir, promis.
 // Bon ...

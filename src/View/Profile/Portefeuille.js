@@ -103,14 +103,15 @@ function Portefeuille(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Consulter mon Portefeuille</span>
-        <p>Tout les informations sur votre portefeuille et ça gestion</p>
+        <span class="card-title ">Portefeuille UDS Coins</span>
+        <p>Consulter votre solde. Acheter et convertir vos Coins en euros</p>
         <p>
           <a id="rouge" onClick={openModal}>
-            Ici pour crediter
+{` Achat par Cb `}
           </a>
+
           <a id="rouge" onClick={openModal1}>
-            Ici pour débiterr
+            {` Convertir en euros `}
           </a>
         </p>
       </div>

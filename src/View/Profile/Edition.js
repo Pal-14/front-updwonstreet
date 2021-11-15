@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
 import Docs from "./Docs";
+import Finalisation from "./Finalisation";
 
 function Edition(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);

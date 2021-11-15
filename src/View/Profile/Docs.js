@@ -131,7 +131,7 @@ function Docs(props) {
     <>
       <div>
         <a id="rouge" onClick={openModal}>
-          Documents Justificatifs à fournir
+          SELECTIONNEZ ET ENVOYEZ VOS JUSTIFICATIFS
         </a>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>close</a>
@@ -205,7 +205,7 @@ function Docs(props) {
               </div>
             )}
 
-            <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
+            <a onClick={SubmitFileData}>Confirmer et envoyer ma demande</a>
           </form>
         </Modal>
       </div>

@@ -1,4 +1,4 @@
-
+/* 
   const onFileChange = useCallback( (e) => {
     if (e.target.files[0].type != "image/png" || "application/pdf" || "image/jpeg" || "image/jpg") {
       alert("Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg")
@@ -20,14 +20,21 @@
      {headers : {
       Authorization: `Bearer ${jwt}`,
       typeOfDocumentSubmited:submitedDocumentType,
-    }
-  })
+    } 
+  })*/
   /* if(status === 200){input.value =("")} */
-      .then((res) => {
+     /*  .then((res) => { */
        //////// closeModal()///////////////////////////////faire condition de fermeture de modal quand success à voir 
-        console.log(res,);
-      })
+      /*   console.log(res,); */
+     /*  })
       .catch((error) => {
         console.log(error);
       });
-  };
+  }; */
+
+
+
+
+
+
+/*   <img src={`${Url}${itemPicturesFromUser[0]}`} /> */

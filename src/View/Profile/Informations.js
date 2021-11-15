@@ -26,8 +26,8 @@ function Informations(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Consulter mes informations</span>
-        <p>Tout vos informations</p>
+        <span class="card-title ">Voir mon Profil</span>
+        <p>Toutes vos informations</p>
         <p>
           <a id="rouge" onClick={openModal}>
             Ici pour consulter

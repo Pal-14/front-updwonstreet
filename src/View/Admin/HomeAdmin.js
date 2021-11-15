@@ -4,6 +4,7 @@ import AjoutDeBiens from "./AjoutDeBiens";
 import PhotoBiens from "./PhotoBiens";
 import "./Admin.css";
 import ReviewItems from "./ReviewItems";
+import Informations from "../Profile/Informations";
 
 function HomeAdmin(props) {
   const [title, setTitle] = useState("Validé");
@@ -36,6 +37,7 @@ function HomeAdmin(props) {
         <span class="card-title">Page administrateur</span>
         <div className="full">
           <Admin />
+          <Informations {...props} />
           <AjoutDeBiens
             {...props}
             setOpenPhoto={setOpenPhoto}

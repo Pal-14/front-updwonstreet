@@ -72,7 +72,7 @@ function Admin() {
     <div class="card cardProfile">
       <div class="card-content">
         <span class="card-title ">Utilisateurs inscrits </span>
-        <p>Ici vous pouvez consulter les utilisateurs inscrits.</p>
+        <p>Ici vous pouvez consulter la liste les utilisateurs inscrits.</p>
         <p>
           <a id="rouge" onClick={openModal}>
             Ici pour consulter
@@ -101,7 +101,7 @@ function Admin() {
               onChange={toggleShowPendingApproval}
               checked={showPendingApproval}
             />
-            <span>En attente de validation</span>
+            <span>En attente de vérification</span>
           </label>
         </div>
         <ul className="collection">{renderUsers()}</ul>

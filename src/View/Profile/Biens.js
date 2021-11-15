@@ -26,8 +26,8 @@ function Biens(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Consulter mes Biens</span>
-        <p>Tout les informations sur vos Biens et leur gestion</p>
+        <span class="card-title ">Portefeuille de Tokens</span>
+        <p>Toutes les informations concernant vos Token UDS et leur gestion</p>
         <p>
           <a id="rouge" onClick={openModal}>
             Ici pour consulter

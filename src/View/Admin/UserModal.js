@@ -5,6 +5,7 @@ import './UserModal.css';
 import Service from '../../services';
 
 
+
 function UserModal(props) {
 
     /* Variables d'état */
@@ -14,7 +15,9 @@ function UserModal(props) {
     let user = props?.user;
     let userInfo = props?.user?.infos;
 
-    let Url = `http://localhost:5000/get-public-pic/`;
+    let path = '/get-private-doc/' /* LES DOCUMENTS PRIVES DES UTILISATEURS SONT ACCESSIBLES A CET ENDROIT */ 
+    let Url = `http://localhost:5000${path}`;
+    
 
     let image = props.user.documents.documentsUrl;
     let taille = image.length;
@@ -70,10 +73,9 @@ function UserModal(props) {
                 <div className="wallet">
                     <h4>Informations du portefeuille</h4>
                     <p>Stable coins possédés: {user?.stableCoin}</p>
-                    <p>Valeur totale des stable coins:</p>
                 </div>
                 <div className="idDocuments">
-                    <h4>Mes pièces justificatives</h4>
+                    <h4>Pièces justificatives de l'utilisateur</h4>
                     <div>
                         <p>Carte d'identité</p>
                         <img src={`${Url}${image[taille - 3]}`} />
@@ -88,9 +90,9 @@ function UserModal(props) {
                     </div>
                 </div>
                 <div className="statusBtns">
-                    {!userInfo?.isVerifiedByAdmin ? <a onClick={() => editStatus(user, "infos.isVerifiedByAdmin", true)}>Valider le compte</a> : <></>}
+                    {!userInfo?.isVerifiedByAdmin ? <a onClick={() => editStatus(user, "infos.isVerifiedByAdmin", true)}>Accorder le statut de membre vérifié</a> : <a onClick={() => editStatus(user, "infos.isVerifiedByAdmin", false)}>Retirer le statut de membre vérifié</a>}
                     <br />
-                    {!userInfo?.isAdmin ? <a onClick={() => editStatus(user, "infos.isAdmin", true)}>Accorder le statut d'administrateur</a> : <a onClick={() => editStatus(user, "infos.isAdmin", "false")}>Retirer le statut d'administrateur</a>}
+                    {!userInfo?.isAdmin ? <a onClick={() => editStatus(user, "infos.isAdmin", true)}>Accorder le statut d'administrateur</a> : <a onClick={() => editStatus(user, "infos.isAdmin", false)}>Retirer le statut d'administrateur</a>}
                 </div>
             </Modal>
         </li>

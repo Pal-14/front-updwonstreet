@@ -119,8 +119,8 @@ function AjoutDeBiens(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Proposer un bien </span>
-        <p>Ici vous pouvez nous proposer des biens </p>
+        <span class="card-title ">Créer une annonce </span>
+        <p>Ici vous pouvez créer, publier et modifier les paramètres d'une annonce. </p>
         <p>
           <a id="rouge" onClick={openModal}>
             Ici pour consulter
@@ -138,7 +138,7 @@ function AjoutDeBiens(props) {
             </p>
             <br /> <br />
             <label htmlFor="public">
-              Annonce public :
+              Annonce publique :
               <label>
                 <input
                   onChange={(e) => onChange(e, setIsPublic)}
@@ -224,7 +224,7 @@ function AjoutDeBiens(props) {
             </label>
             <br />
             <label htmlFor="surface">
-              Surface Habitable :
+              Surface habitable :
               <input
                 onChange={(e) => onChange(e, setLivingArea)}
                 type="text"
@@ -233,7 +233,7 @@ function AjoutDeBiens(props) {
             </label>
             <br />
             <label htmlFor="pieces">
-              Nombre de Pièces :
+              Nombre de pièces :
               <input
                 onChange={(e) => onChange(e, setRooms)}
                 type="text"
@@ -242,7 +242,7 @@ function AjoutDeBiens(props) {
             </label>
             <br />
             <label htmlFor="chambres">
-              Nombre de Chambres :
+              Nombre de chambres :
               <input
                 onChange={(e) => onChange(e, setBedrooms)}
                 type="text"
@@ -251,7 +251,7 @@ function AjoutDeBiens(props) {
             </label>
             <br />
             <label htmlFor="surfaceterrain">
-              Superficie du Terrain :
+              Superficie du terrain :
               <input
                 onChange={(e) => onChange(e, setTerraceSurface)}
                 type="text"
@@ -369,7 +369,7 @@ function AjoutDeBiens(props) {
               </label>
             </label>
             <br />
-            <br />
+
             {/* <PhotoBiens /> */}
             <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
           </div>

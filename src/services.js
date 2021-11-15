@@ -6,6 +6,7 @@ const base = axios.create({
   baseURL,
 });
 const Service = {
+
   addUsers(body) {
     return base.post ('/users/signup', body) 
   },
@@ -105,6 +106,10 @@ const Service = {
 };
 
 export default Service;
+
+
+
+
 // Rien à voir, circulez
 // Vraiment rien à voir, promis.
 // Bon ...

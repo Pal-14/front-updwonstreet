@@ -1,32 +1,63 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import './ItemModal.css';
+import Service from '../../services';
+
 
 
 function ItemModal(props) {
 
     /* Variables d'état */
     const [modalIsOpen, setIsOpen] = useState(false);
-
+    
     /* Variables */
     let item = props?.item;
     let itemInfo = item?.itemPublicData?.description;
     let itemInfoFinance = item?.itemPublicData?.funding;
     let itemPicturesFromUser = item?.itemPublicData?.itemPicturesFromUser;
     let isPublic = item?.itemPrivateData?.status?.isPublic;
+
+    let prettyPrint = `
+    Le bien suivant est un/une ${itemInfo?.typeOfItem} d'une surface habitable de ${itemInfo?.livingArea} m2 \.
+    Le prix de mise en vente est de ${itemInfoFinance?.priceInEuros} Stable Coins.\
+    Le bien est divisé en ${itemInfoFinance?.initialTokenAmount} tokens.\
+    Chaque token a une valeur initiale de ${itemInfoFinance?.initialSingleTokenValueInEuros}. \
+    ${!itemInfoFinance?.fundingOfItemIsInProgress ? "Le bien n'est pas en cours de financement participatif" :
+     "le bien est en cours de financement participatif"}\
+    Sur ce bien vous disposez de ${item?.itemPublicData?.itemPicturesFromUser.length} photo(s) pour constituer l'annonce.
+    `
     
     console.log("ITEM:", item);
-
+    
     let Url = `http://localhost:5000/get-public-pic/` // URL de récupération des photos
-
+    
     /* Ouverture modal */
     const openModal = () => {
         setIsOpen(true);
     };
-
+    
     /* Fermeture modal */
     const closeModal = () => {
         setIsOpen(false);
+    };
+    
+    /* Toggle modal : Si jamais vous voulez l'utiliser c'est possib' */
+    const toggleModal = () => {
+        setIsOpen(!modalIsOpen)
+    }
+
+    /* Modification de compte */
+    const editValueOfItem = async (user, key, value) => {
+        let body = {
+            targetItemId: item._id,
+            keyOfPropertyToChange: key,
+            newValue: value,
+        }
+        let change = await Service.editItemByAdmin(body);
+        if (change.data.success) {
+            setIsOpen(false)
+        }
+        console.log("Change:", change);
     };
 
 
@@ -44,6 +75,15 @@ function ItemModal(props) {
                 </div>
                 <div className="itemDetails">
                     <h4>Détails du bien</h4>
+
+                    <div className="statusBtns">
+                        {!item?.itemPrivateData.status.isPublic ? <a onClick={() => editValueOfItem(item, "itemPrivateData.status.isPublic", true)}> Passer en statut "Public" </a> :
+                            <a onClick={() => editValueOfItem(item, "itemPrivateData.status.isPublic", false )}> Passer en statut "Privé" </a>
+                            }
+                    </div>
+                    
+                    
+                    <p> Le bien </p>
                     <p><b>Adresse:</b> {itemInfo?.adress}</p>
                     <p><b>Code postal:</b> {itemInfo?.postalCode}</p>
                     <p><b>Ville:</b> {itemInfo?.city}</p>
@@ -57,21 +97,34 @@ function ItemModal(props) {
                     <p><b>Parking:</b> {itemInfo?.parking ? "oui" : "non"} - <b>Quantité:</b> {itemInfo?.parkingNumber}</p>
                     <p><b>Piscine:</b> {itemInfo?.swimmingPool ? "oui" : "non"}</p>
                     <p><b>Autres:</b> {itemInfo?.otherSpecialPerks}</p>
+
+                    <p><b>PrettyPrint</b> {prettyPrint}</p>
+                    <p><b>Nombre de token encore disponibles</b> {itemInfoFinance?.remainingAvailableToken}</p>
+                    <p><b>Nombre total inital de token pour ce bien</b> {itemInfoFinance?.initialTokenAmount}</p>
+                    <p><b>Valeur initiale d'un token pour ce bien </b> {itemInfoFinance?.initialTokenAmount}</p>
+
+
+
+
+
+
                   {/*   IL Y A DES NOUVELLES CLES EN PLUS SI TU VEUX LES AFFICHER.
                      GENRE isCurrentlyRented ou expectedYearlyIncome
                      Et toutes les clés qui concernent les tokens et les sousous qui sont
-                     dans itemInfosFinance */}
+                    dans itemInfosFinance */}
                 </div>
+
                 <div className="photoGallery">
-                    {/* vérifier pourquoi il n'y à rien à l'index [0] */}
-                    {/* ternaire si pas photo affiche rien */}
-                    {item?.itemPublicData?.itemPicturesFromUser.length >1  ? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[1]}`}  /> : <p></p>}
+                    {/* JE T'AI FOUTU UN PETIT MAP POUR LES PHOTOS HISTOIRE DE MOINS TE FAIRE SUER MA POULE  */}
+                    {item?.itemPublicData?.itemPicturesFromUser.map((picture, id) => (
+                        <img src={`${Url}${picture}`} key={id} alt="" />
+                    ))}
+
+                    {/* DU COUP TU POURRAS ENLEVER EN DESSOUS SAUF SI TU VEUX CONTROLLER PRECISEMENT CHAQUE PHOTO. UP TO YOU  */}
+                    {item?.itemPublicData?.itemPicturesFromUser.length >0  ? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[0]}`}  /> : <p></p>}
+                    {item?.itemPublicData?.itemPicturesFromUser.length >1  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[1]}`}  /> : <p></p>}
                     {item?.itemPublicData?.itemPicturesFromUser.length >2  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[2]}`}  /> : <p></p>}
                     {item?.itemPublicData?.itemPicturesFromUser.length >3  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[3]}`}  /> : <p></p>}
-                    {item?.itemPublicData?.itemPicturesFromUser.length >4  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[4]}`}  /> : <p></p>}
-                </div>
-                <div className="statusBtn">
-                     {!isPublic ? <a>Publier la proposition</a> : <a></a>}
                 </div>
             </Modal>
         </li>

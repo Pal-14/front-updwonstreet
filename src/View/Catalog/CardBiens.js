@@ -21,7 +21,7 @@ function CardBiens(props) {
   /* put /items/buy-initial-token 
   targetItemId priceInStableCoin = totalAmount tokenQuantityOrdered = numberOfTokens JWT */
 
-  const achat = () => {
+  const achat = async () => {
     let body = {
       targetItemId: item._id,
       priceInStableCoin: totalAmount,
@@ -241,7 +241,7 @@ function CardBiens(props) {
                 name="totalAmount"
               />
             </label>
-            <button onClick={achat}>Acheter</button>
+            <a onClick={achat}>Acheter</a>
           </form>
           {/*   IL Y A DES NOUVELLES CLES EN PLUS SI TU VEUX LES AFFICHER.
                     GENRE isCurrentlyRented ou expectedYearlyIncome

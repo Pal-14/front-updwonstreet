@@ -32,6 +32,9 @@ function AjoutDeBiens(props) {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  const [numberOfTokens, setNumberOfTokens] = useState();
+  const [totalAmount, setTotalAmount] = useState();
+
   function openModal() {
     setIsOpen(true);
   }
@@ -72,6 +75,8 @@ function AjoutDeBiens(props) {
       parkingNumber: parkingNumber,
       swimmingPool: swimmingPool,
       otherSpecialPerks: otherSpecialPerks,
+      aDefinirTokens: numberOfTokens,
+      aDefinirTotal: totalAmount,
 
       askedPriceByUser: askedPriceByUser,
       fundingStartDate: fundingStartDate,
@@ -115,6 +120,19 @@ function AjoutDeBiens(props) {
       setError(docsSubmitted.data.error);
     }
   }
+
+  /* Nombre de tokens */
+  const handleNumberOfTokens = (e) => {
+    setNumberOfTokens(e.target.value);
+    console.log(numberOfTokens);
+  };
+
+  /* Somme totale */
+  const handleTotalAmount = (e) => {
+    setTotalAmount(e.target.value);
+    console.log(totalAmount);
+  };
+
 
   return (
     <div class="card cardProfile">
@@ -369,7 +387,10 @@ function AjoutDeBiens(props) {
               </label>
             </label>
             <br />
-
+            <label for="tokens">Nombre de tokens:</label>
+            <input type="number" onChange={handleNumberOfTokens} class="with-gap" name="tokens"/>
+            <label for="totalAmount">Montant total:</label>
+            <input type="number" onChange={handleTotalAmount} class="with-gap" name="totalAmount"/>
             {/* <PhotoBiens /> */}
             <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
           </div>

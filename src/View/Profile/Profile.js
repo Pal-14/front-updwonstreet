@@ -36,7 +36,7 @@ console.log("LOG ROM", currentUser?.infos.isVerifiedByAdmin)
 
         <div className="card Profile">
 
-            <span class="card-title">Bonjour {currentUser?.firstName}, prêt à s'en mettre plein les fouilles ?</span>
+            <span class="card-title">Bonjour {currentUser?.firstName}</span>
        {/*      <span class="card-title">Gérez votre profil</span> */}
             <p> Statut : { !currentUser?.infos?.isVerifiedByAdmin ? "Membre non Vérifié" : "Membre Vérifié"}</p>
             

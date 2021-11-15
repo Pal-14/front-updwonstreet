@@ -97,6 +97,7 @@ function ItemModal(props) {
                     
                     
                     <p> Le bien </p>
+                    <p><b>ID</b> {item?._id}</p>
                     <p><b>Adresse:</b> {itemInfo?.adress}</p>
                     <p><b>Code postal:</b> {itemInfo?.postalCode}</p>
                     <p><b>Ville:</b> {itemInfo?.city}</p>
@@ -116,7 +117,11 @@ function ItemModal(props) {
                     <p><b>Nombre total inital de token pour ce bien</b> {itemInfoFinance?.initialTokenAmount}</p>
                     <p><b>Valeur initiale d'un token pour ce bien </b> {itemInfoFinance?.initialTokenAmount}</p>
 
-
+                    {item?.itemPrivateData?.tokenData?.tokenBuyOrdersDuringFunding.map((transaction, id) => (
+                        <div key={id}>
+                            Id Utilisateur {transaction.itemId} {transaction.quantity}</div>
+                        
+                    ))}
 
 
 

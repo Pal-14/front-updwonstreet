@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useMemo } from "react";
 import Modal from "react-modal";
 import Service from "../../services";
-import axios from "axios";
+
 
 function Docs(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -49,7 +49,7 @@ function Docs(props) {
   );
   const onFileChange1 = useCallback(
     (e) => {
-      let fileChange = e.target.files[0];
+      /* let fileChange = e.target.files[0]; */
       let fileTypeCheck = e.target.files[0].type;
       console.log(e.target.name, "input value");
 
@@ -74,7 +74,7 @@ function Docs(props) {
   );
   const onFileChange2 = useCallback(
     (e) => {
-      let fileChange = e.target.files[0];
+      /* let fileChange = e.target.files[0]; */
       let fileTypeCheck = e.target.files[0].type;
       console.log(e.target.name, "input value");
 

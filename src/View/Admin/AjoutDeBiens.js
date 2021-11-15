@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
@@ -75,8 +75,8 @@ function AjoutDeBiens(props) {
       parkingNumber: parkingNumber,
       swimmingPool: swimmingPool,
       otherSpecialPerks: otherSpecialPerks,
-      aDefinirTokens: numberOfTokens,
-      aDefinirTotal: totalAmount,
+      initialTokenAmount: numberOfTokens,
+      initialSingleTokenValueInEuros: totalAmount,
 
       askedPriceByUser: askedPriceByUser,
       fundingStartDate: fundingStartDate,

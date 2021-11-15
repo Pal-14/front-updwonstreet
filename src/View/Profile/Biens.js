@@ -3,26 +3,27 @@ import Modal from "react-modal";
 
 
 function Biens(props) {
+
+  /* Variable d'état */
   const [modalIsOpen, setIsOpen] = React.useState(false);
   
+  /* Variables */
   let data = props?.user?.data?.data?.documents;
   console.log(data,'data');
   let Url = `http://localhost:5000/get-public-pic/`
-  let UrlBien = `http://localhost:500/get-private-doc/`
+  /* let UrlBien = `http://localhost:500/get-private-doc/` */
 
-  
-  
+  /* Ouverture & fermeture de modal */
   function openModal() {
     setIsOpen(true);
-  }
+  };
 
   function closeModal() {
     setIsOpen(false);
-  }
+  };
   
 
-  
-
+  /* Affichage front */
   return (
     <div class="card cardProfile">
       <div class="card-content">

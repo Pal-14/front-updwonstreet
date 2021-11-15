@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./Catalog.css";
-import CardBiens from "./CardBiens";
+import CardBiens from "./CardBiens"
+import "./Catalog.css"
+
 
 function Catalog(props) {
   /* Variables */
@@ -33,13 +34,13 @@ function Catalog(props) {
 
   /* Affichage front */
   return (
-    <div>
-      <div>
+    <div class="containBien">
+      <div >
         <h4>Liste des biens</h4>
         <p>Ici vous pouvez consulter les biens immobiliers proposés.</p>
       </div>
 
-      <div >
+      <div class="listBien">
         {renderItems()}
       </div>
     </div>

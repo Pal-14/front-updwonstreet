@@ -41,9 +41,9 @@ function Admin() {
   const searchbarFilterItems = () => {
     return itemList.filter(
       (item) =>
-        item.itemPublicData.description.city.toLowerCase().includes(searchInput.toLowerCase()) ||
-        item.itemPublicData.description.typeOfItem.toLowerCase().includes(searchInput.toLowerCase()) ||
-        item.itemPublicData.description.prettyPrint.toLowerCase().includes(searchInput.toLowerCase())
+        item?.itemPublicData?.description?.city.toLowerCase().includes(searchInput.toLowerCase()) ||
+        item?.itemPublicData?.description?.typeOfItem.toLowerCase().includes(searchInput.toLowerCase()) ||
+        item?.itemPublicData?.description?.prettyPrint.toLowerCase().includes(searchInput.toLowerCase())
     );
   };
 

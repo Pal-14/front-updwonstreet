@@ -1,0 +1,34 @@
+.containBien {
+    width: 100%
+}
+
+.cardBien {
+    width: 48%;
+  }
+
+.listBien {
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+    flex-wrap: wrap;
+  }
+
+.imgBien {
+    height: 20vw;
+}
+
+.cacher {
+    z-index: 0 !important
+}
+
+  @media screen and (min-width: 1000px){
+    .cardBien {
+        width: 32%;
+      }
+
+      .imgBien {
+        height: 15vw;
+    }
+  }

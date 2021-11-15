@@ -138,11 +138,7 @@ function ItemModal(props) {
                         <img src={`${Url}${picture}`} key={id} alt="" />
                     ))}
 
-                    {/* DU COUP TU POURRAS ENLEVER EN DESSOUS SAUF SI TU VEUX CONTROLLER PRECISEMENT CHAQUE PHOTO. UP TO YOU  */}
-                    {item?.itemPublicData?.itemPicturesFromUser.length >0  ? <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[0]}`}  /> : <p></p>}
-                    {item?.itemPublicData?.itemPicturesFromUser.length >1  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[1]}`}  /> : <p></p>}
-                    {item?.itemPublicData?.itemPicturesFromUser.length >2  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[2]}`}  /> : <p></p>}
-                    {item?.itemPublicData?.itemPicturesFromUser.length >3  ?  <img src={`${Url}${item?.itemPublicData?.itemPicturesFromUser[3]}`}  /> : <p></p>}
+                  
                 </div>
             </Modal>
         </li>

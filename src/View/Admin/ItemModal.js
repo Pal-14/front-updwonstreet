@@ -51,6 +51,7 @@ function ItemModal(props) {
         }
         let change = await Service.editItemByAdmin(body);
         if (change.data.success) {
+            props.setReset(false);
             setIsOpen(false)
         }
         console.log("Change:", change);

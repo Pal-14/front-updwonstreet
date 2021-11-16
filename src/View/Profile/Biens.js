@@ -11,7 +11,7 @@ function Biens(props) {
   let data = props?.user?.data?.data?.documents;
   console.log(data,'data');
   let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/` // URL de récupération des photos
-  let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-pic/` // URL de récupération des documents privés soumis par un utilisateur
+ /*  let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-pic/` pas encore utilisé */ // URL de récupération des documents privés soumis par un utilisateur
 
 
   /* Ouverture & fermeture de modal */
@@ -40,7 +40,7 @@ function Biens(props) {
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>Fermer</a>
           <div>
-             {data?.ownedItems >1 ? <img src={`${Url}${data?.ownedItems}`}  /> : <p>Vous ne posséder pas encore de biens</p>}
+             {data?.ownedItems >1 ? <img alt="" src={`${Url}${data?.ownedItems}`}  /> : <p>Vous ne posséder pas encore de biens</p>}
     
            
           </div>

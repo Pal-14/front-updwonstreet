@@ -124,7 +124,7 @@ function Finalisation(props) {
         <br />
       </label>
 
-      <a href="#" onClick={handleSubmit} id="rouge">Modifier vos données personnelles</a>
+      <a onClick={handleSubmit} id="rouge">Modifier vos données personnelles</a>
 
     </div>
   );

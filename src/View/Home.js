@@ -22,7 +22,7 @@ function Home() {
       <div className="best">
         <div class="card cardHome">
           <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src={appt1} />
+            <img class="activator" src={appt1} alt=""/>
           </div>
           <div class="card-contentHome">
             <span class="card-title activator grey-text text-darken-4">
@@ -55,7 +55,7 @@ function Home() {
               Centre Antibes
             </span>
             <p>
-              <a  className="rouge">Voir le bien</a>
+              <a href=""  className="rouge">Voir le bien</a>
             </p>
           </div>
           <div class="card-reveal">

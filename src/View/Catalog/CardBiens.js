@@ -250,8 +250,9 @@ function CardBiens(props) {
         </div>
       </Modal>
       <div class="card-image waves-block waves-light">
-        <img
+        <img alt=""
           class="activator imgBien"
+          
           src={`${Url}${props?.item?.itemPublicData?.itemPicturesFromUser[0]}`}
         />
       </div>
@@ -260,7 +261,7 @@ function CardBiens(props) {
           {props?.item?.itemPublicData?.description?.name}
         </span>
         <p>
-          <a onClick={openModal} className="rouge">
+          <a  href="#" onClick={openModal} className="rouge">
             Voir le bien
           </a>
         </p>

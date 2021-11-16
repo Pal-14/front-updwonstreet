@@ -77,7 +77,7 @@ function CardBiens(props) {
 
   console.log("ITEM:", item);
 
-  let Url = `http://localhost:5000/get-public-pic/`;
+  let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/`;
 
   /* Modification de compte */
   const editValueOfItem = async (user, key, value) => {

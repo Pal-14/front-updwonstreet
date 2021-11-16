@@ -17,8 +17,8 @@ function Catalog(props) {
     itemPicturesFromUser
   );
 
-  let Url = `http://localhost:5000/get-public-pic/`;
-  let UrlBien = `http://localhost:5000/get-private-doc/`;
+  let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/`;
+  let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-doc/`;
 
   /* Événements */
 

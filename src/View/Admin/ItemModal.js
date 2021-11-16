@@ -29,7 +29,8 @@ function ItemModal(props) {
     `
     console.log("ITEM:", item);
 
-    let Url = `http://localhost:5000/get-public-pic/` // URL de récupération des photos
+    let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/` // URL de récupération des photos
+    let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-pic/` // URL de récupération des documents privés soumis par un utilisateur
 
     /* Ouverture modal */
     const openModal = () => {

@@ -10,8 +10,9 @@ function Biens(props) {
   /* Variables */
   let data = props?.user?.data?.data?.documents;
   console.log(data,'data');
-  let Url = `http://localhost:5000/get-public-pic/`
-  /* let UrlBien = `http://localhost:500/get-private-doc/` */
+  let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/` // URL de récupération des photos
+  let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-pic/` // URL de récupération des documents privés soumis par un utilisateur
+
 
   /* Ouverture & fermeture de modal */
   function openModal() {

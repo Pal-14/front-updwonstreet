@@ -4,7 +4,10 @@ import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
 import { onRadioChange } from "../../Fonctions/PropositionDeBiens";
 
+
 function AjoutDeBiens(props) {
+
+  /* Variables d'état */
   const [isPublic, setIsPublic] = useState(false);
   const [name, setName] = useState("");
   const [adress, setAdress] = useState("");
@@ -35,6 +38,7 @@ function AjoutDeBiens(props) {
   const [numberOfTokens, setNumberOfTokens] = useState();
   const [totalAmount, setTotalAmount] = useState();
 
+  /* Ouverture/fermeture de modal */
   function openModal() {
     setIsOpen(true);
   }
@@ -43,7 +47,8 @@ function AjoutDeBiens(props) {
     setIsOpen(false);
   }
 
-  /* const onRadioChange = (e) => {
+  /* Modification du statut */
+  const onRadioChange = (e) => {
     if(e.target.value === "false"){
       setIsPublic("false")
     }else {
@@ -53,8 +58,9 @@ function AjoutDeBiens(props) {
     console.log(e.target.value);
     console.log(typeof(e.target.value));
     
-  }; */
+  };
 
+  /* Création du bien */
   async function SubmitFileData(e) {
     let body = {
       isPublic: isPublic,
@@ -120,7 +126,7 @@ function AjoutDeBiens(props) {
     } else {
       setError(docsSubmitted.data.error);
     }
-  }
+  };
 
   /* Nombre de tokens */
   const handleNumberOfTokens = (e) => {
@@ -134,7 +140,7 @@ function AjoutDeBiens(props) {
     console.log(totalAmount);
   };
 
-
+  /* Affichage front */
   return (
     <div class="card cardProfile">
       <div class="card-content">
@@ -149,7 +155,6 @@ function AjoutDeBiens(props) {
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>Fermer</a>
-
           <div>
             <p>
               {message}
@@ -389,9 +394,9 @@ function AjoutDeBiens(props) {
             </label>
             <br />
             <label for="tokens">Nombre de tokens:</label>
-            <input type="number" onChange={handleNumberOfTokens} class="with-gap" name="tokens"/>
+            <input type="number" onChange={handleNumberOfTokens} class="with-gap" name="tokens" />
             <label for="totalAmount">Montant total:</label>
-            <input type="number" onChange={handleTotalAmount} class="with-gap" name="totalAmount"/>
+            <input type="number" onChange={handleTotalAmount} class="with-gap" name="totalAmount" />
             {/* <PhotoBiens /> */}
             <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
           </div>

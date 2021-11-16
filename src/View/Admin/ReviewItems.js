@@ -13,13 +13,15 @@ function Admin() {
   const [itemList, setItemList] = useState([]);
   const [showNotPublic, setShowNotPublic] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [reactualisation, setReactualisation] = useState(false);
 
   /* Récupération des utilisateurs */
   useEffect(() => {
     Service.adminItemList().then((response) => {
       setItemList(response.data);
+      setReactualisation(true);
     });
-  }, []);
+  }, [reactualisation]);
   console.log("Item list:", itemList);
 
   /* Événements */
@@ -54,7 +56,7 @@ function Admin() {
       searchbarFilteredItems
     );
     return searchbarCheckboxFilteredItems.map((item, id) => {
-      return <ItemModal item={item} id={id} />;
+      return <ItemModal item={item} id={id} setReset={setReactualisation} />;
     });
   };
 
@@ -87,7 +89,7 @@ function Admin() {
             <input
               type="text"
               id="searchInput"
-              placeholder="Type de bien, Ville ou mot dans la description"
+              placeholder="Type de bien, ville ou mot dans la description"
               className="searchInput"
               onChange={handleSearchInput}
             />

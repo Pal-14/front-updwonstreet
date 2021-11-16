@@ -22,7 +22,6 @@ function Admin() {
       setReactualisation(true);
     });
   }, [reactualisation]);
-  console.log("User list:", userList);
 
   /* Événements */
   const toggleShowPendingApproval = () => {
@@ -33,7 +32,7 @@ function Admin() {
     setSearchInput(e.target.value);
   };
 
-  /* Fonctions de filtre */
+  /* Filtrage des utilisateurs */
   const checkboxFilterUsers = (userList) => {
     return showPendingApproval
       ? userList.filter((user) => !user.infos.isVerifiedByAdmin)
@@ -49,7 +48,7 @@ function Admin() {
     );
   };
 
-  /* Fonction d'affichage des utilisateurs */
+  /* Affichage des utilisateurs */
   const renderUsers = () => {
     let searchbarFilteredUsers = searchbarFilterUsers();
     let searchbarCheckboxFilteredUsers = checkboxFilterUsers(

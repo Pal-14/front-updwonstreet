@@ -14,45 +14,49 @@ function Profile(props) {
 
   useEffect(() => {}, [openPhoto]);
 
- /*  let currentUser = props.user */
-/* let rom = false */
-let currentUser = props?.user?.data?.data
+  /*  let currentUser = props.user */
+  /* let rom = false */
+  let currentUser = props?.user?.data?.data;
 
-console.log("LOG ROM", currentUser?.infos.isVerifiedByAdmin)
+  console.log("LOG ROM", currentUser?.infos.isVerifiedByAdmin);
   // variable pour : changer l'état de User a compte validé et envoi des composants si validé
   // pour avoir les composants validé  dans let test = "Validé laisser tel quel
   // et pour avoir le status non validé dans let test retiré juste le (é).
- 
-    return (
-      <div>
-        <div className="containCard">
-          <div className="containProfile">
-            <div className="boxProfile">
-              <div className="imageProfile" />
+
+  return (
+    <div>
+      <div className="containCard">
+        <div className="containProfile">
+          <div className="boxProfile">
+            <div className="imageProfile" />
           </div>
         </div>
 
         <div className="card Profile">
+          <span class="card-title">Bonjour {currentUser?.firstName}</span>
+          {/*      <span class="card-title">Gérez votre profil</span> */}
+          <p>
+            {" "}
+            Statut :{" "}
+            {!currentUser?.infos?.isVerifiedByAdmin
+              ? "Membre non vérifié"
+              : "Membre vérifié"}
+          </p>
 
-            <span class="card-title">Bonjour {currentUser?.firstName}</span>
-       {/*      <span class="card-title">Gérez votre profil</span> */}
-            <p> Statut : { !currentUser?.infos?.isVerifiedByAdmin ? "Membre non vérifié" : "Membre vérifié"}</p>
-            
-                  <div className="cardInCard">
-                    <Biens {...props} />
-                    <Portefeuille {...props} />
-                    <Informations {...props} />
-                    <Edition {...props} />
-                  { !currentUser?.infos.isVerifiedByAdmin ? 
-                    <DemandeVerification {...props}/> : <></> }
-                  </div>
-             
-            
+          <div className="cardInCard">
+            <Biens {...props} />
+            <Portefeuille {...props} />
+            <Informations {...props} />
+            <Edition {...props} />
+            {!currentUser?.infos.isVerifiedByAdmin ? (
+              <DemandeVerification {...props} />
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
+      </div>
     </div>
-    </div>
-
-
   );
 }
 

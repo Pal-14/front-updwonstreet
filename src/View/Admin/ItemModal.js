@@ -4,7 +4,6 @@ import './ItemModal.css';
 import Service from '../../services';
 
 
-
 function ItemModal(props) {
 
     /* Variables d'état */
@@ -30,7 +29,7 @@ function ItemModal(props) {
     console.log("ITEM:", item);
 
     let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/` // URL de récupération des photos
-    let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-pic/` // URL de récupération des documents privés soumis par un utilisateur
+    /* let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-pic/` */ // URL de récupération des documents privés soumis par un utilisateur
 
     /* Ouverture modal */
     const openModal = () => {
@@ -101,24 +100,16 @@ function ItemModal(props) {
 
                         {tokenData?.tokenBuyOrdersDuringFunding.map((transaction, id) => (
                             <div key={id}>
-                                Id Utilisateur {transaction.itemId} {transaction.quantity}</div>
+                                Id Utilisateur {transaction.itemId} {transaction.quantity}
+                            </div>
                         ))}
-                        {/*   IL Y A DES NOUVELLES CLES EN PLUS SI TU VEUX LES AFFICHER.
-                        GENRE isCurrentlyRented ou expectedYearlyIncome
-                        Et toutes les clés qui concernent les tokens et les sousous qui sont dans itemInfosFinance */}
+                        {/*   Possibilité d'afficher de nouvelles clés (isCurrentlyRented / expectedYearlyIncome ) et toutes les clés qui concernent les tokens et les sommes qui sont dans itemInfosFinance */}
                     </div>
                 </div>
                 <div className="photoGallery">
-                    {/* JE T'AI FOUTU UN PETIT MAP POUR LES PHOTOS HISTOIRE DE MOINS TE FAIRE SUER MA POULE  */}
                     {itemPicturesFromUser.map((picture, id) => (
                         <img src={`${Url}${picture}`} key={id} alt="" />
                     ))}
-
-                    {/* DU COUP TU POURRAS ENLEVER EN DESSOUS SAUF SI TU VEUX CONTROLLER PRECISEMENT CHAQUE PHOTO. UP TO YOU  */}
-                    {/* {itemPicturesFromUser.length >0  ? <img src={`${Url}${itemPicturesFromUser[0]}`}  /> : <p></p>}
-                    {itemPicturesFromUser.length >1  ?  <img src={`${Url}${itemPicturesFromUser[1]}`}  /> : <p></p>}
-                    {itemPicturesFromUser.length >2  ?  <img src={`${Url}${itemPicturesFromUser[2]}`}  /> : <p></p>}
-                    {itemPicturesFromUser.length >3  ?  <img src={`${Url}${itemPicturesFromUser[3]}`}  /> : <p></p>} */}
                 </div>
             </Modal>
         </li>

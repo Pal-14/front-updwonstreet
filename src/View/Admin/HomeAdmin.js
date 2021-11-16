@@ -6,25 +6,17 @@ import "./Admin.css";
 import ReviewItems from "./ReviewItems";
 import Informations from "../Profile/Informations";
 
-function HomeAdmin(props) {
-  /* const [title, setTitle] = useState("Validé");
-  const [error, setError] = useState(""); */
 
+function HomeAdmin(props) {
+  
+  /* Variables d'état */
   const [openPhoto, setOpenPhoto] = useState(false);
   const [targetItemFundingId, setTargetItemFundingId] = useState("");
 
+  /* Réactualisation de l'affichage */
   useEffect(() => {}, [openPhoto, targetItemFundingId]);
 
-  /* function Isaccepted() {
-    if (title === "Validé") {
-      setTitle("Validé");
-    } else {
-      if (title !== "Validé") {
-        setTitle("En attente d'admin");
-      }
-    }
-  } */
-
+  /*  Affichage front */
   return (
     <div className="containCard">
       <div className="containProfile">

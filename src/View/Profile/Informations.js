@@ -29,7 +29,7 @@ function Informations(props) {
         <span class="card-title ">Voir mon profil</span>
         <p>Toutes vos informations</p>
         <p>
-          <a  href={() => false} id="rouge" onClick={openModal}>
+          <a   id="rouge" onClick={openModal}>
             Ici pour consulter
           </a>
         </p>

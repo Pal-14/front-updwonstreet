@@ -47,19 +47,6 @@ function AjoutDeBiens(props) {
     setIsOpen(false);
   }
 
-  /* Modification du statut */
-  const onRadioChange = (e) => {
-    if(e.target.value === "false"){
-      setIsPublic("false")
-    }else {
-      setIsPublic("true")
-    }
-    console.log(e.target.name);
-    console.log(e.target.value);
-    console.log(typeof(e.target.value));
-    
-  };
-
   /* Création du bien */
   async function SubmitFileData(e) {
     let body = {
@@ -164,59 +151,30 @@ function AjoutDeBiens(props) {
             <label htmlFor="public">
               Annonce publique :
               <label>
-                <input
-                  onChange={(e) => onChange(e, setIsPublic)}
-                  onChange={(e) => onRadioChange(e, setIsPublic)}
-                  class="with-gap"
-                  name="isPublic"
-                  type="radio"
-                  value={true}
-                />
+                <input onChange={(e) => onChange(e, setIsPublic)} onChange={(e) => onRadioChange(e, setIsPublic)}
+                  class="with-gap" name="isPublic" type="radio" value={true} />
                 <span>Oui</span>
               </label>
               <label>
-                <input
-                  onChange={(e) => onChange(e, setIsPublic)}
-                  onChange={(e) => onRadioChange(e, setIsPublic)}
-                  class="with-gap"
-                  name="isPublic"
-                  type="radio"
-                  data-bind="checked:IsChecked, checkedValue: false"
-                  value="false"
-                />
+                <input onChange={(e) => onChange(e, setIsPublic)} onChange={(e) => onRadioChange(e, setIsPublic)}
+                  class="with-gap" name="isPublic" type="radio" data-bind="checked:IsChecked, checkedValue: false" value="false" />
                 <span>Non</span>
               </label>
             </label>
             <br /> <br />
             <label htmlFor="titre">
               Titre de l'annonce :
-              <input
-                onChange={(e) => onChange(e, setName)}
-                type="text"
-                placeholder="Titre"
-                name="name"
-                id="name"
-              ></input>
+              <input onChange={(e) => onChange(e, setName)} type="text" placeholder="Titre" name="name" id="name" />
             </label>
             <br />
             <label htmlFor="adress">
               Adresse :
-              <input
-                onChange={(e) => onChange(e, setAdress)}
-                type="text"
-                placeholder="Adresse"
-                name="adress"
-                id="adress"
-              ></input>
+              <input onChange={(e) => onChange(e, setAdress)} type="text" placeholder="Adresse" name="adress" id="adress" />
             </label>
             <br />
             <label htmlFor="CodePostal">
               Code postal :
-              <input
-                onChange={(e) => onChange(e, setPostalCode)}
-                type="text"
-                placeholder="Code postal"
-              ></input>
+              <input onChange={(e) => onChange(e, setPostalCode)} type="text" placeholder="Code postal" />
             </label>
             <br />
             <label htmlFor="ville">

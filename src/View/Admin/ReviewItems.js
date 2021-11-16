@@ -86,23 +86,12 @@ function Admin() {
         <div>
           <label for="searchInput">
             Rechercher par:
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Type de bien, ville ou mot dans la description"
-              className="searchInput"
-              onChange={handleSearchInput}
-            />
+            <input type="text" id="searchInput" placeholder="Type de bien, ville ou mot dans la description" className="searchInput" onChange={handleSearchInput}/>
           </label>
         </div>
-        <div>
+        <div className="checkboxFilter">
           <label for="checkbox">
-            <input
-              type="checkbox"
-              id="checkbox"
-              onChange={toggleShowNotPublic}
-              checked={showNotPublic}
-            />
+            <input type="checkbox" id="checkbox" onChange={toggleShowNotPublic} checked={showNotPublic} />
             <span>Afficher uniquement les biens non publiés</span>
           </label>
         </div>

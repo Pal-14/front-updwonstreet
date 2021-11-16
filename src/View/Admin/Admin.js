@@ -82,26 +82,15 @@ function Admin() {
       </div>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <a onClick={closeModal}>Fermer</a>
-        <div>
+        <div className="searchFilter">
           <label for="searchInput">
             Rechercher par:
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Nom, prénom ou e-mail"
-              className="searchInput"
-              onChange={handleSearchInput}
-            />
+            <input type="text" id="searchInput" placeholder="Nom, prénom ou e-mail" className="searchInput" onChange={handleSearchInput} />
           </label>
         </div>
-        <div>
+        <div className="checkboxFilter">
           <label for="checkbox">
-            <input
-              type="checkbox"
-              id="checkbox"
-              onChange={toggleShowPendingApproval}
-              checked={showPendingApproval}
-            />
+            <input type="checkbox" id="checkbox" onChange={toggleShowPendingApproval} checked={showPendingApproval} />
             <span>En attente de vérification</span>
           </label>
         </div>

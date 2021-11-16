@@ -26,24 +26,28 @@ class Carousel extends Component {
           }}
           className="carousel"
         >
-          <a href={() => false} class="carousel-item" href="#one!">
+          <a class="carousel-item" href="#one!">
             <img
+              alt="img"
               className
               src={`${this.Url}${this.props?.item?.itemPublicData?.itemPicturesFromUser[0]}`}
             />
           </a>
-          <a href={() => false} class="carousel-item" href="#two!">
+          <a class="carousel-item" href="#two!">
             <img
+              alt="img1"
               src={`${this.Url}${this.props?.item?.itemPublicData?.itemPicturesFromUser[1]}`}
             />
           </a>
-          <a href={() => false} class="carousel-item" href="#three!">
+          <a class="carousel-item" href="#three!">
             <img
+              alt="img2"
               src={`${this.Url}${this.props?.item?.itemPublicData?.itemPicturesFromUser[2]}`}
             />
           </a>
-          <a href={() => false} class="carousel-item" href="#four!">
+          <a class="carousel-item" href="#four!">
             <img
+              alt="img3"
               src={`${this.Url}${this.props?.item?.itemPublicData?.itemPicturesFromUser[3]}`}
             />
           </a>

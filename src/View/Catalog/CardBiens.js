@@ -48,26 +48,7 @@ function CardBiens(props) {
     setIsOpen(false);
   };
 
-  let prettyPrint = `
-  Le bien suivant est un/une ${
-    itemInfo?.typeOfItem
-  } d'une surface habitable de ${itemInfo?.livingArea} m2 \.
-  Le prix de mise en vente est de ${
-    itemInfoFinance?.priceInEuros
-  } Stable Coins.\
-  Le bien est divisé en ${itemInfoFinance?.initialTokenAmount} tokens.\
-  Chaque token a une valeur initiale de ${
-    itemInfoFinance?.initialSingleTokenValueInEuros
-  }. \
-  ${
-    !itemInfoFinance?.fundingOfItemIsInProgress
-      ? "Le bien n'est pas en cours de financement participatif"
-      : "le bien est en cours de financement participatif"
-  }\
-  Sur ce bien vous disposez de ${
-    item?.itemPublicData?.itemPicturesFromUser.length
-  } photo(s) pour constituer l'annonce.
-  `;
+  
 
   console.log("ITEM:", item);
 
@@ -119,29 +100,7 @@ function CardBiens(props) {
         <div className="itemDetails">
           <h4>Détails du bien</h4>
           <div className="statusBtns">
-            {!item?.itemPrivateData?.status?.isPublic ? (
-              <a  
-                onClick={() =>
-                  editValueOfItem(item, "itemPrivateData.status.isPublic", true)
-                }
-              >
-                {" "}
-                Passer en statut "Public"{" "}
-              </a>
-            ) : (
-              <a 
-                onClick={() =>
-                  editValueOfItem(
-                    item,
-                    "itemPrivateData.status.isPublic",
-                    false
-                  )
-                }
-              >
-                {" "}
-                Passer en statut "Privé"{" "}
-              </a>
-            )}
+           
           </div>
           <p> Le bien </p>
           <Carousel {...props}/>   
@@ -194,19 +153,20 @@ function CardBiens(props) {
             <b>Autres:</b> {itemInfo?.otherSpecialPerks}
           </p>
           <p>
-            <b>PrettyPrint</b> {prettyPrint}
-          </p>
-          <p>
-            <b>Nombre de token encore disponibles</b>{" "}
+            <b>Nombre de token encore disponibles: </b>{" "}
             {itemInfoFinance?.remainingAvailableToken}
           </p>
           <p>
-            <b>Nombre total inital de token pour ce bien</b>{" "}
+            <b>Nombre total inital de token pour ce bien: </b>{" "}
             {itemInfoFinance?.initialTokenAmount}
           </p>
           <p>
-            <b>Valeur initiale d'un token pour ce bien </b>{" "}
-            {itemInfoFinance?.initialTokenAmount}
+            <b>Valeur initiale d'un token pour ce bien: </b>{" "}
+            {itemInfoFinance?.initialSingleTokenValueInEuros}  UDS Coins
+          </p>
+          <p>
+            <b>Valeur du bien: </b>{" "}
+            {itemInfoFinance?.priceInEuros} UDS Coins
           </p>
           {item?.itemPrivateData?.tokenData?.tokenBuyOrdersDuringFunding.map(
             (transaction, id) => (
@@ -256,7 +216,7 @@ function CardBiens(props) {
           {props?.item?.itemPublicData?.description?.name}
         </span>
         <i class="material-icons right">close</i>
-        <p>{prettyPrint}</p>
+        <p>{itemInfo?.prettyPrint}</p>
       </div>
     </div>
   );

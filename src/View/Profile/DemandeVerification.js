@@ -24,28 +24,6 @@ function DemandeVerification(props) {
     setIsOpen(false);
   }
 
-  async function handleSubmit() {
-    let body = {
-      phoneNumber: phoneNumber,
-      adress: adress,
-      city: city,
-      country: country,
-      postalCode: postalCode,
-      dateOfBirth: dateOfBirth,
-    };
-    let accountPut = await Service.editUser(body);
-    console.log(accountPut);
-    setMessage(accountPut.data.message);
-    if (accountPut.data.success) {
-      props.setIsLoggedIn(false);
-    }
-    if (accountPut.data.success) {
-      
-        closeModal();
-      
-    }
-  }
-
   return (
     <div class="card cardProfile">
       <div class="card-content">
@@ -62,17 +40,6 @@ function DemandeVerification(props) {
           <div class="card-action">
             <Docs {...props} /> <Finalisation {...props} />
           </div>
-
-          
-
-            <a
-              onRequestClose={closeModal}
-              onClick={handleSubmit}
-            >Valider les informations</a>
-
-            
-          
-          
         </Modal>
       </div>
     </div>

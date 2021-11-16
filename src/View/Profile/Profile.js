@@ -36,7 +36,7 @@ function Profile(props) {
         </div>
 
         <div className="card Profile">
-          <span class="card-title">Bonjour {currentUser?.firstName}</span>
+          <span class="card-title">Bonjour {currentUser?.lastName}</span>
           {/*      <span class="card-title">Gérez votre profil</span> */}
           <p>
             {" "}

@@ -15,8 +15,8 @@ function CardBiens(props) {
   let item = props?.item;
   let itemInfo = item?.itemPublicData?.description;
   let itemInfoFinance = item?.itemPublicData?.funding;
-  let itemPicturesFromUser = item?.itemPublicData?.itemPicturesFromUser;
-  let isPublic = item?.itemPrivateData?.status?.isPublic;
+ /*  let itemPicturesFromUser = item?.itemPublicData?.itemPicturesFromUser; */   /* pas encore utilisé */
+ /* let isPublic = item?.itemPrivateData?.status?.isPublic;  pas encore utilisé */
 
   /* put /items/buy-initial-token 
   targetItemId priceInStableCoin = totalAmount tokenQuantityOrdered = numberOfTokens JWT */
@@ -115,7 +115,7 @@ function CardBiens(props) {
         style={{ overlay: { backgroundColor: "gray" } }}
       >
         <div className="fixed-action-btn">
-          <a
+          <a  href={() => false}
             onClick={closeModal}
             class="btn-floating btn-large waves-effect waves-light red"
           >
@@ -126,7 +126,7 @@ function CardBiens(props) {
           <h4>Détails du bien</h4>
           <div className="statusBtns">
             {!item?.itemPrivateData?.status?.isPublic ? (
-              <a
+              <a  href={() => false}
                 onClick={() =>
                   editValueOfItem(item, "itemPrivateData.status.isPublic", true)
                 }
@@ -135,7 +135,7 @@ function CardBiens(props) {
                 Passer en statut "Public"{" "}
               </a>
             ) : (
-              <a
+              <a href={() => false}
                 onClick={() =>
                   editValueOfItem(
                     item,
@@ -241,7 +241,7 @@ function CardBiens(props) {
                 name="totalAmount"
               />
             </label>
-            <a onClick={achat}>Acheter</a>
+            <a  href={() => false} onClick={achat}>Acheter</a>
           </form>
           {/*   IL Y A DES NOUVELLES CLES EN PLUS SI TU VEUX LES AFFICHER.
                     GENRE isCurrentlyRented ou expectedYearlyIncome

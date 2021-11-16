@@ -52,13 +52,13 @@ function Edition(props) {
         <span class="card-title ">Modifier mon profil</span>
         <p>Tout pour modifier vos informations personnelles</p>
 
-        <a id="rouge" onClick={openModal}>
+        <a  href={() => false} id="rouge" onClick={openModal}>
           Ici pour modifier
         </a>
       </div>
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a onClick={closeModal}>Fermer</a>
+          <a  href={() => false} onClick={closeModal}>Fermer</a>
 
           <div>
             <p>{message}</p>
@@ -126,7 +126,7 @@ function Edition(props) {
             </label>
 
 
-            <a
+            <a  href={() => false}
               onRequestClose={closeModal}
               onClick={handleSubmit}
             >Valider les informations</a>

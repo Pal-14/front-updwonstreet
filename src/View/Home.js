@@ -29,7 +29,7 @@ function Home() {
               Le Bastion
             </span>
             <p>
-            <a className="rouge">Voir le bien</a>
+            <a  href={() => false} className="rouge">Voir le bien</a>
             </p>
           </div>
           <div class="card-reveal">

@@ -26,10 +26,10 @@ class Carousel extends Component  {
         }}
         className="carousel"
       >
-            <a class="carousel-item" href="#one!"><img className src={`${this.Url}${this.props.item?.itemPublicData?.itemPicturesFromUser[0]}`}/></a>
-            <a class="carousel-item" href="#two!"><img src={`${this.Url}${this.props.item?.itemPublicData?.itemPicturesFromUser[1]}`}/></a>
-            <a class="carousel-item" href="#three!"><img src={`${this.Url}${this.props.item?.itemPublicData?.itemPicturesFromUser[2]}`}/></a>
-            <a class="carousel-item" href="#four!"><img src={`${this.Url}${this.props.item?.itemPublicData?.itemPicturesFromUser[3]}`}/></a>
+            <a  href={() => false} class="carousel-item" href="#one!"><img className src={`${this.Url}${this.props.item?.itemPublicData?.itemPicturesFromUser[0]}`}/></a>
+            <a  href={() => false} class="carousel-item" href="#two!"><img src={`${this.Url}${this.props.item?.itemPublicData?.itemPicturesFromUser[1]}`}/></a>
+            <a  href={() => false} class="carousel-item" href="#three!"><img src={`${this.Url}${this.props.item?.itemPublicData?.itemPicturesFromUser[2]}`}/></a>
+            <a  href={() => false} class="carousel-item" href="#four!"><img src={`${this.Url}${this.props.item?.itemPublicData?.itemPicturesFromUser[3]}`}/></a>
   
       </div>
       </div>

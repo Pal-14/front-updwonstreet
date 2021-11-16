@@ -17,7 +17,7 @@ function UserModal(props) {
     let userInfo = props?.user?.infos;
 
     let path = '/get-private-doc/' /* LES DOCUMENTS PRIVES DES UTILISATEURS SONT ACCESSIBLES A CET ENDROIT */ 
-    let Url = `http://localhost:5000${path}`;
+    let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io${path}`;
     
 
     let image = props.user.documents.documentsUrl;
@@ -90,11 +90,11 @@ function UserModal(props) {
                         <img src={`${Url}${image[taille - 3]}`} />
                     </div>
                     <div>
-                        <p>RIB</p>
+                        <p>Justificatifs de domicile</p>
                         <img src={`${Url}${image[taille - 2]}`} />
                     </div>
                     <div>
-                        <p>Justificatifs de domicile</p>
+                        <p>RIB</p>
                         <img src={`${Url}${image[taille - 1]}`} />
                     </div>
                 </div>

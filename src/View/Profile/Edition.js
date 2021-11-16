@@ -132,7 +132,7 @@ function Edition(props) {
             >Valider les informations</a>
 
             
-            <Docs />
+            <Docs {...props} />
           </div>
         </Modal>
       </div>

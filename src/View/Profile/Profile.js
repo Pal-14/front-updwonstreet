@@ -47,6 +47,9 @@ function Profile(props) {
           </p>
 
           <div className="cardInCard">
+            {!currentUser?.infos.isVerifiedByAdmin ? (
+              <DemandeVerification {...props} />
+            ) : <p stylename="hidden"></p>}
             <Biens {...props} />
             <Portefeuille {...props} />
             <Informations {...props} />
@@ -62,11 +65,6 @@ function Profile(props) {
               setOpenPhoto={setOpenPhoto}
               targetItemFundingId={targetItemFundingId}
             />
-            {!currentUser?.infos.isVerifiedByAdmin ? (
-              <DemandeVerification {...props} />
-            ) : (
-              ""
-            )}
           </div>
         </div>
       </div>

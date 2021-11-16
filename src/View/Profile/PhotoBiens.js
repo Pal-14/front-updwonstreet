@@ -2,10 +2,7 @@ import React, { useCallback, useState, useMemo } from "react";
 import Modal from "react-modal";
 import Service from "../../services";
 
-
 function PhotoBiens(props) {
-
-
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedImage1, setSelectedImage1] = useState("");
   const [selectedImage2, setSelectedImage2] = useState("");
@@ -136,12 +133,12 @@ function PhotoBiens(props) {
   );
 
   async function SubmitFileData(e) {
-    console.log("MAIS OUAIS", props.targetItemFundingId)
-    formData.append("targetItemFundingId", props.targetItemFundingId)
+    console.log("MAIS OUAIS", props.targetItemFundingId);
+    formData.append("targetItemFundingId", props.targetItemFundingId);
     console.log(selectedImage);
     console.log(selectedImage1);
     console.log(selectedImage2);
-    
+
     if (
       selectedImage !== "" ||
       selectedImage1 !== "" ||
@@ -165,118 +162,110 @@ function PhotoBiens(props) {
   }
 
   return (
-    <>
-      <div>
-        <Modal isOpen={props.openPhoto}>
-          <a onClick={() => props.setOpenPhoto(false)}>Fermer</a>
-          <form
-            encType="multipart/form-data"
-            method="POST"
-            action="/users/upload"
-          >
-            <div style={styles.container}>
-              <h3>
-                {message}
-                {error}
-              </h3>
-              <h3>Photo principale :</h3>
+    <Modal isOpen={props.openPhoto}>
+      <a onClick={() => props.setOpenPhoto(false)}>Fermer</a>
+      <form encType="multipart/form-data" method="POST" action="/users/upload">
+        <div style={styles.container}>
+          <h3>
+            {message}
+            {error}
+          </h3>
+          <h3>Photo principale :</h3>
 
-              <div class="btn bleuB">
-                <input
-                  class="file-path validate"
-                  type="file"
-                  name="photoPricipale"
-                  onChange={onFileChange}
-                />
-              </div>
+          <div class="btn bleuB">
+            <input
+              class="file-path validate"
+              type="file"
+              name="photoPricipale"
+              onChange={onFileChange}
+            />
+          </div>
 
-              <br />
-            </div>
-            {selectedImage && (
-              <div style={styles.preview}>
-                <h3></h3>
-                <img
-                  src={URL.createObjectURL(selectedImage)}
-                  style={styles.image}
-                  alt="Thumb"
-                />
-                <button onClick={removeSelectedImage} style={styles.delete}>
-                  Réduire l'image
-                </button>
-              </div>
-            )}
+          <br />
+        </div>
+        {selectedImage && (
+          <div style={styles.preview}>
+            <h3></h3>
+            <img
+              src={URL.createObjectURL(selectedImage)}
+              style={styles.image}
+              alt="Thumb"
+            />
+            <button onClick={removeSelectedImage} style={styles.delete}>
+              Réduire l'image
+            </button>
+          </div>
+        )}
 
-            <div style={styles.container}>
-              <h3>Photo 1 :</h3>
-              <div class="btn bleuB">
-                <input type="file" name="photo1" onChange={onFileChange1} />
-              </div>
+        <div style={styles.container}>
+          <h3>Photo 1 :</h3>
+          <div class="btn bleuB">
+            <input type="file" name="photo1" onChange={onFileChange1} />
+          </div>
 
-              <br />
-            </div>
-            {selectedImage1 && (
-              <div style={styles.preview}>
-                <h3></h3>
-                <img
-                  src={URL.createObjectURL(selectedImage1)}
-                  style={styles.image}
-                  alt="Thumb"
-                />
-                <button onClick={removeSelectedImage1} style={styles.delete}>
-                  Réduire l'image
-                </button>
-              </div>
-            )}
+          <br />
+        </div>
+        {selectedImage1 && (
+          <div style={styles.preview}>
+            <h3></h3>
+            <img
+              src={URL.createObjectURL(selectedImage1)}
+              style={styles.image}
+              alt="Thumb"
+            />
+            <button onClick={removeSelectedImage1} style={styles.delete}>
+              Réduire l'image
+            </button>
+          </div>
+        )}
 
-            <div style={styles.container}>
-              <h3>Photo 2 : </h3>
-              <div class="btn bleuB">
-                <input type="file" name="photo2" onChange={onFileChange2} />
-              </div>
+        <div style={styles.container}>
+          <h3>Photo 2 : </h3>
+          <div class="btn bleuB">
+            <input type="file" name="photo2" onChange={onFileChange2} />
+          </div>
 
-              <br />
-            </div>
-            {selectedImage2 && (
-              <div style={styles.preview}>
-                <h3></h3>
-                <img
-                  src={URL.createObjectURL(selectedImage2)}
-                  style={styles.image}
-                  alt="Thumb"
-                />
-                <button onClick={removeSelectedImage2} style={styles.delete}>
-                  Réduire l'image
-                </button>
-              </div>
-            )}
+          <br />
+        </div>
+        {selectedImage2 && (
+          <div style={styles.preview}>
+            <h3></h3>
+            <img
+              src={URL.createObjectURL(selectedImage2)}
+              style={styles.image}
+              alt="Thumb"
+            />
+            <button onClick={removeSelectedImage2} style={styles.delete}>
+              Réduire l'image
+            </button>
+          </div>
+        )}
 
-            <div style={styles.container}>
-              <h3>Photo 3 : </h3>
-              <div class="btn bleuB">
-                <input type="file" name="photo3" onChange={onFileChange3} />
-              </div>
+        <div style={styles.container}>
+          <h3>Photo 3 : </h3>
+          <div class="btn bleuB">
+            <input type="file" name="photo3" onChange={onFileChange3} />
+          </div>
 
-              <br />
-            </div>
-            {selectedImage3 && (
-              <div style={styles.preview}>
-                <h3></h3>
-                <img
-                  src={URL.createObjectURL(selectedImage3)}
-                  style={styles.image}
-                  alt="Thumb"
-                />
-                <button onClick={removeSelectedImage3} style={styles.delete}>
-                  Réduire l'image
-                </button>
-              </div>
-            )}
+          <br />
+        </div>
+        {selectedImage3 && (
+          <div style={styles.preview}>
+            <h3></h3>
+            <img
+              src={URL.createObjectURL(selectedImage3)}
+              style={styles.image}
+              alt="Thumb"
+            />
+            <button onClick={removeSelectedImage3} style={styles.delete}>
+              Réduire l'image
+            </button>
+          </div>
+        )}
 
-            <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
-          </form>
-        </Modal>
-      </div>
-    </>
+        <a onClick={SubmitFileData}>Envoyer mes fichiers</a>
+      </form>
+    </Modal>
   );
 }
 

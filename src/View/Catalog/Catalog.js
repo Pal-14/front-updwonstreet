@@ -18,7 +18,7 @@ function Catalog(props) {
   );
 
   let Url = `http://localhost:5000/get-public-pic/`;
-  let UrlBien = `http://localhost:500/get-private-doc/`;
+  let UrlBien = `http://localhost:5000/get-private-doc/`;
 
   /* Événements */
 

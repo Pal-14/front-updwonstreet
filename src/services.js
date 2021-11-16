@@ -106,7 +106,7 @@ const Service = {
 
   achatTokenBien (body) {
     let jwt = localStorage.getItem("jwt");
-    return base.put ('/items/buy-initial-token', body, {headers :{
+    return base.post ('/items/buy-initial-token', body, {headers :{
       Authorization: `Bearer ${jwt}`}
     })
   }

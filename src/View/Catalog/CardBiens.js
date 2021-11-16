@@ -24,10 +24,10 @@ function CardBiens(props) {
   const achat = async () => {
     let body = {
       targetItemId: item._id,
-      priceInStableCoin: totalAmount,
       tokenQuantityOrdered: numberOfTokens 
     }
     let achat = await Service.achatTokenBien(body);
+    console.log(achat);
     if (achat.data.success) {
       setIsOpen(false);
     }
@@ -36,12 +36,6 @@ function CardBiens(props) {
   const handleNumberOfTokens = (e) => {
     setNumberOfTokens(e.target.value);
     console.log(numberOfTokens);
-  };
-
-  /* Somme totale */
-  const handleTotalAmount = (e) => {
-    setTotalAmount(e.target.value);
-    console.log(totalAmount);
   };
 
   /* Ouverture modal */
@@ -229,16 +223,6 @@ function CardBiens(props) {
                 onChange={handleNumberOfTokens}
                 class="with-gap"
                 name="buytokens"
-              />
-            </label>
-
-            <label for="totalAmount">
-              Montant que vous souhaiter investir :{" "}
-              <input
-                type="number"
-                onChange={handleTotalAmount}
-                class="with-gap"
-                name="totalAmount"
               />
             </label>
             <a  href={() => false} onClick={achat}>Acheter</a>

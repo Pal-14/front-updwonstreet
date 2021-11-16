@@ -120,7 +120,7 @@ function AjoutDeBiens(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Créer une annonce </span>
+        <span class="card-title ">Proposer un bien </span>
         <p>Ici vous pouvez créer, publier et modifier les paramètres d'une annonce. </p>
         <p>
           <a id="rouge" onClick={openModal}>

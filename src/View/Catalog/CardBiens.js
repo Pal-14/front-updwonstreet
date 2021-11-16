@@ -119,7 +119,7 @@ function CardBiens(props) {
             onClick={closeModal}
             class="btn-floating btn-large waves-effect waves-light red"
           >
-            <i class="material-icons">Fermer</i>
+            <i class="material-icons">close</i>
           </a>
         </div>
         <div className="itemDetails">

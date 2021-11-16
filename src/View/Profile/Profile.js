@@ -5,12 +5,15 @@ import "./Profile.css";
 import { useState, useEffect } from "react";
 import Edition from "./Edition";
 import DemandeVerification from "./DemandeVerification";
+import AjoutDeBiens from "./AjoutDeBiens";
+import PhotoBiens from "./PhotoBiens";
 
 function Profile(props) {
   /* const [title, setTitle] = useState("Validé");
   const [error, setError] = useState(""); */
 
   const [openPhoto, setOpenPhoto] = useState(false);
+  const [targetItemFundingId, setTargetItemFundingId] = useState("");
 
   useEffect(() => {}, [openPhoto]);
 
@@ -48,10 +51,21 @@ function Profile(props) {
             <Portefeuille {...props} />
             <Informations {...props} />
             <Edition {...props} />
+            <AjoutDeBiens
+              {...props}
+              setOpenPhoto={setOpenPhoto}
+              setTargetItemFundingId={setTargetItemFundingId}
+            />
+            <PhotoBiens
+              {...props}
+              openPhoto={openPhoto}
+              setOpenPhoto={setOpenPhoto}
+              targetItemFundingId={targetItemFundingId}
+            />
             {!currentUser?.infos.isVerifiedByAdmin ? (
               <DemandeVerification {...props} />
             ) : (
-              <></>
+              ""
             )}
           </div>
         </div>

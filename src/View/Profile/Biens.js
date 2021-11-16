@@ -40,7 +40,7 @@ function Biens(props) {
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <a onClick={closeModal}>Fermer</a>
           <div>
-             {data?.ownedItems >1 ? <img src={`${Url}${data?.ownedItems}`}  /> : <p>Vous ne posséder pas encore de biens</p>}
+             {data?.ownedItems >1 ? <img alt="" src={`${Url}${data?.ownedItems}`}  /> : <p>Vous ne posséder pas encore de biens</p>}
     
            
           </div>

@@ -5,7 +5,7 @@ import "./Catalog.css"
 
 function Catalog(props) {
   /* Variables */
-  let item = props?.item;
+  /* let item = props?.item; pas encore utilisé */
 
   /* NEW DATA FROM ITEMS YOU CAN ACCESS AND SHOW */
   let itemInfosFinance = props?.item?.itemPublicData?.funding;
@@ -17,8 +17,8 @@ function Catalog(props) {
     itemPicturesFromUser
   );
 
-  let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/`;
-  let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-doc/`;
+/*   let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/`;
+  let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-doc/`;  pas encore utilisé*/
 
   /* Affichage des biens */
   const renderItems = () => {

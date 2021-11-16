@@ -29,7 +29,7 @@ function Home() {
               Le Bastion
             </span>
             <p>
-            <a  href={() => false} className="rouge">Voir le bien</a>
+            <a className="rouge">Voir le bien</a>
             </p>
           </div>
           <div class="card-reveal">
@@ -48,14 +48,14 @@ function Home() {
         </div>
         <div class="card cardHome">
           <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src={appt2} />
+            <img alt="image" class="activator" src={appt2} />
           </div>
           <div class="card-contentHome">
             <span class="card-title activator grey-text text-darken-4">
               Centre Antibes
             </span>
             <p>
-              <a href=""  className="rouge">Voir le bien</a>
+              <a  className="rouge">Voir le bien</a>
             </p>
           </div>
           <div class="card-reveal">

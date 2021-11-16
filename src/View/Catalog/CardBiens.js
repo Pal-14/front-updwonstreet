@@ -9,7 +9,7 @@ function CardBiens(props) {
   /* Variables d'état */
   const [modalIsOpen, setIsOpen] = useState(false);
   const [numberOfTokens, setNumberOfTokens] = useState();
-  const [totalAmount, setTotalAmount] = useState();
+/*   const [totalAmount, setTotalAmount] = useState();totalAmount  pas encore utilisé*/
 
   /* Variables */
   let item = props?.item;
@@ -109,7 +109,7 @@ function CardBiens(props) {
         style={{ overlay: { backgroundColor: "gray" } }}
       >
         <div className="fixed-action-btn">
-          <a  href={() => false}
+          <a  
             onClick={closeModal}
             class="btn-floating btn-large waves-effect waves-light red"
           >
@@ -120,7 +120,7 @@ function CardBiens(props) {
           <h4>Détails du bien</h4>
           <div className="statusBtns">
             {!item?.itemPrivateData?.status?.isPublic ? (
-              <a  href={() => false}
+              <a  
                 onClick={() =>
                   editValueOfItem(item, "itemPrivateData.status.isPublic", true)
                 }
@@ -129,7 +129,7 @@ function CardBiens(props) {
                 Passer en statut "Public"{" "}
               </a>
             ) : (
-              <a href={() => false}
+              <a 
                 onClick={() =>
                   editValueOfItem(
                     item,
@@ -225,7 +225,7 @@ function CardBiens(props) {
                 name="buytokens"
               />
             </label>
-            <a  href={() => false} onClick={achat}>Acheter</a>
+            <a   onClick={achat}>Acheter</a>
           </form>
           {/*   IL Y A DES NOUVELLES CLES EN PLUS SI TU VEUX LES AFFICHER.
                     GENRE isCurrentlyRented ou expectedYearlyIncome
@@ -245,7 +245,7 @@ function CardBiens(props) {
           {props?.item?.itemPublicData?.description?.name}
         </span>
         <p>
-          <a  href="#" onClick={openModal} className="rouge">
+          <a   onClick={openModal} className="rouge">
             Voir le bien
           </a>
         </p>

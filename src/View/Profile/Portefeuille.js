@@ -106,11 +106,11 @@ function Portefeuille(props) {
         <span class="card-title ">Portefeuille UDS coins</span>
         <p>Consulter votre solde. Acheter et convertir vos coins en euros</p>
         <p>
-          <a  href={() => false} id="rouge" onClick={openModal}>
+          <a  id="rouge" onClick={openModal}>
             {` Achat par CB `}
           </a>
 
-          <a  href={() => false} id="rouge" onClick={openModal1}>
+          <a   id="rouge" onClick={openModal1}>
             {` Convertir en euros `}
           </a>
         </p>
@@ -118,7 +118,7 @@ function Portefeuille(props) {
 
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a  href={() => false} onClick={closeModal}>Fermer</a>
+          <a  onClick={closeModal}>Fermer</a>
           <div>
             <div>
               <p>Stable coins possédés: {data?.stableCoin}</p>
@@ -137,7 +137,7 @@ function Portefeuille(props) {
       </div>
       <div>
         <Modal isOpen={modalIsOpen1} onRequestClose={closeModal1}>
-          <a onClick={closeModal1}>Fermer</a>
+          <a  onClick={closeModal1}>Fermer</a>
           <div>
             <div>
               <p>Stable coins possédés: {data?.stableCoin}</p>
@@ -147,7 +147,7 @@ function Portefeuille(props) {
               <input
                 name="operationValue"
                 type="number"
-                value={state1.operationValue}
+               /*  value={state1.operationValue} */
               ></input>
               <button type="submit">VENTE</button>
             </form>

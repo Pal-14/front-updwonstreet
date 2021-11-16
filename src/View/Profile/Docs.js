@@ -113,7 +113,6 @@ function Docs(props) {
         setSelectedImage("");
         setSelectedImage1("");
         setSelectedImage2("");
-        props.setIsLoggedIn(false)
         return closeModal();
       } else {
         setError(docsSubmitted.data.error);
@@ -131,11 +130,11 @@ function Docs(props) {
   return (
     <>
       <div>
-        <a href="#" id="rouge" onClick={openModal}>
+        <a id="rouge" onClick={openModal}>
           SELECTIONNEZ ET ENVOYEZ VOS JUSTIFICATIFS
         </a>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a href="#" onClick={closeModal}>Fermer</a>
+          <a onClick={closeModal}>Fermer</a>
           <form
             encType="multipart/form-data"
             method="POST"

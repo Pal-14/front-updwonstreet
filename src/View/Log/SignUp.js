@@ -92,7 +92,7 @@ function SignUp(props) {
             ></input>
           </div>
         </div>
-        <a  href="" onClick={(e) => handleSubmit(e)} type="submit">
+        <a  onClick={(e) => handleSubmit(e)} type="submit">
           Valider
         </a>
       </form>

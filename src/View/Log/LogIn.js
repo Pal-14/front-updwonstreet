@@ -43,7 +43,7 @@ function LogIn(props) {
         name="password"
         type="password"
       ></input>
-      <a onClick={(e) => handleSubmit(e)} type="submit">
+      <a  onClick={(e) => handleSubmit(e)} type="submit">
         Valider
       </a>
     </div>

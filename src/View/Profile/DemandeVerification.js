@@ -40,9 +40,9 @@ function DemandeVerification(props) {
       props.setIsLoggedIn(false);
     }
     if (accountPut.data.success) {
-      {
+      
         closeModal();
-      }
+      
     }
   }
 
@@ -52,7 +52,7 @@ function DemandeVerification(props) {
         <span class="card-title "> Devenir membre vérifié </span>
         <p>Accédez à toutes les fonctionnalités en devenant membre vérifié</p>
 
-        <a  href="" id="rouge" onClick={openModal}>
+        <a  id="rouge" onClick={openModal}>
           Ici pour modifier
         </a>
       </div>

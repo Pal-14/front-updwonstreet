@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { onChange } from "../../Fonctions/Formulaire";
 import Service from "../../services";
 import Docs from "./Docs";
-import Finalisation from "./Finalisation";
+
 
 function Edition(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -40,9 +40,7 @@ function Edition(props) {
       props.setIsLoggedIn(false);
     }
     if (accountPut.data.success) {
-      {
-        closeModal();
-      }
+      closeModal();
     }
   }
 
@@ -52,13 +50,13 @@ function Edition(props) {
         <span class="card-title ">Modifier mon profil</span>
         <p>Tout pour modifier vos informations personnelles</p>
 
-        <a  href={() => false} id="rouge" onClick={openModal}>
+        <a  id="rouge" onClick={openModal}>
           Ici pour modifier
         </a>
       </div>
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a  href={() => false} onClick={closeModal}>Fermer</a>
+          <a   onClick={closeModal}>Fermer</a>
 
           <div>
             <p>{message}</p>
@@ -126,7 +124,7 @@ function Edition(props) {
             </label>
 
 
-            <a  href={() => false}
+            <a 
               onRequestClose={closeModal}
               onClick={handleSubmit}
             >Valider les informations</a>

@@ -36,7 +36,7 @@ if (props.isLoggedIn === false){return (
      {title === "Connexion" ? <LogIn {...props} /> : <SignUp {...props} />}
       <div>
           <p>{text}</p>
-        <a  href={() => false} onClick={change} >{button}</a>
+        <a   onClick={change} >{button}</a>
       </div>
     </div>
   );}

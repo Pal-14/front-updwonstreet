@@ -87,15 +87,15 @@ function UserModal(props) {
                     <h4>Pièces justificatives de l'utilisateur</h4>
                     <div>
                         <p>Carte d'identité</p>
-                        <img src={`${Url}${image[taille - 3]}`} />
+                        <img src={`${Url}${image[taille - 3]}`} alt="Carte d'identité" />
                     </div>
                     <div>
                         <p>Justificatifs de domicile</p>
-                        <img src={`${Url}${image[taille - 2]}`} />
+                        <img src={`${Url}${image[taille - 2]}`} alt="Justificatifs de domicile" />
                     </div>
                     <div>
                         <p>RIB</p>
-                        <img src={`${Url}${image[taille - 1]}`} />
+                        <img src={`${Url}${image[taille - 1]}`} alt="RIB" />
                     </div>
                 </div>
                 <div className="statusBtns">

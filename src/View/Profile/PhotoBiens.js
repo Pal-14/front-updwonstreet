@@ -185,7 +185,6 @@ function PhotoBiens(props) {
         </div>
         {selectedImage && (
           <div style={styles.preview}>
-            <h3></h3>
             <img
               src={URL.createObjectURL(selectedImage)}
               style={styles.image}
@@ -207,7 +206,6 @@ function PhotoBiens(props) {
         </div>
         {selectedImage1 && (
           <div style={styles.preview}>
-            <h3></h3>
             <img
               src={URL.createObjectURL(selectedImage1)}
               style={styles.image}
@@ -229,7 +227,6 @@ function PhotoBiens(props) {
         </div>
         {selectedImage2 && (
           <div style={styles.preview}>
-            <h3></h3>
             <img
               src={URL.createObjectURL(selectedImage2)}
               style={styles.image}
@@ -251,7 +248,6 @@ function PhotoBiens(props) {
         </div>
         {selectedImage3 && (
           <div style={styles.preview}>
-            <h3></h3>
             <img
               src={URL.createObjectURL(selectedImage3)}
               style={styles.image}

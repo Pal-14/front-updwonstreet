@@ -179,97 +179,50 @@ function AjoutDeBiens(props) {
             <br />
             <label htmlFor="ville">
               Ville :
-              <input
-                onChange={(e) => onChange(e, setCity)}
-                type="text"
-                placeholder="Ville"
-                name="ville"
-              ></input>
+              <input onChange={(e) => onChange(e, setCity)} type="text" placeholder="Ville" name="ville" />
               <br />
             </label>
             <label htmlFor="description">
               Description :
-              <textarea
-                onChange={(e) => onChange(e, setDescription)}
-                type="text"
-                placeholder="Description"
-              ></textarea>
+              <textarea onChange={(e) => onChange(e, setDescription)} type="text" placeholder="Description" />
             </label>
             <br />
             <label htmlFor="type">
               Type de bien :
-              <input
-                onChange={(e) => onChange(e, setTypeOfItem)}
-                type="text"
-                placeholder="Type de bien. Ex: appartement, maison, villa, etc."
-              ></input>
+              <input onChange={(e) => onChange(e, setTypeOfItem)} type="text" placeholder="Type de bien. Ex: appartement, maison, villa, etc." />
             </label>
             <br />
             <label htmlFor="surface">
               Surface habitable :
-              <input
-                onChange={(e) => onChange(e, setLivingArea)}
-                type="text"
-                placeholder="Superficie en m²"
-              ></input>
+              <input onChange={(e) => onChange(e, setLivingArea)} type="text" placeholder="Superficie en m²" />
             </label>
             <br />
             <label htmlFor="pieces">
               Nombre de pièces :
-              <input
-                onChange={(e) => onChange(e, setRooms)}
-                type="text"
-                placeholder="4"
-              ></input>
+              <input onChange={(e) => onChange(e, setRooms)} type="text" placeholder="4" />
             </label>
             <br />
             <label htmlFor="chambres">
               Nombre de chambres :
-              <input
-                onChange={(e) => onChange(e, setBedrooms)}
-                type="text"
-                placeholder="3"
-              ></input>
+              <input onChange={(e) => onChange(e, setBedrooms)} type="text" placeholder="3" />
             </label>
             <br />
             <label htmlFor="surfaceterrain">
               Superficie du terrain :
-              <input
-                onChange={(e) => onChange(e, setTerraceSurface)}
-                type="text"
-                placeholder="Superficie du terrain en m²"
-              ></input>
+              <input onChange={(e) => onChange(e, setTerraceSurface)} type="text" placeholder="Superficie du terrain en m²" />
             </label>
             <br /> <br />
             <label htmlFor="garage">
               Garage :
               <label>
-                <input
-                  onChange={(e) => onChange(e, setGarage)}
-                  onChange={(e) => onRadioChange(e, setGarage)}
-                  class="with-gap"
-                  name="garage:oui/non"
-                  type="radio"
-                  value={true}
-                />
+                <input onChange={(e) => onChange(e, setGarage)} onChange={(e) => onRadioChange(e, setGarage)} class="with-gap" name="garage:oui/non" type="radio" value={true} />
                 <span>Oui</span>
               </label>
               <label>
-                <input
-                  onChange={(e) => onChange(e, setGarage)}
-                  onChange={(e) => onRadioChange(e, setGarage)}
-                  class="with-gap"
-                  name="garage:oui/non"
-                  type="radio"
-                  value={false}
-                />
+                <input onChange={(e) => onChange(e, setGarage)} onChange={(e) => onRadioChange(e, setGarage)} class="with-gap" name="garage:oui/non" type="radio" value={false} />
                 <span>Non</span>
                 {garage ? (
-                  <input
-                    onChange={(e) => onChange(e, setGarageNumber)}
-                    type="number"
-                    min="0"
-                  ></input>
+                  <input onChange={(e) => onChange(e, setGarageNumber)} type="number" min="0" />
                 ) : (
                   <p></p>
                 )}
@@ -279,32 +232,14 @@ function AjoutDeBiens(props) {
             <label htmlFor="parking">
               Parking :
               <label>
-                <input
-                  onChange={(e) => onChange(e, setParking)}
-                  onChange={(e) => onRadioChange(e, setParking)}
-                  class="with-gap"
-                  name="parking:oui/non"
-                  type="radio"
-                  value={true}
-                />
+                <input onChange={(e) => onChange(e, setParking)} onChange={(e) => onRadioChange(e, setParking)} class="with-gap" name="parking:oui/non" type="radio" value={true} />
                 <span>Oui</span>
               </label>
               <label>
-                <input
-                  onChange={(e) => onChange(e, setParking)}
-                  onChange={(e) => onRadioChange(e, setParking)}
-                  class="with-gap"
-                  name="parking:oui/non"
-                  type="radio"
-                  value={false}
-                />
+                <input onChange={(e) => onChange(e, setParking)} onChange={(e) => onRadioChange(e, setParking)} class="with-gap" name="parking:oui/non" type="radio" value={false} />
                 <span>Non</span>
                 {parking ? (
-                  <input
-                    onChange={(e) => onChange(e, setParkingNumber)}
-                    type="number"
-                    min="0"
-                  ></input>
+                  <input onChange={(e) => onChange(e, setParkingNumber)} type="number" min="0" />
                 ) : (
                   <p></p>
                 )}
@@ -314,25 +249,12 @@ function AjoutDeBiens(props) {
             <label htmlFor="piscine">
               Piscine :
               <label>
-                <input
-                  onChange={(e) => onChange(e, setSwimmingpool)}
-                  onChange={(e) => onRadioChange(e, setSwimmingpool)}
-                  class="with-gap"
-                  name="piscine:oui/non"
-                  type="radio"
-                  value={true}
-                />
+                <input onChange={(e) => onChange(e, setSwimmingpool)} onChange={(e) => onRadioChange(e, setSwimmingpool)} class="with-gap" name="piscine:oui/non" type="radio" value={true} />
                 <span>Oui</span>
               </label>
               <label>
-                <input
-                  onChange={(e) => onChange(e, setSwimmingpool)}
-                  onChange={(e) => onRadioChange(e, setSwimmingpool)}
-                  class="with-gap"
-                  name="piscine:oui/non"
-                  type="radio"
-                  value={false}
-                />
+                <input onChange={(e) => onChange(e, setSwimmingpool)} onChange={(e) => onRadioChange(e, setSwimmingpool)}
+                  class="with-gap" name="piscine:oui/non" type="radio" value={false} />
                 <span>Non</span>
               </label>
             </label>
@@ -341,13 +263,7 @@ function AjoutDeBiens(props) {
             <label htmlFor="piscine">
               Autres :
               <label>
-                <input
-                  onChange={(e) => onChange(e, setOtherSpecialPerks)}
-                  onChange={(e) => onRadioChange(e, setOtherSpecialPerks)}
-                  class="with-gap"
-                  name="autresActivités"
-                  type="text"
-                />
+                <input onChange={(e) => onChange(e, setOtherSpecialPerks)} onChange={(e) => onRadioChange(e, setOtherSpecialPerks)} class="with-gap" name="autresActivités" type="text" />
               </label>
             </label>
             <br />

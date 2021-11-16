@@ -16,7 +16,7 @@ function Portefeuille(props) {
   const [addCoin, setAddCoin] = useState(0);
   const [target, setRemoveCoin] = useState(0); */
 
-  //variable pour eviter de taper :props?.user?.data?.data à chaque fois que je veut récup une info de mes objets de la BDD
+  // Variable pour éviter de taper :props?.user?.data?.data à chaque fois que je veux récup une info de mes objets de la BDD
   let data = props?.user?.data?.data;
 
   function handleClickSubmit(event) {
@@ -24,7 +24,7 @@ function Portefeuille(props) {
     console.log("STATE ICI", state);
     if (!state.operationValue) {
       alert(
-        "Merci de bien vouloir indiquer un nombre de Stable Coin à créditer"
+        "Merci de bien vouloir indiquer un nombre de stable coins à créditer"
       );
       return;
     }
@@ -49,7 +49,7 @@ function Portefeuille(props) {
     console.log("STATE ICI", state1);
     if (!state1.operationValue) {
       alert(
-        "Merci de bien vouloir indiquer un nombre de Stable Coin à créditer"
+        "Merci de bien vouloir indiquer un nombre de stable coins à créditer"
       );
       return;
     } else {
@@ -103,11 +103,11 @@ function Portefeuille(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Portefeuille UDS Coins</span>
-        <p>Consulter votre solde. Acheter et convertir vos Coins en euros</p>
+        <span class="card-title ">Portefeuille UDS coins</span>
+        <p>Consulter votre solde. Acheter et convertir vos coins en euros</p>
         <p>
           <a id="rouge" onClick={openModal}>
-            {` Achat par Cb `}
+            {` Achat par CB `}
           </a>
 
           <a id="rouge" onClick={openModal1}>
@@ -118,10 +118,10 @@ function Portefeuille(props) {
 
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a onClick={closeModal}>close</a>
+          <a onClick={closeModal}>Fermer</a>
           <div>
             <div>
-              <p>Stable coins Possédés: {data?.stableCoin}</p>
+              <p>Stable coins possédés: {data?.stableCoin}</p>
             </div>
 
             <form onChange={handleChange} onSubmit={handleClickSubmit}>
@@ -137,10 +137,10 @@ function Portefeuille(props) {
       </div>
       <div>
         <Modal isOpen={modalIsOpen1} onRequestClose={closeModal1}>
-          <a onClick={closeModal1}>close</a>
+          <a onClick={closeModal1}>Fermer</a>
           <div>
             <div>
-              <p>Stable coins Possédés: {data?.stableCoin}</p>
+              <p>Stable coins possédés: {data?.stableCoin}</p>
             </div>
 
             <form onChange={handleChange1} onSubmit={handleClickSubmit1}>

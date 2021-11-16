@@ -148,7 +148,7 @@ function AjoutDeBiens(props) {
       </div>
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a onClick={closeModal}>close</a>
+          <a onClick={closeModal}>Fermer</a>
 
           <div>
             <p>
@@ -184,11 +184,11 @@ function AjoutDeBiens(props) {
             </label>
             <br /> <br />
             <label htmlFor="titre">
-              Titre de L'annonce :
+              Titre de l'annonce :
               <input
                 onChange={(e) => onChange(e, setName)}
                 type="text"
-                placeholder="Titre de l'annonce"
+                placeholder="Titre"
                 name="name"
                 id="name"
               ></input>
@@ -199,18 +199,18 @@ function AjoutDeBiens(props) {
               <input
                 onChange={(e) => onChange(e, setAdress)}
                 type="text"
-                placeholder="Adresse du bien"
+                placeholder="Adresse"
                 name="adress"
                 id="adress"
               ></input>
             </label>
             <br />
             <label htmlFor="CodePostal">
-              Code Postal :
+              Code postal :
               <input
                 onChange={(e) => onChange(e, setPostalCode)}
                 type="text"
-                placeholder="Code Postal"
+                placeholder="Code postal"
               ></input>
             </label>
             <br />
@@ -219,7 +219,7 @@ function AjoutDeBiens(props) {
               <input
                 onChange={(e) => onChange(e, setCity)}
                 type="text"
-                placeholder="Ville du bien"
+                placeholder="Ville"
                 name="ville"
               ></input>
               <br />
@@ -229,7 +229,7 @@ function AjoutDeBiens(props) {
               <textarea
                 onChange={(e) => onChange(e, setDescription)}
                 type="text"
-                placeholder="Description du bien"
+                placeholder="Description"
               ></textarea>
             </label>
             <br />
@@ -238,7 +238,7 @@ function AjoutDeBiens(props) {
               <input
                 onChange={(e) => onChange(e, setTypeOfItem)}
                 type="text"
-                placeholder="Type de bien ex:(Appartement, Maison, Villa,etc...)"
+                placeholder="Type de bien. Ex: appartement, maison, villa, etc."
               ></input>
             </label>
             <br />
@@ -247,7 +247,7 @@ function AjoutDeBiens(props) {
               <input
                 onChange={(e) => onChange(e, setLivingArea)}
                 type="text"
-                placeholder="Superficie en M²"
+                placeholder="Superficie en m²"
               ></input>
             </label>
             <br />
@@ -274,7 +274,7 @@ function AjoutDeBiens(props) {
               <input
                 onChange={(e) => onChange(e, setTerraceSurface)}
                 type="text"
-                placeholder="Superficie du terrain en M²"
+                placeholder="Superficie du terrain en m²"
               ></input>
             </label>
             <br /> <br />

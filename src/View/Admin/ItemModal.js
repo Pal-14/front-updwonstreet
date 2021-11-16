@@ -67,7 +67,7 @@ function ItemModal(props) {
             </div>
             <Modal isOpen={modalIsOpen} style={{ overlay: { backgroundColor: 'gray' } }}>
                 <div className="fixed-action-btn">
-                    <a onClick={closeModal} class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">close</i></a>
+                    <a onClick={closeModal} class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">Fermer</i></a>
                 </div>
                 <div className="itemDetails">
                     <h4>Détails du bien</h4>

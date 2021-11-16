@@ -49,8 +49,8 @@ function Edition(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Modifier mon Profil</span>
-        <p>Tout pour modifier vos informations Personnelles</p>
+        <span class="card-title ">Modifier mon profil</span>
+        <p>Tout pour modifier vos informations personnelles</p>
 
         <a id="rouge" onClick={openModal}>
           Ici pour modifier
@@ -58,17 +58,17 @@ function Edition(props) {
       </div>
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a onClick={closeModal}>close</a>
+          <a onClick={closeModal}>Fermer</a>
 
           <div>
             <p>{message}</p>
             <p>{error}</p>
             <label htmlFor="telephone">
-              Numéro de Téléphone :
+              Numéro de téléphone :
               <input
                 onChange={(e) => onChange(e, setPhoneNumber)}
                 type="tel"
-                placeholder="N° de Téléphone"
+                placeholder="N° de téléphone"
                 name="telephone"
                 id="telephone"
               ></input>
@@ -76,7 +76,7 @@ function Edition(props) {
             <br />
 
             <label htmlFor="dob">
-              Date de Naissance :
+              Date de naissance :
               <input
                 onChange={(e) => onChange(e, setDateOfBirth)}
                 type="date"
@@ -107,11 +107,11 @@ function Edition(props) {
             <br />
 
             <label htmlFor="CodePostal">
-              Code Postal :
+              Code postal :
               <input
                 onChange={(e) => onChange(e, setPostalCode)}
                 type="text"
-                placeholder="Code Postal"
+                placeholder="Code postal"
               ></input>
             </label>
             <br />

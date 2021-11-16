@@ -44,7 +44,7 @@ function PhotoBiens(props) {
         fileTypeCheck !== "image/jpg"
       ) {
         console.log(e.target.files[0], "deuxieme");
-        e.target.value = ""; //pour remmettre la  value a 0
+        e.target.value = ""; // Pour remettre la  value à 0
         alert(
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
         );
@@ -70,9 +70,8 @@ function PhotoBiens(props) {
         fileTypeCheck !== "image/jpg"
       ) {
         console.log(e.target.files[0], "deuxieme");
-        e.target.value = ""; //pour remmettre la  value a 0
+        e.target.value = ""; // Pour remettre la  value à 0
         alert(
-          /*  */
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
         );
       } else {
@@ -123,7 +122,7 @@ function PhotoBiens(props) {
         fileTypeCheck !== "image/jpg"
       ) {
         console.log(e.target.files[0], "deuxieme");
-        e.target.value = ""; //pour remmettre la  value a 0
+        e.target.value = ""; // Pour remettre la  value à 0
         alert(
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
         );
@@ -169,7 +168,7 @@ function PhotoBiens(props) {
     <>
       <div>
         <Modal isOpen={props.openPhoto}>
-          <a onClick={() => props.setOpenPhoto(false)}>close</a>
+          <a onClick={() => props.setOpenPhoto(false)}>Fermer</a>
           <form
             encType="multipart/form-data"
             method="POST"

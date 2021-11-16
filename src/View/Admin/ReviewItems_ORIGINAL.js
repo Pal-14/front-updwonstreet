@@ -62,7 +62,7 @@ function ReviewItems() {
                 </p>
             </div>
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-                <a onClick={closeModal}>close</a>
+                <a onClick={closeModal}>Fermer</a>
                 <div>
                     <label for="checkbox">
                         <input

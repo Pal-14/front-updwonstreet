@@ -101,7 +101,7 @@ function ModalBiens() {
             onClick={closeModal}
             class="btn-floating btn-large waves-effect waves-light red"
           >
-            <i class="material-icons">close</i>
+            <i class="material-icons">Fermer</i>
           </a>
         </div>
         <div className="itemDetails">

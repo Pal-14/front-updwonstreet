@@ -3,7 +3,7 @@ import { onChange } from "../../Fonctions/Formulaire";
 import services from "../../services";
 
 function LogIn(props) {
-  //je déclare mes variables d'états + celle des erreurs pour retourné les messages du back
+  // Je déclare mes variables d'états + celles des erreurs pour retourner les messages du back
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -39,12 +39,12 @@ function LogIn(props) {
       <input
         id="password"
         onChange={(e) => onChange(e, setPassword)}
-        placeholder="Mot de Passe"
+        placeholder="Mot de passe"
         name="password"
         type="password"
       ></input>
       <a onClick={(e) => handleSubmit(e)} type="submit">
-        Send
+        Valider
       </a>
     </div>
   );

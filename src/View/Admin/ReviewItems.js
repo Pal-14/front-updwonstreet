@@ -71,7 +71,7 @@ function Admin() {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Biens Existants</span>
+        <span class="card-title ">Biens existants</span>
         <p>Ici vous pouvez consulter les biens existants.</p>
         <p>
           <a id="rouge" onClick={openModal}>
@@ -80,7 +80,7 @@ function Admin() {
         </p>
       </div>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-        <a onClick={closeModal}>close</a>
+        <a onClick={closeModal}>Fermer</a>
         <div>
           <label for="searchInput">
             Rechercher par:

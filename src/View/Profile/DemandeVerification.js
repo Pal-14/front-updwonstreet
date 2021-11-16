@@ -49,8 +49,8 @@ function DemandeVerification(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title "> Devenir Membre Vérifié </span>
-        <p>Accédez à toutes les fonctionalités en devenant membre vérifié</p>
+        <span class="card-title "> Devenir membre vérifié </span>
+        <p>Accédez à toutes les fonctionnalités en devenant membre vérifié</p>
 
         <a id="rouge" onClick={openModal}>
           Ici pour modifier
@@ -58,7 +58,7 @@ function DemandeVerification(props) {
       </div>
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a onClick={closeModal}>close</a>
+          <a onClick={closeModal}>Fermer</a>
           <div class="card-action">
             <Docs {...props} /> <Finalisation {...props} />
           </div>

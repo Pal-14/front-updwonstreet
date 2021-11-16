@@ -119,7 +119,7 @@ function CardBiens(props) {
             onClick={closeModal}
             class="btn-floating btn-large waves-effect waves-light red"
           >
-            <i class="material-icons">close</i>
+            <i class="material-icons">Fermer</i>
           </a>
         </div>
         <div className="itemDetails">
@@ -233,7 +233,7 @@ function CardBiens(props) {
             </label>
 
             <label for="totalAmount">
-              Montant que vous souhaiter investire :{" "}
+              Montant que vous souhaiter investir :{" "}
               <input
                 type="number"
                 onChange={handleTotalAmount}

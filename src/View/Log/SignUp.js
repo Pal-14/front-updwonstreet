@@ -54,7 +54,7 @@ function SignUp(props) {
               class="col s6"
               id="first_name"
               onChange={(e) => onChange(e, setlLastName)}
-              placeholder="Nom de Famille"
+              placeholder="Nom de famille"
               name="lastName"
               type="text"
             ></input>
@@ -79,21 +79,21 @@ function SignUp(props) {
             <input
               class="col s6"
               onChange={(e) => onChange(e, setPassword)}
-              placeholder="Mot de Passe"
+              placeholder="Mot de passe"
               name="password"
               type="password"
             ></input>
             <input
               class="col s6"
               onChange={(e) => onChange(e, setConfirmPassword)}
-              placeholder="Confirmez le mot de Passe"
+              placeholder="Confirmez le mot de passe"
               name="confirmPassword"
               type="password"
             ></input>
           </div>
         </div>
         <a onClick={(e) => handleSubmit(e)} type="submit">
-          Send
+          Valider
         </a>
       </form>
     </div>

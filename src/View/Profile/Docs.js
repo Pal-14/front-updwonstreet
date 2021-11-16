@@ -35,7 +35,7 @@ function Docs(props) {
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
       ) {
-        e.target.value = ""; //pour remmettre la  value a 0
+        e.target.value = ""; // Pour remettre la  value à 0
         alert(
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
         );
@@ -59,7 +59,7 @@ function Docs(props) {
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
       ) {
-        e.target.value = ""; //pour remmettre la  value a 0
+        e.target.value = ""; // Pour remettre la  value à 0
         alert(
           /*  */
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
@@ -84,7 +84,7 @@ function Docs(props) {
         fileTypeCheck !== "image/jpeg" &&
         fileTypeCheck !== "image/jpg"
       ) {
-        e.target.value = ""; //pour remmettre la  value a 0
+        e.target.value = ""; // Pour remettre la  value à 0
         alert(
           "Format de fichier non pris en charge seulement .pdf / .png / .jpg /.jpeg"
         );
@@ -134,7 +134,7 @@ function Docs(props) {
           SELECTIONNEZ ET ENVOYEZ VOS JUSTIFICATIFS
         </a>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a onClick={closeModal}>close</a>
+          <a onClick={closeModal}>Fermer</a>
           <form
             encType="multipart/form-data"
             method="POST"
@@ -166,7 +166,7 @@ function Docs(props) {
             )}
 
             <div style={styles.container}>
-              <h4>Justificatif de domicile de(-de 6 mois)</h4>
+              <h4>Justificatif de domicile de (-de 6 mois)</h4>
               <input class="btn bleuB"  type="file" name="justificatif" onChange={onFileChange1} />
 
               <br />
@@ -186,7 +186,7 @@ function Docs(props) {
             )}
 
             <div style={styles.container}>
-              <h4>Relevé d'identité Bancaire</h4>
+              <h4>Relevé d'identité bancaire</h4>
               <input class="btn bleuB"  type="file" name="rib" onChange={onFileChange2} />
 
               <br />

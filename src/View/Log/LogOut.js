@@ -11,7 +11,7 @@ function LogOut(props) {
 
   return (
     <div className="card col s12">
-        <p>Êtes-vous sûr de vouloir vous déconnectez ?</p>
+        <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
       <a onClick={logOut}>Déconnexion</a>
     </div>
   );

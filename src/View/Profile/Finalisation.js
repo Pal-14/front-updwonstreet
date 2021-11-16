@@ -54,7 +54,7 @@ function Finalisation(props) {
         <input
           onChange={(e) => onChange(e, setUserName)}
           type="tel"
-          placeholder="(Pseudo) "
+          placeholder="(Pseudo)"
           name="userName"
           id="userName"
         ></input>
@@ -62,11 +62,11 @@ function Finalisation(props) {
       <br />
 
       <label for="phoneNumber">
-        Numéro de Téléphone :
+        Numéro de téléphone :
         <input
           onChange={(e) => onChange(e, setPhoneNumber)}
           type="tel"
-          placeholder=" 02.12.34.56.78"
+          placeholder="02.12.34.56.78"
           name="phoneNumber"
           id="phoneNumber"
         ></input>
@@ -78,7 +78,7 @@ function Finalisation(props) {
         <input
           onChange={(e) => onChange(e, setAdress)}
           type="text"
-          placeholder=" 4 rue Charles de Gaulles"
+          placeholder="4 rue Charles de Gaulle"
         ></input>
       </label>
       <br />
@@ -88,7 +88,7 @@ function Finalisation(props) {
         <input
           onChange={(e) => onChange(e, setCity)}
           type="text"
-          placeholder=" Nantes"
+          placeholder="Nantes"
         ></input>
       </label>
       <br />
@@ -98,23 +98,23 @@ function Finalisation(props) {
             <input
               onChange={(e) => onChange(e, setCountry)}
               type="text"
-              placeholder=" France"
+              placeholder="France"
             ></input>
           </label>
           <br />
 
       <label for="CodePostal">
-        Code Postal :
+        Code postal :
         <input
           onChange={(e) => onChange(e, setPostalCode)}
           type="text"
-          placeholder=" 44300"
+          placeholder="44300"
         ></input>
       </label>
       <br />
 
       <label for="dob">
-        Date de Naissance :
+        Date de naissance :
         <input
           onChange={(e) => onChange(e, setDateOfBirth)}
           type="date"

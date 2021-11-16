@@ -4,7 +4,7 @@ import Modal from "react-modal";
 function Informations(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  //variable pour éviter de retaper à chaque fois props?.user?.data?.data dans la recup d'info dans le return
+  //variable pour éviter de retaper à chaque fois props?.user?.data?.data dans la récup d'info dans le return
   let data = props?.user?.data?.data;
 
   //variable pour recup l'objet json des infos
@@ -26,7 +26,7 @@ function Informations(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Voir mon Profil</span>
+        <span class="card-title ">Voir mon profil</span>
         <p>Toutes vos informations</p>
         <p>
           <a id="rouge" onClick={openModal}>
@@ -38,27 +38,27 @@ function Informations(props) {
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
           <div>
-            <a onClick={closeModal}>close</a>
+            <a onClick={closeModal}>Fermer</a>
             <div>
-              <span class="card-title">Informations Personnelles : </span>
+              <span class="card-title">Informations personnelles : </span>
               <ul className="collection">
                 <li className="collection-item">Pseudo: {data?.userName}</li>
                 <li className="collection-item">
-                  Nom de Famille: {data?.lastName}
+                  Nom de famille: {data?.lastName}
                 </li>
                 <li className="collection-item">Prénom: {data?.firstName}</li>
                 <li className="collection-item">
-                  Date de Naissance: {info?.dateOfBirth}
+                  Date de naissance: {info?.dateOfBirth}
                 </li>
                 <li className="collection-item">Email: {data?.email} </li>
                 <li className="collection-item">
                   Téléphone: {info?.phoneNumber}
                 </li>
-                <li className="collection-item">adresse: {info?.adress}</li>
+                <li className="collection-item">Adresse: {info?.adress}</li>
                 <li className="collection-item">Pays: {info?.country}</li>
                 <li className="collection-item">Ville: {info?.city}</li>
                 <li className="collection-item">
-                  Code Postal: {info?.postalCode}
+                  Code postal: {info?.postalCode}
                 </li>
               </ul>
             </div>

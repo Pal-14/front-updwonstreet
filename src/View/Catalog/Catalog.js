@@ -20,10 +20,6 @@ function Catalog(props) {
   let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/`;
   let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-doc/`;
 
-  /* Événements */
-
-  /* Fonctions de filtre */
-
   /* Affichage des biens */
   const renderItems = () => {
     console.log(props.itemListPublic, "itempublic");

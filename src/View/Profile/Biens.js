@@ -28,8 +28,8 @@ function Biens(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Portefeuille de Tokens</span>
-        <p>Toutes les informations concernant vos Token UDS et leur gestion</p>
+        <span class="card-title ">Portefeuille de tokens</span>
+        <p>Toutes les informations concernant vos tokens UDS et leur gestion</p>
         <p>
           <a id="rouge" onClick={openModal}>
             Ici pour consulter
@@ -38,7 +38,7 @@ function Biens(props) {
       </div>
       <div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <a onClick={closeModal}>close</a>
+          <a onClick={closeModal}>Fermer</a>
           <div>
              {data?.ownedItems >1 ? <img src={`${Url}${data?.ownedItems}`}  /> : <p>Vous ne posséder pas encore de biens</p>}
     

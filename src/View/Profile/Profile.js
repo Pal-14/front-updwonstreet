@@ -19,7 +19,7 @@ function Profile(props) {
 let currentUser = props?.user?.data?.data
 
 console.log("LOG ROM", currentUser?.infos.isVerifiedByAdmin)
-  // variable pour : changer l'etat de User a compte validé et envoi des composants si validé
+  // variable pour : changer l'état de User a compte validé et envoi des composants si validé
   // pour avoir les composants validé  dans let test = "Validé laisser tel quel
   // et pour avoir le status non validé dans let test retiré juste le (é).
  
@@ -36,7 +36,7 @@ console.log("LOG ROM", currentUser?.infos.isVerifiedByAdmin)
 
             <span class="card-title">Bonjour {currentUser?.firstName}</span>
        {/*      <span class="card-title">Gérez votre profil</span> */}
-            <p> Statut : { !currentUser?.infos?.isVerifiedByAdmin ? "Membre non Vérifié" : "Membre Vérifié"}</p>
+            <p> Statut : { !currentUser?.infos?.isVerifiedByAdmin ? "Membre non vérifié" : "Membre vérifié"}</p>
             
                   <div className="cardInCard">
                     <Biens {...props} />

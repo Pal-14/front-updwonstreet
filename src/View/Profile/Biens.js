@@ -33,8 +33,8 @@ function Biens(props) {
   return (
     <div class="card cardProfile">
       <div class="card-content">
-        <span class="card-title ">Portefeuille de tokens</span>
-        <p>Toutes les informations concernant vos tokens UDS et leur gestion</p>
+        <span class="card-title ">Portefeuille de biens</span>
+        <p>Toutes les informations concernant vos biens </p>
         <p>
           <a id="rouge" onClick={openModal}>
             Ici pour consulter

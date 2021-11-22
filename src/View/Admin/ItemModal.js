@@ -21,23 +21,11 @@ function ItemModal(props) {
     } d'une surface habitable de ${itemInfo?.livingArea} m2 \.
     Le prix de mise en vente est de ${
       itemInfoFinance?.priceInEuros
-    } Stable Coins.\
-    Le bien est divisé en ${itemInfoFinance?.initialTokenAmount} tokens.\
-    Chaque token a une valeur initiale de ${
-      itemInfoFinance?.initialSingleTokenValueInEuros
-    }. \
-    ${
-      !itemInfoFinance?.fundingOfItemIsInProgress
-        ? "Le bien n'est pas en cours de financement participatif"
-        : "le bien est en cours de financement participatif"
-    }\
-    Sur ce bien vous disposez de ${
-      itemPicturesFromUser.length
-    } photo(s) pour constituer l'annonce.
-    `;
+    }
+    `
   console.log("ITEM:", item);
 
-  let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/`; // URL de récupération des photos
+  let Url = `https://backimmo.osc-fr1.scalingo.io/get-public-pic/`; // URL de récupération des photos
   /* let UrlPrivatePic = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-private-pic/` */ // URL de récupération des documents privés soumis par un utilisateur
 
   /* Ouverture modal */
@@ -157,7 +145,7 @@ function ItemModal(props) {
             <p>
               <b>Autres:</b> {itemInfo?.otherSpecialPerks}
             </p>
-            <p>
+           {/*  <p>
               <b>Nombre de token encore disponibles: </b>{" "}
               {itemInfoFinance?.remainingAvailableToken}
             </p>
@@ -168,15 +156,15 @@ function ItemModal(props) {
             <p>
               <b>Valeur initiale d'un token pour ce bien: </b>{" "}
               {itemInfoFinance?.initialSingleTokenValueInEuros} UDS Coins
-            </p>
+            </p> */}
             <p>
-              <b>Valeur du bien: </b> {itemInfoFinance?.priceInEuros} UDS Coins
+              <b>Valeur du bien: </b> {itemInfoFinance?.priceInEuros} Euros
             </p>
-            {tokenData?.tokenBuyOrdersDuringFunding.map((transaction, id) => (
+           {/*  {tokenData?.tokenBuyOrdersDuringFunding.map((transaction, id) => (
               <div key={id}>
                 Id Utilisateur {transaction.itemId} {transaction.quantity}
               </div>
-            ))}
+            ))} */}
             {/*   Possibilité d'afficher de nouvelles clés (isCurrentlyRented / expectedYearlyIncome ) et toutes les clés qui concernent les tokens et les sommes qui sont dans itemInfosFinance */}
           </div>
         </div>

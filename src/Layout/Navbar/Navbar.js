@@ -33,10 +33,10 @@ function Navbar(props) {
           </li>
           
           <li>
-            {`Connecté en tant que  ${props?.user?.data?.data?.firstName} ${props?.user?.data?.data?.lastName}  /`}   {/* A PRENDRE OU A LAISSER C'eST VOUS QUI VOYEZ */}
+            {`Connecté en tant que  ${props?.user?.data?.data?.firstName} ${props?.user?.data?.data?.lastName}//=>`}   {/* A PRENDRE OU A LAISSER C'eST VOUS QUI VOYEZ */}
           </li>
           <li>
-            {`/ UDS Coins : ${props?.user?.data?.data?.stableCoin}`}
+            {`  Solde :  ${props?.user?.data?.data?.stableCoin} € :`}
           </li>
         </ul>
       );

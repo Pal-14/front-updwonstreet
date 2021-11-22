@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch , Redirect} from "react-router-dom";
 import Navbar from "./Layout/Navbar/Navbar";
 import { useState, useEffect } from "react";
 import Log from "./View/Log/Log";
@@ -8,7 +8,7 @@ import Catalog from "./View/Catalog/Catalog";
 import HomeAdmin from "./View/Admin/HomeAdmin";
 import Service from "./services";
 import Home from "./View/Home";
-
+import LogOut from "./View/Log/LogOut";
 
 function App() {
   /* Déclaration variable d'état */
@@ -37,21 +37,21 @@ function App() {
     console.log("Connecté:", isLoggedIn);
   }, [isLoggedIn]);
 
-   /* Récupération des biens immobiliers */
-   useEffect(() => {
+  /* Récupération des biens immobiliers */
+  useEffect(() => {
     Service.publicItemList().then((response) => {
-        setItemListPublic(response.data);
+      setItemListPublic(response.data);
     });
-}, []);
-console.log("Item list:", itemListPublic);
+  }, []);
+  console.log("Item list:", itemListPublic);
 
   return (
-    <div className="" >
+    <div className="">
       <Router>
         <Navbar user={user} isLoggedIn={isLoggedIn} />
         <div className="Contain">
           <Switch>
-            <Route path="/log">
+            <Route path="/log">            
               <Log
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
@@ -66,15 +66,16 @@ console.log("Item list:", itemListPublic);
               />
             </Route>
             <Route path="/catalog">
-              <Catalog 
-              setItemListPublic={setItemListPublic} itemListPublic={itemListPublic}/>
+              <Catalog
+                setItemListPublic={setItemListPublic}
+                itemListPublic={itemListPublic}
+              />
             </Route>
             <Route path="/admin">
-              <HomeAdmin
-              user={user} />
+              <HomeAdmin user={user} />
             </Route>
             <Route path="/">
-              <Home/>
+              <Home />
             </Route>
           </Switch>
         </div>

@@ -267,8 +267,8 @@ function AjoutDeBiens(props) {
               </label>
             </label>
             <br />
-            <label for="tokens">Nombre de tokens:</label>
-            <input type="number" onChange={handleNumberOfTokens} class="with-gap" name="tokens" />
+           {/*  <label for="tokens">Nombre de tokens:</label>
+            <input type="number" onChange={handleNumberOfTokens} class="with-gap" name="tokens" /> */}
             <label for="totalAmount">Montant total:</label>
             <input type="number" onChange={handleTotalAmount} class="with-gap" name="totalAmount" />
             {/* <PhotoBiens /> */}

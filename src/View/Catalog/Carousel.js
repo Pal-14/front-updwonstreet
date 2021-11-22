@@ -15,7 +15,7 @@ class Carousel extends Component {
     // instance.next(2);
   }
 
-  Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/`;
+  Url = `https://backimmo.osc-fr1.scalingo.io/get-public-pic/`;
 
   render() {
     return (

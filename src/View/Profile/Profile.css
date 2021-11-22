@@ -40,13 +40,13 @@
 .imageProfile {
   height: 212px;
   width: 353px;
-  background-image: url("../../img/logo.png");
+  /* background-image: url("../../img/logo.png"); */
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .containProfile {
-    background-image: url("../../img/logo1.png");
+    background-image: url("../../img/photo1.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

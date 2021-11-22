@@ -52,7 +52,7 @@ function CardBiens(props) {
 
   console.log("ITEM:", item);
 
-  let Url = `https://scrumbag-back-updownstreet.osc-fr1.scalingo.io/get-public-pic/`;
+  let Url = `https://backimmo.osc-fr1.scalingo.io/get-public-pic/`;
 
   /* Modification de compte */
   const editValueOfItem = async (user, key, value) => {
@@ -102,13 +102,13 @@ function CardBiens(props) {
           <div className="statusBtns">
            
           </div>
-          <p> Le bien </p>
+          <p>{itemInfo?.name}</p>
           <Carousel {...props}/>   
 
           
          
           <p>
-            <b>ID</b> {item?._id}
+           {/*  <b>ID</b> {item?._id} */}
           </p>
           <p>
             <b>Adresse:</b> {itemInfo?.adress}
@@ -150,9 +150,9 @@ function CardBiens(props) {
             <b>Piscine:</b> {itemInfo?.swimmingPool ? "oui" : "non"}
           </p>
           <p>
-            <b>Autres:</b> {itemInfo?.otherSpecialPerks}
-          </p>
-          <p>
+            {itemInfo?.otherSpecialPerks === true ? <div><b>Autres:</b> {itemInfo?.otherSpecialPerks} </div> : <p></p> }
+            </p>
+         {/*  <p>
             <b>Nombre de token encore disponibles: </b>{" "}
             {itemInfoFinance?.remainingAvailableToken}
           </p>
@@ -163,19 +163,19 @@ function CardBiens(props) {
           <p>
             <b>Valeur initiale d'un token pour ce bien: </b>{" "}
             {itemInfoFinance?.initialSingleTokenValueInEuros}  UDS Coins
-          </p>
+          </p> */}
           <p>
             <b>Valeur du bien: </b>{" "}
-            {itemInfoFinance?.priceInEuros} UDS Coins
+            {itemInfoFinance?.priceInEuros} Euros
           </p>
-          {item?.itemPrivateData?.tokenData?.tokenBuyOrdersDuringFunding.map(
+         {/*  {item?.itemPrivateData?.tokenData?.tokenBuyOrdersDuringFunding.map(
             (transaction, id) => (
               <div key={id}>
                 Id Utilisateur {transaction.itemId} {transaction.quantity}
               </div>
             )
-          )}
-          <form>
+          )} */}
+        {/*   <form>
             <label for="tokens">
               Nombre de tokens que vous souhaiter acheter:{" "}
               <input
@@ -184,9 +184,9 @@ function CardBiens(props) {
                 class="with-gap"
                 name="buytokens"
               />
-            </label>
+            </label> */}
             <a   onClick={achat}>Acheter</a>
-          </form>
+          {/* </form> */}
           {/*   IL Y A DES NOUVELLES CLES EN PLUS SI TU VEUX LES AFFICHER.
                     GENRE isCurrentlyRented ou expectedYearlyIncome
                     Et toutes les clés qui concernent les tokens et les sousous qui sont

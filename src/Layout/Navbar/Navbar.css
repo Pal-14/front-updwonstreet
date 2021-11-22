@@ -1,46 +1,45 @@
 .navbarContainer {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .bleu {
-    color: #1D488A;
+  color: #1d488a;
 }
 
 .bleuB {
-    background-color: #1D488A;
+  background-color: #1d488a;
 }
 
 .rouge {
-    color: #DC0C0B;
+  color: #dc0c0b;
 }
 
 .blanc {
-    color: #FFFDFF;
+  color: #fffdff;
 }
 
 nav {
-    padding: 0 5%;
+  padding: 0 5%;
 }
 
 .Link {
-    margin: 0 25px;
+  margin: 0 25px;
 }
 
 .uplogo {
-    background-image: url("../../img/petitlogo.png");
-    height: 64px;
-    width: 107px;
-    background-position: center;
-    background-size: auto;
-
+  background-image: url("../../img/logof.png");
+  background-repeat: no-repeat;
+  height: 134px;
+  width: 119px;
+  background-position: revert;
 }
 
 .logoNavBar {
-    position: absolute;
-    color: #fff;
-    display: inline-block;
-    font-size: 2.1rem;
-    padding: 0;
+  position: absolute;
+  color: #fff;
+  display: inline-block;
+  font-size: 2.1rem;
+  padding: 0;
 }

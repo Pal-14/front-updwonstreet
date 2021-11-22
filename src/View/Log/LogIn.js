@@ -23,7 +23,7 @@ function LogIn(props) {
         setPassword("");
         localStorage.setItem("jwt", logIn.data.token);
         props.setIsLoggedIn(true);
-        /* window.location.href = "http://localhost:3000/profile" */;  //redirection vers la page de profil
+        window.location.href = "https://palimmo.osc-fr1.scalingo.io/profile" ;  //redirection vers la page de profil
       } else {
         setError(logIn.data.message);
       }
